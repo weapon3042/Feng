@@ -1,0 +1,6 @@
+platform :ios, '7.0'
+pod 'ECSlidingViewController', '~> 2.0.0'
+pod 'AFNetworking', '~> 2.2.1'
+pod 'IOSLinkedInAPI'
+pod 'Firebase', '~> 1.0.0'
+pod 'Mantle', '~> 1.3'

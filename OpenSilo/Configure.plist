@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PEOPLE</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Pragya Goyal</string>
+			<key>picture</key>
+			<string>picture1</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Param Vora</string>
+			<key>picture</key>
+			<string>picture2</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Tanmay Bandiwa</string>
+			<key>picture</key>
+			<string>picture3</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Peng Wan</string>
+			<key>picture</key>
+			<string>picture4</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Yohan Cabaye</string>
+			<key>picture</key>
+			<string>picture5</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Laurent Koscielny</string>
+			<key>picture</key>
+			<string>picture6</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Mamadou Sakho </string>
+			<key>picture</key>
+			<string>picture7</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>David Luiz</string>
+			<key>picture</key>
+			<string>picture8</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Thiago Silva</string>
+			<key>picture</key>
+			<string>picture9</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Neymar</string>
+			<key>picture</key>
+			<string>picture10</string>
+		</dict>
+	</array>
+	<key>PINNED</key>
+	<array>
+		<string>What room can no-one enter?</string>
+		<string>Do we have access?</string>
+		<string>What kind of machines?</string>
+		<string>Talk to Steven and John</string>
+	</array>
+	<key>CHANNELS</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Early Access Pilot Team</string>
+			<key>icon</key>
+			<string>gold_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>IT</string>
+			<key>icon</key>
+			<string>gold_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Welcome to OpenSilo</string>
+			<key>icon</key>
+			<string>gold_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Community</string>
+			<key>icon</key>
+			<string>gold_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Business</string>
+			<key>icon</key>
+			<string>gold_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Test</string>
+			<key>icon</key>
+			<string>gold_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Legal</string>
+			<key>icon</key>
+			<string>gold_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Exec Team</string>
+			<key>icon</key>
+			<string>gold_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Entertainment</string>
+			<key>icon</key>
+			<string>gold_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>See all channels</string>
+			<key>icon</key>
+			<string>button_record</string>
+		</dict>
+	</array>
+	<key>ROOMS</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Room 1</string>
+			<key>icon</key>
+			<string>pink_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Room 2</string>
+			<key>icon</key>
+			<string>pink_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Room 3</string>
+			<key>icon</key>
+			<string>pink_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Room 4</string>
+			<key>icon</key>
+			<string>pink_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Room 5</string>
+			<key>icon</key>
+			<string>pink_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Room 6</string>
+			<key>icon</key>
+			<string>pink_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Room 7</string>
+			<key>icon</key>
+			<string>pink_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Room 8</string>
+			<key>icon</key>
+			<string>pink_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Room 9</string>
+			<key>icon</key>
+			<string>pink_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Room 10</string>
+			<key>icon</key>
+			<string>pink_button</string>
+		</dict>
+	</array>
+	<key>HISTORY</key>
+	<array>
+		<string>Greeting from Wolverine!</string>
+		<string>Greeting from Wolverine!</string>
+		<string>Greeting from Wolverine!</string>
+		<string>Greeting from Wolverine!</string>
+		<string>Greeting from Wolverine!</string>
+		<string>Greeting from Wolverine!</string>
+	</array>
+	<key>FAVOURITES</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Business</string>
+			<key>icon</key>
+			<string>red_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>IT</string>
+			<key>icon</key>
+			<string>red_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Legal</string>
+			<key>icon</key>
+			<string>red_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>NFL</string>
+			<key>icon</key>
+			<string>red_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Politics</string>
+			<key>icon</key>
+			<string>red_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Flowers</string>
+			<key>icon</key>
+			<string>red_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>World Cup</string>
+			<key>icon</key>
+			<string>red_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>NBA</string>
+			<key>icon</key>
+			<string>red_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Super Bowl</string>
+			<key>icon</key>
+			<string>red_button</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Leaders</string>
+			<key>icon</key>
+			<string>red_button</string>
+		</dict>
+	</array>
+	<key>CHAT</key>
+	<array>
+		<dict>
+			<key>sender</key>
+			<string>Pragya Goyal</string>
+			<key>message</key>
+			<string>hello~~</string>
+			<key>picture</key>
+			<string>picture1</string>
+			<key>timestamp</key>
+			<string>4:32pm</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Param Vora</string>
+			<key>picture</key>
+			<string>picture2</string>
+			<key>message</key>
+			<string>How are you?</string>
+			<key>timestamp</key>
+			<string>4:30pm</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Tanmay Bandiwa</string>
+			<key>picture</key>
+			<string>picture3</string>
+			<key>message</key>
+			<string>Thanks for your dinner yesterday!</string>
+			<key>timestamp</key>
+			<string>4:08pm</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Peng Wan</string>
+			<key>picture</key>
+			<string>picture4</string>
+			<key>message</key>
+			<string>Do you like Mexico food?</string>
+			<key>timestamp</key>
+			<string>3:05pm</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Yohan Cabaye</string>
+			<key>picture</key>
+			<string>picture5</string>
+			<key>message</key>
+			<string>I have a question about APNS</string>
+			<key>timestamp</key>
+			<string>1:23pm</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Laurent Koscielny</string>
+			<key>picture</key>
+			<string>picture6</string>
+			<key>message</key>
+			<string>iOS?</string>
+			<key>timestamp</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Mamadou Sakho </string>
+			<key>picture</key>
+			<string>picture7</string>
+			<key>message</key>
+			<string>What is jQuery?</string>
+			<key>timestamp</key>
+			<string>12:50pm</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>David Luiz</string>
+			<key>message</key>
+			<string>Welcome everyone!</string>
+			<key>picture</key>
+			<string>picture8</string>
+			<key>timestamp</key>
+			<string>11:32am</string>
+		</dict>
+	</array>
+</dict>
+</plist>
