@@ -46,6 +46,7 @@
                                 <rect key="frame" x="0.0" y="112" width="240" height="386"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Channel Cell Identifier" textLabel="KEs-VT-ifw" style="IBUITableViewCellStyleDefault" id="Z3X-0k-Ubb">
                                         <rect key="frame" x="0.0" y="22" width="240" height="44"/>

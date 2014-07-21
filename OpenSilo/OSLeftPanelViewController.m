@@ -206,7 +206,7 @@ static NSString * const roomcellIdentifier = @"Room Cell Identifier";
     
     OSGetRequest *favRequest = [[OSGetRequest alloc]init];
     
-    [favRequest getApiRequest:@"api/resolutionrooms" params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+    [favRequest getApiRequest:@"api/user/statistics" params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
         if (!error) {
             NSDictionary *response =  [NSDictionary dictionaryWithDictionary:responseObject];
             
