@@ -9,18 +9,23 @@
 #import "OSViewController.h"
 #import "OSUIMacro.h"
 #import "UIViewController+ECSlidingViewController.h"
-
+#import "OSSession.h"
+#import "OSConstant.h"
 
 @implementation OSViewController
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    
+    [super viewWillAppear:animated];
+   
     self.channelThread = [[NSMutableArray alloc] init];
-
+    
     // Initialize the root of our Firebase namespace.
-    self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/-JR_TRvFMfvqfSQD4twU/messages",fireBaseUrl]];
+    if (![OSSession getInstance].currentChannel.fireBaseId) {
+        self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/-JR_TRvFMfvqfSQD4twU/messages",fireBaseUrl]];
+    } else {
+    self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,[OSSession getInstance].currentChannel.fireBaseId]];
+    }
     
     [self.firebase authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
         
@@ -31,12 +36,27 @@
             [self.tableView reloadData];
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.channelThread.count -1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }];
-
+        
     } withCancelBlock:^(NSError* error) {
         NSLog(@"Authentication status was cancelled! %@", error);
     }];
-
     
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(keyboardWillShow:)
+     name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(keyboardWillHide:)
+     name:UIKeyboardWillHideNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(viewWillAppear:) name:kChannelDidSelectNotification object:nil];
+
     self.slidingViewController.underLeftViewController = [[UIStoryboard storyboardWithName:@"leftPanel" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"OSLeftPanelViewController"];
     self.slidingViewController.underRightViewController = [[UIStoryboard storyboardWithName:@"rightPanel" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"OSRightPanelViewController"];
     //customize the navigation bar
@@ -136,30 +156,16 @@
 }
 
 #pragma mark - Animations
-
-
-// Subscribe to keyboard show/hide notifications.
-- (void)viewWillAppear:(BOOL)animated
+-(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(keyboardWillShow:)
-     name:UIKeyboardWillShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(keyboardWillHide:)
-     name:UIKeyboardWillHideNotification object:nil];
-}
-
-// Unsubscribe from keyboard show/hide notifications.
-- (void)viewWillDisappear:(BOOL)animated
-{
+    // Unsubscribe from keyboard show/hide notifications.
     [[NSNotificationCenter defaultCenter]
      removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter]
      removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
 
+}
 
 // text field upwards when the keyboard shows, and downwards when it hides.
 - (void)keyboardWillShow:(NSNotification*)notification

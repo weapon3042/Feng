@@ -29,6 +29,7 @@
 		9AAB08391978D9CE00FBE96D /* OSDateTimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAB08381978D9CE00FBE96D /* OSDateTimeUtils.m */; };
 		9AADA58D19799B07000F8DED /* OSGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AADA58C19799B07000F8DED /* OSGetRequest.m */; };
 		9AADA59019799B78000F8DED /* OSPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AADA58F19799B78000F8DED /* OSPostRequest.m */; };
+		9ADD59D1197E35630090DBC4 /* OSConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD59D0197E35630090DBC4 /* OSConstant.m */; };
 		9AF10D9D19761BBC00474A2A /* OSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10D9C19761BBC00474A2A /* OSSession.m */; };
 		9AF10DA019761BD600474A2A /* OSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10D9F19761BD600474A2A /* OSUser.m */; };
 		9AF10DA81976230A00474A2A /* OSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10DA41976230A00474A2A /* OSMessage.m */; };
@@ -97,6 +98,8 @@
 		9AADA58C19799B07000F8DED /* OSGetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSGetRequest.m; sourceTree = "<group>"; };
 		9AADA58E19799B78000F8DED /* OSPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSPostRequest.h; sourceTree = "<group>"; };
 		9AADA58F19799B78000F8DED /* OSPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSPostRequest.m; sourceTree = "<group>"; };
+		9ADD59CF197E35630090DBC4 /* OSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSConstant.h; sourceTree = "<group>"; };
+		9ADD59D0197E35630090DBC4 /* OSConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSConstant.m; sourceTree = "<group>"; };
 		9AF10D9B19761BBC00474A2A /* OSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSession.h; sourceTree = "<group>"; };
 		9AF10D9C19761BBC00474A2A /* OSSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSession.m; sourceTree = "<group>"; };
 		9AF10D9E19761BD600474A2A /* OSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUser.h; sourceTree = "<group>"; };
@@ -351,6 +354,8 @@
 			children = (
 				9AAB08371978D9CE00FBE96D /* OSDateTimeUtils.h */,
 				9AAB08381978D9CE00FBE96D /* OSDateTimeUtils.m */,
+				9ADD59CF197E35630090DBC4 /* OSConstant.h */,
+				9ADD59D0197E35630090DBC4 /* OSConstant.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				9A6C7E231977859D0053AC76 /* OSLoginViewController.m in Sources */,
 				9A6B6108196D22C90016D83B /* OSLeftPanelViewController.m in Sources */,
 				9AF10D9D19761BBC00474A2A /* OSSession.m in Sources */,
+				9ADD59D1197E35630090DBC4 /* OSConstant.m in Sources */,
 				B62F33FA197AE69700BD8CEA /* UITableViewCell+NIB.m in Sources */,
 				9AADA59019799B78000F8DED /* OSPostRequest.m in Sources */,
 				9A6B60E2196D19720016D83B /* OSViewController.m in Sources */,
@@ -645,6 +651,7 @@
 			baseConfigurationReference = ACFD39B11A034E4BB459C1FE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenSilo/OpenSilo-Prefix.pch";
 				INFOPLIST_FILE = "OpenSilo/OpenSilo-Info.plist";
@@ -658,6 +665,7 @@
 			baseConfigurationReference = ACFD39B11A034E4BB459C1FE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OpenSilo/OpenSilo-Prefix.pch";
 				INFOPLIST_FILE = "OpenSilo/OpenSilo-Info.plist";

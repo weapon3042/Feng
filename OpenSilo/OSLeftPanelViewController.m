@@ -12,6 +12,7 @@
 #import "OSDataManger.h"
 #import "OSGetRequest.h"
 #import "OSSession.h"
+#import "OSConstant.h"
 
 static NSString * const channelCellIdentifier = @"Channel Cell Identifier";
 static NSString * const roomcellIdentifier = @"Room Cell Identifier";
@@ -136,6 +137,9 @@ static NSString * const roomcellIdentifier = @"Room Cell Identifier";
             [[OSSession getInstance].currentChannel setFireBaseId:dict[@"firebase_channel_name"]];
             [[OSSession getInstance].currentChannel setFiles:dict[@"files"]];
             [[OSSession getInstance].currentChannel setUsers:dict[@"users"]];
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
+            
             
         }
     }

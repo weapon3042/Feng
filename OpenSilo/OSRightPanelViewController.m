@@ -104,7 +104,8 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
                                      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                          weakCell.pic.image = image;
                                          [weakCell.thumbProgressView stopAnimating];
-                                     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                     } failure:^(NSURLRequest *request,
+                                                 NSHTTPURLResponse *response, NSError *error) {
                                          [weakCell.thumbProgressView stopAnimating];
                                      }];
             cell.thumbProgressView.hidesWhenStopped=YES;
