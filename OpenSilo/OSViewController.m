@@ -9,9 +9,11 @@
 #import "OSViewController.h"
 #import "OSUIMacro.h"
 #import "UIViewController+ECSlidingViewController.h"
+#import "UIImageView+AFNetworking.h"
 #import "OSSession.h"
 #import "OSConstant.h"
 #import "OSTranscriptTableViewCell.h"
+#import "OSDateTimeUtils.h"
 
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
@@ -75,6 +77,8 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     // enable swiping on the top view
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    
+    [self registerCustomCellsFromNibs];
 
 }
 
@@ -107,13 +111,54 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
+}
 
 - (UITableViewCell*)tableView:(UITableView*)table cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OSTranscriptTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:transcriptCellIdentifier forIndexPath:indexPath];
-#warning bug
-    cell.message.text =  @"asbc";
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NSDictionary *message = [self.channelThread objectAtIndex:indexPath.row];
+    
+    
+    if([message isKindOfClass:[NSDictionary class]]){
+        
+        cell.message.text =  @"asbc";
+        cell.fullName.text = message[@"user_id"];
+        
+    }
+    cell.message.text =  message[@"text"];
+    cell.fullName.text = message[@"user_id"];
+    NSString *messageTimestamp = message[@"timestamp"];
+    NSString *messageTime = [[OSDateTimeUtils getInstance] convertDateTimeFromUTCtoLocalForDateTime:[messageTimestamp longLongValue]];
+    cell.messageTime.text = [[OSDateTimeUtils getInstance] dateTimeDifference:messageTime];
+#warning pic url should be dynamic
+    NSURL *url = [NSURL URLWithString:@"http://google.com"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"imgPlaceholder"];
+    __weak OSTranscriptTableViewCell *weakCell = cell;
+    [weakCell.thumbProgressView startAnimating];
+    [cell.pic setImageWithURLRequest:request
+                    placeholderImage:placeholderImage
+                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                 weakCell.pic.image = image;
+                                 [weakCell.thumbProgressView stopAnimating];
+                             } failure:^(NSURLRequest *request,
+                                         NSHTTPURLResponse *response, NSError *error) {
+                                 [weakCell.thumbProgressView stopAnimating];
+                             }];
+    cell.thumbProgressView.hidesWhenStopped=YES;
+    [cell.pic.layer setMasksToBounds:YES];
+    [cell.pic.layer setCornerRadius:22.0];
     return cell;
+}
+
+-(void)registerCustomCellsFromNibs
+{
+    [self.tableView registerNib:[UINib nibWithNibName:@"OSTranscriptTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"OSTranscriptTableViewCell"];
 }
 
 #pragma mark - Text Field
@@ -124,10 +169,12 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     if([textField.text length] > 0){
         
+        long timestamp = [[NSDate date] timeIntervalSince1970];
+        
         [[self.firebase childByAutoId] setValue:@{
                                                   @"user_id" : @"53c6030e94e4bf19725dd2c6",
                                                   @"text": textField.text,
-                                                  @"timestamp" : @"1405790066"
+                                                  @"timestamp" : [NSString stringWithFormat:@"%ld",timestamp]
                                                 }];
         
         [textField setText:@""];

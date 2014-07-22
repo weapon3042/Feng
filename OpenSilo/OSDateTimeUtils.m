@@ -7,13 +7,24 @@
 //
 
 #import "OSDateTimeUtils.h"
-
+static NSString * const timeFormat = @"hh:mm a, MMM dd, yyyy";
 @implementation OSDateTimeUtils
+
++ (OSDateTimeUtils *)getInstance
+{
+    static OSDateTimeUtils *manager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [[OSDateTimeUtils alloc] init];
+        
+    });
+    return manager;
+}
 
 -(NSString *)dateTimeDifference:(NSString *)dateString {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.z"];
+    [dateFormatter setDateFormat:timeFormat];
     
     NSDate *startDate = [dateFormatter dateFromString:dateString];
     NSDate *endDate = [NSDate date];
@@ -73,6 +84,20 @@
     return [NSString stringWithFormat:@"%ld %@ ago",(long)number,text];
 }
 
+-(NSString *)convertDateTimeFromUTCtoLocalForDateTime:(long)timestamp {
+    
+    NSDateFormatter *dateFromatter = [[NSDateFormatter alloc] init];
+    [dateFromatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
+    [dateFromatter setDateFormat:timeFormat];
+    [dateFromatter setTimeZone:[NSTimeZone localTimeZone]];
+    if (date) {
+        return [dateFromatter stringFromDate:date];
+    }
+    return @"";
+}
+
 -(NSString *)convertDateTimeFromUTCtoLocalWithFormat:(NSString *)fromDateTimeFormat toDateTimeFormat:(NSString *)toDateTimeFormat forDateTime:(NSString *)forDateTime {
     
     NSDateFormatter *dateFromatter = [[NSDateFormatter alloc] init];
@@ -102,6 +127,7 @@
     }
     return @"";
 }
+
 
 
 @end
