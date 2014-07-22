@@ -11,6 +11,10 @@
 #import "UIViewController+ECSlidingViewController.h"
 #import "OSSession.h"
 #import "OSConstant.h"
+#import "OSTranscriptTableViewCell.h"
+
+
+static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 @implementation OSViewController
 
@@ -24,7 +28,8 @@
     if (![OSSession getInstance].currentChannel.fireBaseId) {
         self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/-JR_TRvFMfvqfSQD4twU/messages",fireBaseUrl]];
     } else {
-    self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,[OSSession getInstance].currentChannel.fireBaseId]];
+        self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,[OSSession getInstance].currentChannel.fireBaseId]];
+        self.navigationItem.title = [OSSession getInstance].currentChannel.channelName;
     }
     
     [self.firebase authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
@@ -102,27 +107,12 @@
 
 }
 
+
 - (UITableViewCell*)tableView:(UITableView*)table cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    NSDictionary *message = [self.channelThread objectAtIndex:indexPath.row];
-    
-    
-    if([message isKindOfClass:[NSDictionary class]]){
-    
-    cell.textLabel.text = message[@"text"];
-    cell.detailTextLabel.text = message[@"user_id"];
-        
-    }
-    
+    OSTranscriptTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:transcriptCellIdentifier forIndexPath:indexPath];
+#warning bug
+    cell.message.text =  @"asbc";
     return cell;
 }
 
