@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		367972E61979C6DA009C561E /* leftPanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367972E51979C6DA009C561E /* leftPanel.storyboard */; };
+		36EE2368197F6AA4003FCAEA /* OSRequestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2367197F6AA4003FCAEA /* OSRequestUtils.m */; };
 		9A6B60CC196D19710016D83B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6B60CB196D19710016D83B /* Foundation.framework */; };
 		9A6B60CE196D19710016D83B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6B60CD196D19710016D83B /* CoreGraphics.framework */; };
 		9A6B60D0196D19710016D83B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6B60CF196D19710016D83B /* UIKit.framework */; };
@@ -66,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		367972E51979C6DA009C561E /* leftPanel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = leftPanel.storyboard; sourceTree = "<group>"; };
+		36EE2366197F6AA4003FCAEA /* OSRequestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSRequestUtils.h; sourceTree = "<group>"; };
+		36EE2367197F6AA4003FCAEA /* OSRequestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSRequestUtils.m; sourceTree = "<group>"; };
 		9A6B60C8196D19710016D83B /* OpenSilo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSilo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6B60CB196D19710016D83B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9A6B60CD196D19710016D83B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -260,6 +263,8 @@
 		9AADA584197993EB000F8DED /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				36EE2366197F6AA4003FCAEA /* OSRequestUtils.h */,
+				36EE2367197F6AA4003FCAEA /* OSRequestUtils.m */,
 				9AADA58B19799B07000F8DED /* OSGetRequest.h */,
 				9AADA58C19799B07000F8DED /* OSGetRequest.m */,
 				9AADA58E19799B78000F8DED /* OSPostRequest.h */,
@@ -537,6 +542,7 @@
 				B64B692B1975AE89009F7B05 /* OSRoom.m in Sources */,
 				B6354EDB197C807800CC720C /* OSRightPanelViewController.m in Sources */,
 				E7A7230A19772911000A8BCC /* OSDataManger.m in Sources */,
+				36EE2368197F6AA4003FCAEA /* OSRequestUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,5 +14,6 @@ typedef void(^OSAPIResponseBlock)(id responseObject, NSError *error);
 @interface OSDataManger : AFHTTPSessionManager
 
 + (OSDataManger *)sharedManager;
++ (NSMutableURLRequest *)contructHttpRequestWithURL:(NSString *)url andType:(NSString *)methodType andParameters:(NSDictionary *)params;
 
 @end

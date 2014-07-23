@@ -14,6 +14,7 @@
 #import "OSViewController.h"
 #import "OSAppDelegate.h"
 #import "OSPostRequest.h"
+#import "OSRequestUtils.h"
 
 @interface OSLoginViewController ()
 
@@ -42,27 +43,56 @@
     // Do any additional setup after loading the view.
 }
 
+//-(IBAction)onClickLogin:(id)sender {
+//
+//    NSDictionary *parameters = @{@"email": self.usernamerTextfield.text,
+//                                 @"password": self.passwordTextfield.text};
+//
+//    OSPostRequest *loginRequest = [[OSPostRequest alloc]init];
+//    
+//    [loginRequest postApiRequest:@"api/user/login" params:parameters setAuthHeader:NO responseBlock:^(id responseObject, NSError *error) {
+//        
+//        if (!error) {
+//            
+//            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//            OSViewController *mainVC = [storyBoard instantiateInitialViewController];
+//            OSAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+//            appDelegate.window.rootViewController = mainVC;
+//            
+//        }
+//    
+//    }];
+//
+//}
+//
 -(IBAction)onClickLogin:(id)sender {
-
+    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
     NSDictionary *parameters = @{@"email": self.usernamerTextfield.text,
                                  @"password": self.passwordTextfield.text};
-
-    OSPostRequest *loginRequest = [[OSPostRequest alloc]init];
     
-    [loginRequest postApiRequest:@"api/user/login" params:parameters setAuthHeader:NO responseBlock:^(NSData *responseObject, NSError *error) {
-        
-        if (!error) {
-            
-            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-            OSViewController *mainVC = [storyBoard instantiateInitialViewController];
-            OSAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-            appDelegate.window.rootViewController = mainVC;
-            
-        }
-    
-    }];
+    NSMutableURLRequest *urlRequest = [OSRequestUtils contructHttpRequestWithURL:@"api/user/login" andType:@"POST" andHeaders:nil andParameters:parameters];
+    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:urlRequest
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           //                                                           NSLog(@"Response:%@ %@\n", response, error);
+                                                           if(error == nil)
+                                                           {
+                                                               NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                                            options:kNilOptions
+                                                                                                                              error:&error];
 
+                                                  NSLog(@"Data = %@",jsonResponse);
+                                                               UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+                                                               OSViewController *mainVC = [storyBoard instantiateInitialViewController];
+                                                               OSAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+                                                               appDelegate.window.rootViewController = mainVC;
+                                                           }
+                                                           
+                                                       }];
+    [dataTask resume];
+    
 }
+
 
 - (void)didReceiveMemoryWarning
 {
