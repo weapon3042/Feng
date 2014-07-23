@@ -35,6 +35,7 @@
 		9AF10DA81976230A00474A2A /* OSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10DA41976230A00474A2A /* OSMessage.m */; };
 		9AF10DA91976230A00474A2A /* OSChilli.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10DA61976230A00474A2A /* OSChilli.m */; };
 		9AF10DAD19762A5E00474A2A /* OSTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10DAC19762A5E00474A2A /* OSTag.m */; };
+		B615922F1980562900D3AE9C /* OSToastUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B615922E1980562900D3AE9C /* OSToastUtils.m */; };
 		B62F33FA197AE69700BD8CEA /* UITableViewCell+NIB.m in Sources */ = {isa = PBXBuildFile; fileRef = B62F33F7197AE69700BD8CEA /* UITableViewCell+NIB.m */; };
 		B6354ED3197C804700CC720C /* rightPanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6354ED2197C804700CC720C /* rightPanel.storyboard */; };
 		B6354EDB197C807800CC720C /* OSRightPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6354EDA197C807800CC720C /* OSRightPanelViewController.m */; };
@@ -42,6 +43,7 @@
 		B6354EE0197ED80D00CC720C /* OSTranscriptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6354EDE197ED80D00CC720C /* OSTranscriptTableViewCell.xib */; };
 		B6354EE4197EFAF500CC720C /* OSPeopleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6354EE2197EFAF500CC720C /* OSPeopleTableViewCell.m */; };
 		B6354EE5197EFAF500CC720C /* OSPeopleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6354EE3197EFAF500CC720C /* OSPeopleTableViewCell.xib */; };
+		B6354EE81980309000CC720C /* OSRequestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B6354EE71980309000CC720C /* OSRequestUtils.m */; };
 		B64B69281975AC17009F7B05 /* OSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B64B69271975AC17009F7B05 /* OSChannel.m */; };
 		B64B692B1975AE89009F7B05 /* OSRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = B64B692A1975AE89009F7B05 /* OSRoom.m */; };
 		D351182AA7EE403B88B60017 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E4F483B40D4402BEB0FB55 /* libPods.a */; };
@@ -113,6 +115,8 @@
 		9AF10DAB19762A5E00474A2A /* OSTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTag.h; sourceTree = "<group>"; };
 		9AF10DAC19762A5E00474A2A /* OSTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTag.m; sourceTree = "<group>"; };
 		ACFD39B11A034E4BB459C1FE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		B615922D1980562900D3AE9C /* OSToastUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSToastUtils.h; sourceTree = "<group>"; };
+		B615922E1980562900D3AE9C /* OSToastUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSToastUtils.m; sourceTree = "<group>"; };
 		B62F33F6197AE69700BD8CEA /* UITableViewCell+NIB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+NIB.h"; sourceTree = "<group>"; };
 		B62F33F7197AE69700BD8CEA /* UITableViewCell+NIB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+NIB.m"; sourceTree = "<group>"; };
 		B6354ED2197C804700CC720C /* rightPanel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = rightPanel.storyboard; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 		B6354EE1197EFAF500CC720C /* OSPeopleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSPeopleTableViewCell.h; sourceTree = "<group>"; };
 		B6354EE2197EFAF500CC720C /* OSPeopleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSPeopleTableViewCell.m; sourceTree = "<group>"; };
 		B6354EE3197EFAF500CC720C /* OSPeopleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSPeopleTableViewCell.xib; sourceTree = "<group>"; };
+		B6354EE61980309000CC720C /* OSRequestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSRequestUtils.h; sourceTree = "<group>"; };
+		B6354EE71980309000CC720C /* OSRequestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSRequestUtils.m; sourceTree = "<group>"; };
 		B64B69261975AC17009F7B05 /* OSChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSChannel.h; path = model/OSChannel.h; sourceTree = "<group>"; };
 		B64B69271975AC17009F7B05 /* OSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSChannel.m; path = model/OSChannel.m; sourceTree = "<group>"; };
 		B64B69291975AE89009F7B05 /* OSRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSRoom.h; path = model/OSRoom.h; sourceTree = "<group>"; };
@@ -260,6 +266,8 @@
 		9AADA584197993EB000F8DED /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				B6354EE61980309000CC720C /* OSRequestUtils.h */,
+				B6354EE71980309000CC720C /* OSRequestUtils.m */,
 				9AADA58B19799B07000F8DED /* OSGetRequest.h */,
 				9AADA58C19799B07000F8DED /* OSGetRequest.m */,
 				9AADA58E19799B78000F8DED /* OSPostRequest.h */,
@@ -364,6 +372,8 @@
 				9AAB08381978D9CE00FBE96D /* OSDateTimeUtils.m */,
 				9ADD59CF197E35630090DBC4 /* OSConstant.h */,
 				9ADD59D0197E35630090DBC4 /* OSConstant.m */,
+				B615922D1980562900D3AE9C /* OSToastUtils.h */,
+				B615922E1980562900D3AE9C /* OSToastUtils.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -537,6 +547,8 @@
 				B64B692B1975AE89009F7B05 /* OSRoom.m in Sources */,
 				B6354EDB197C807800CC720C /* OSRightPanelViewController.m in Sources */,
 				E7A7230A19772911000A8BCC /* OSDataManger.m in Sources */,
+				B615922F1980562900D3AE9C /* OSToastUtils.m in Sources */,
+				B6354EE81980309000CC720C /* OSRequestUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

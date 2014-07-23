@@ -34,6 +34,9 @@ label.font = [UIFont fontWithName:fontName size:fontSize];
 
 #define LineSpace ([UIFont fontWithName:FontRegular size:8])
 
+#define TOAST_SUC @"Success"
+#define TOAST_FAIL @"Failure"
+
 #define fireBaseUrl @"https://incandescent-fire-1647.firebaseio.com/"
 
 #define fireBaseSecret @"FRdGObYikPz5hOixPbJHdmqwLa5BNab5fq8E52VO"

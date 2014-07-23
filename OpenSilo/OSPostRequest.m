@@ -12,7 +12,6 @@
 
 @implementation OSPostRequest
 
-
 - (void)postApiRequest:(NSString*)path params:(NSDictionary *)params setAuthHeader:(BOOL)setAuthHeader responseBlock:(OSAPIResponseBlock)responseBlock
 {
     OSDataManger *urlSession = [OSDataManger sharedManager];
@@ -20,9 +19,19 @@
     
     if(setAuthHeader)
         [urlSession.requestSerializer setValue:TestToken forHTTPHeaderField:@"Authorization"];
-    [urlSession.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
-
-    [urlSession POST:path parameters:params constructingBodyWithBlock:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [urlSession.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+    
+        if (params) {
+            NSMutableString *requestJson=[[NSMutableString alloc]initWithFormat:@"{"];
+            for (NSString *key in params.allKeys) {
+                [requestJson appendString:[NSString stringWithFormat:@"\"%@\":\"%@\",",key,[params valueForKey:key]]];
+            }
+            [requestJson deleteCharactersInRange:NSMakeRange(requestJson.length-1,1)];
+            [requestJson appendString:@"}"];
+            NSLog(@"%@", requestJson);
+        }
+    
+        [urlSession POST:path parameters:params constructingBodyWithBlock:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         
         if (responseBlock) responseBlock(responseObject, nil);

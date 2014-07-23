@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 4
 
+// APToast
+#define COCOAPODS_POD_AVAILABLE_APToast
+#define COCOAPODS_VERSION_MAJOR_APToast 1
+#define COCOAPODS_VERSION_MINOR_APToast 1
+#define COCOAPODS_VERSION_PATCH_APToast 0
+
 // ECSlidingViewController
 #define COCOAPODS_POD_AVAILABLE_ECSlidingViewController
 #define COCOAPODS_VERSION_MAJOR_ECSlidingViewController 2

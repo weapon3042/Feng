@@ -14,6 +14,12 @@
 #import "OSViewController.h"
 #import "OSAppDelegate.h"
 #import "OSPostRequest.h"
+#import "OSRequestUtils.h"
+#import "OSUser.h"
+#import "OSSession.h"
+#import <APToast/UIView+APToast.h>
+#import "OSToastUtils.h"
+#import "OSUIMacro.h"
 
 @interface OSLoginViewController ()
 
@@ -43,10 +49,10 @@
 }
 
 -(IBAction)onClickLogin:(id)sender {
-
+    [self.view endEditing:YES];
     NSDictionary *parameters = @{@"email": self.usernamerTextfield.text,
                                  @"password": self.passwordTextfield.text};
-
+/*
     OSPostRequest *loginRequest = [[OSPostRequest alloc]init];
     
     [loginRequest postApiRequest:@"api/user/login" params:parameters setAuthHeader:NO responseBlock:^(NSData *responseObject, NSError *error) {
@@ -61,7 +67,41 @@
         }
     
     }];
-
+*/
+    OSRequestUtils *loginRequest = [[OSRequestUtils alloc]init];
+    [loginRequest httpRequestWithURL:@"api/user/login" andType:@"POST" andAuthHeader:NO andParameters:parameters andResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if(error == nil)
+        {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            if ([[json objectForKey:@"success"] boolValue]) {
+                NSDictionary *userInfo = [json objectForKey:@"result"][0];
+                [[OSSession getInstance] setToken:[userInfo objectForKey:@"access_token"]];
+                if (![OSSession getInstance].user) {
+                    [[OSSession getInstance] setUser: [[OSUser alloc]init]];
+                }
+                [[OSSession getInstance].user setUserId:[json objectForKey:@"id"]];
+                [[OSSession getInstance].user setFirstName:[json objectForKey:@"first_name"]];
+                [[OSSession getInstance].user setLastName:[json objectForKey:@"last_name"]];
+                [[OSSession getInstance].user setDisplayName:[json objectForKey:@"display_name"]];
+                [[OSSession getInstance].user setPicture:[json objectForKey:@"picture"]];
+                [[OSSession getInstance].user setCompany:[json objectForKey:@"company"]];
+                [[OSSession getInstance].user setAddress:[json objectForKey:@"address"]];
+                [[OSSession getInstance].user setRole:[json objectForKey:@"role"]];
+                [[OSSession getInstance].user setEmail:[json objectForKey:@"email"]];
+                [[OSSession getInstance].user setJobTitle:[json objectForKey:@"knowledge_title"]];
+                [[OSSession getInstance].user setStatus:[json objectForKey:@"status"]];
+                [[OSSession getInstance].user setLastSeen:[json objectForKey:@"last_seen"]];
+                [[OSSession getInstance].user setDepartment:[json objectForKey:@"department"]];
+                
+                UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+                OSViewController *mainVC = [storyBoard instantiateInitialViewController];
+                OSAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+                appDelegate.window.rootViewController = mainVC;
+            }else{
+                [self.view ap_makeToastView:[[OSToastUtils getInstance] getToastMessage:@"Invalid credentials" andType:TOAST_FAIL] duration:4.f position:APToastPositionBottom];
+            }
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning

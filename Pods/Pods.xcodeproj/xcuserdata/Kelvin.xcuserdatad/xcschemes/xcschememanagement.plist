@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-APToast.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ECSlidingViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>60D4C73ECD3F42279B42EEF5</key>
+		<key>01E92F931A7740719B960A09</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>883CD53379EF4BDE91CF4D66</key>
+		<key>15E32BFEFCF64EDEBDCDB192</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA7CBB091868451D952815AC</key>
+		<key>160C7C44CD8E430AB71611D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D5505742E04A49CB89BADD7B</key>
+		<key>289DF30AC21B4A44BB6FE5AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3BA9F2AD702475AADBA7F17</key>
+		<key>60D326F027BE431F96B56F8B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E804CF38575E44258B388248</key>
+		<key>913907D82F024AC8964DAB1F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C1C8D32A34EF4BC2922CF5F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

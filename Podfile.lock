@@ -18,6 +18,7 @@ PODS:
   - AFNetworking/UIKit (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - APToast (1.1)
   - ECSlidingViewController (2.0.2)
   - Firebase (1.0.9)
   - IOSLinkedInAPI (2.0.0):
@@ -28,6 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.1)
+  - APToast
   - ECSlidingViewController (~> 2.0.0)
   - Firebase (~> 1.0.0)
   - IOSLinkedInAPI
@@ -35,6 +37,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  APToast: aa52a78f99b0037490a7fdf148275d65871e0cde
   ECSlidingViewController: 6c11fadb10d720c2d48bc577962332bdd4264c9f
   Firebase: 9ed1c8e37b4ea658c3a9eb5539edfc5fb8933f21
   IOSLinkedInAPI: 5b400668a260a3594af94e363ade95933ce22db8
