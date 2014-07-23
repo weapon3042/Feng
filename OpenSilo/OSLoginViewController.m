@@ -21,6 +21,7 @@
 #import "OSToastUtils.h"
 #import "OSUIMacro.h"
 
+
 @interface OSLoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernamerTextfield;
@@ -48,26 +49,33 @@
     // Do any additional setup after loading the view.
 }
 
+//-(IBAction)onClickLogin:(id)sender {
+//
+//    NSDictionary *parameters = @{@"email": self.usernamerTextfield.text,
+//                                 @"password": self.passwordTextfield.text};
+//
+//    OSPostRequest *loginRequest = [[OSPostRequest alloc]init];
+//    
+//    [loginRequest postApiRequest:@"api/user/login" params:parameters setAuthHeader:NO responseBlock:^(id responseObject, NSError *error) {
+//        
+//        if (!error) {
+//            
+//            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//            OSViewController *mainVC = [storyBoard instantiateInitialViewController];
+//            OSAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+//            appDelegate.window.rootViewController = mainVC;
+//            
+//        }
+//    
+//    }];
+//
+//}
+//
 -(IBAction)onClickLogin:(id)sender {
+
     [self.view endEditing:YES];
     NSDictionary *parameters = @{@"email": self.usernamerTextfield.text,
                                  @"password": self.passwordTextfield.text};
-/*
-    OSPostRequest *loginRequest = [[OSPostRequest alloc]init];
-    
-    [loginRequest postApiRequest:@"api/user/login" params:parameters setAuthHeader:NO responseBlock:^(NSData *responseObject, NSError *error) {
-        
-        if (!error) {
-            
-            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-            OSViewController *mainVC = [storyBoard instantiateInitialViewController];
-            OSAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-            appDelegate.window.rootViewController = mainVC;
-            
-        }
-    
-    }];
-*/
     OSRequestUtils *loginRequest = [[OSRequestUtils alloc]init];
     [loginRequest httpRequestWithURL:@"api/user/login" andType:@"POST" andAuthHeader:NO andParameters:parameters andResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
         if(error == nil)
@@ -103,6 +111,7 @@
         }
     }];
 }
+
 
 - (void)didReceiveMemoryWarning
 {

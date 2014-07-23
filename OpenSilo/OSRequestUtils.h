@@ -13,4 +13,5 @@ typedef void(^OSHttpResponseBlock)(NSData *data, NSURLResponse *response, NSErro
 @interface OSRequestUtils : NSObject
 
 -(void)httpRequestWithURL:(NSString *)url andType:(NSString *)methodType andAuthHeader:(BOOL) authHeader andParameters:(NSDictionary *) params andResponseBlock:(OSHttpResponseBlock)responseBlock;
+
 @end

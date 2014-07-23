@@ -9,7 +9,6 @@
 #import "OSToastUtils.h"
 #import "OSUIMacro.h"
 
-
 @implementation OSToastUtils
 + (OSToastUtils *)getInstance
 {

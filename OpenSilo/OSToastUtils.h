@@ -14,5 +14,4 @@
 
 -(UIView *)getToastMessage:(NSString *) message andType:(NSString *)type;
 
-
 @end

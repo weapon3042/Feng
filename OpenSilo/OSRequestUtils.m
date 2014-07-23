@@ -11,10 +11,12 @@
 
 @implementation OSRequestUtils
 
+
 -(void)httpRequestWithURL:(NSString *)url andType:(NSString *)methodType andAuthHeader:(BOOL) authHeader andParameters:(NSDictionary *)params andResponseBlock:(OSHttpResponseBlock)responseBlock;
 {
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+
     NSURL * apiURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?",API_HOME,url]];
     NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:apiURL];
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];

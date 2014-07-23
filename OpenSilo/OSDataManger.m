@@ -25,4 +25,48 @@
     return manager;
 }
 
++(NSMutableURLRequest *)contructHttpRequestWithURL:(NSString *)url andType:(NSString *)methodType andParameters:(NSDictionary *)params
+
+{
+    
+    NSURL * apiURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?",API_HOME,url]];
+    
+    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:apiURL];
+    
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+    
+    if ([methodType isEqualToString:@"GET"]) {
+        
+        methodType = @"POST";
+        
+        [urlRequest addValue:TestToken forHTTPHeaderField:@"Authorization"];
+        
+    }
+    
+    [urlRequest setHTTPMethod:methodType];
+    
+    if (nil!=params) {
+        
+        NSMutableString *requestJson=[[NSMutableString alloc]initWithFormat:@"{"];
+        
+        for (NSString *key in params.allKeys) {
+            
+            [requestJson appendString:[NSString stringWithFormat:@"\"%@\":\"%@\",",key,[params valueForKey:key]]];
+            
+        }
+        
+        [requestJson deleteCharactersInRange:NSMakeRange(requestJson.length-1,1)];
+        
+        [requestJson appendString:@"}"];
+        
+        NSLog(@"%@", requestJson);
+        
+        [urlRequest setHTTPBody:[requestJson dataUsingEncoding:NSUTF8StringEncoding]];
+        
+    }
+    
+    return urlRequest;
+    
+}
+
 @end
