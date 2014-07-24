@@ -7,10 +7,35 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ECSlidingViewController.h"
-#import "UIViewController+ECSlidingViewController.h"
 
-@interface OSLeftPanelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,ECSlidingViewControllerDelegate>
+@interface OSLeftPanelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+
+/*
+** @return The table view displaying each individual data set
+*/
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+/*
+** @return Segmented Control that switches in between the three data sets
+*/
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
+
+/*
+** Array sets for data objects
+*/
+
+@property (nonatomic, strong) NSMutableArray *channels;
+@property (nonatomic, strong) NSMutableArray *rooms;
+@property (nonatomic, strong) NSMutableArray *favorites;
+
+/*
+** @return The current data set the viewer is using
+*/
+
+@property (nonatomic, strong) NSMutableArray *selectedArray;
 
 @end
+

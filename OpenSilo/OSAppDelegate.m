@@ -7,31 +7,31 @@
 //
 
 #import "OSAppDelegate.h"
-#import "ECSlidingViewController.h"
-
-@interface OSAppDelegate ()
-@property (nonatomic, strong) ECSlidingViewController *slidingViewController;
-@end
+#import "OSSidePanelController.h"
+#import "OSLoginViewController.h"
 
 @implementation OSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self setWindow:window];
     
-    /*Register device
-    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]!=nil) {
-        int badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
-        if (badge > 0) {
-            badge--;
-            [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
-        }
-    }
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge];
-    */
+    UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    OSLoginViewController *loginViewController = [loginStoryboard instantiateInitialViewController];
+    
+    OSSidePanelController *sidePanelController = [OSSidePanelController sharedSidePanelController];
+    
+    [sidePanelController setCenterPanel:loginViewController];
+    
+    
+    [[self window] setRootViewController:sidePanelController];
+
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
-#pragma mark -
 #pragma mark Register Token on server
 /*
 -(void)registerDevTokenOnServer {
@@ -58,7 +58,6 @@
 }
 */
 
-#pragma mark -
 #pragma mark register for remote notification with device token
 /*
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -92,14 +91,6 @@
  
 */
 
-
-- (void)anchorRight {
-    [self.slidingViewController anchorTopViewToRightAnimated:YES];
-}
-
-- (void)anchorLeft {
-    [self.slidingViewController anchorTopViewToLeftAnimated:YES];
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

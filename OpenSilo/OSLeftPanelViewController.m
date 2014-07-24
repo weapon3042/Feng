@@ -13,34 +13,11 @@
 #import "OSGetRequest.h"
 #import "OSSession.h"
 #import "OSConstant.h"
+#import "OSSidePanelController.h"
 
 static NSString * const channelCellIdentifier = @"Channel Cell Identifier";
-static NSString * const roomcellIdentifier = @"Room Cell Identifier";
-@interface OSLeftPanelViewController()
-@property (strong,nonatomic) id<ECSlidingViewControllerDelegate> transition;
+static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
 
-/*
- ** @return The table view displaying each individual data set
- */
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-/*
- ** @return Segmented Control that switches in between the three data sets
- */
-
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
-/*
- ** Array sets for data objects
- */
-@property (nonatomic, strong) NSMutableArray *channels;
-@property (nonatomic, strong) NSMutableArray *rooms;
-@property (nonatomic, strong) NSMutableArray *favorites;
-
-/*
- ** @return The current data set the viewer is using
- */
-@property (nonatomic, strong) NSMutableArray *selectedArray;
-
-@end
 
 @implementation OSLeftPanelViewController
 
@@ -120,7 +97,6 @@ static NSString * const roomcellIdentifier = @"Room Cell Identifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.slidingViewController resetTopViewAnimated:YES];
 
     if (self.segment.selectedSegmentIndex == 0){
         NSDictionary *dict = [self.channels objectAtIndex:(NSInteger)indexPath.row];
@@ -140,6 +116,8 @@ static NSString * const roomcellIdentifier = @"Room Cell Identifier";
             
             [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
             
+            
+            [[OSSidePanelController sharedSidePanelController] showCenterPanelAnimated:YES];
             
         }
     }
