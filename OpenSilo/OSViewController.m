@@ -8,7 +8,6 @@
 
 #import "OSViewController.h"
 #import "OSUIMacro.h"
-#import "UIViewController+ECSlidingViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "OSSession.h"
 #import "OSConstant.h"
@@ -28,7 +27,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     // Initialize the root of our Firebase namespace.
     if (![OSSession getInstance].currentChannel.fireBaseId) {
-        self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/-JR_TRvFMfvqfSQD4twU/messages",fireBaseUrl]];
+        self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/-JSci45WgWPIMMQf_O8m/messages",fireBaseUrl]];
     } else {
         self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,[OSSession getInstance].currentChannel.fireBaseId]];
         self.navigationItem.title = [OSSession getInstance].currentChannel.channelName;
@@ -64,8 +63,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(viewWillAppear:) name:kChannelDidSelectNotification object:nil];
 
-    self.slidingViewController.underLeftViewController = [[UIStoryboard storyboardWithName:@"leftPanel" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"OSLeftPanelViewController"];
-    self.slidingViewController.underRightViewController = [[UIStoryboard storyboardWithName:@"rightPanel" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"OSRightPanelViewController"];
+
     //customize the navigation bar
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setImage:[UIImage imageNamed:@"icon"] forState:UIControlStateNormal];
@@ -75,20 +73,11 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    // enable swiping on the top view
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
-    
     [self registerCustomCellsFromNibs];
-
+    
+    
 }
 
-- (void)anchorRight {
-    [self.slidingViewController anchorTopViewToRightAnimated:YES];
-}
-
-- (void)anchorLeft {
-    [self.slidingViewController anchorTopViewToLeftAnimated:YES];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -133,8 +122,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     cell.message.text =  message[@"text"];
     cell.fullName.text = message[@"user_id"];
     NSString *messageTimestamp = message[@"timestamp"];
-    NSString *messageTime = [[OSDateTimeUtils getInstance] convertDateTimeFromUTCtoLocalForDateTime:[messageTimestamp longLongValue]];
-    cell.messageTime.text = [[OSDateTimeUtils getInstance] dateTimeDifference:messageTime];
+    cell.messageTime.text = [[OSDateTimeUtils getInstance] convertDateTimeFromUTCtoLocalForDateTime:[messageTimestamp longLongValue]];
 #warning pic url should be dynamic
     NSURL *url = [NSURL URLWithString:@"http://google.com"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -242,7 +230,31 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     [UIView commitAnimations];
 }
 
-
-
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    int selectedTag=tabBar.selectedItem.tag;
+//    NSLog(@"%@",[OSSession getInstance].user);
+    NSString *url;
+    switch (selectedTag) {
+        case 0:
+            url = [NSString stringWithFormat:@"%@dismissednotifications/%@",fireBaseUrl, [OSSession getInstance].user.userId];
+            break;
+        case 1:
+            url = [NSString stringWithFormat:@"%@lastMessageViewed/%@",fireBaseUrl, [OSSession getInstance].user.userId];
+            break;
+        default:
+            break;
+    }
+    [self.channelThread removeAllObjects];
+    Firebase *notificationsFB = [[Firebase alloc] initWithUrl:url];
+    [notificationsFB authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
+        [notificationsFB observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+            [self.channelThread addObject:snapshot.value];
+            [self.tableView reloadData];
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.channelThread.count -1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        }];
+    } withCancelBlock:^(NSError* error) {
+        NSLog(@"Authentication status was cancelled! %@", error);
+    }];
+}
 
 @end

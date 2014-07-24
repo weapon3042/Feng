@@ -47,12 +47,15 @@
                                 <rect key="frame" x="0.0" y="508" width="320" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem title="" badgeValue="7" systemItem="recents" id="zTa-C6-B3y"/>
-                                    <tabBarItem badgeValue="3" systemItem="downloads" id="anc-6n-gaS"/>
-                                    <tabBarItem systemItem="contacts" id="QpW-zW-j10"/>
-                                    <tabBarItem systemItem="search" id="4wM-p7-jo0"/>
-                                    <tabBarItem systemItem="favorites" id="zSD-A0-VjR"/>
+                                    <tabBarItem title="" systemItem="recents" id="zTa-C6-B3y"/>
+                                    <tabBarItem tag="1" systemItem="downloads" id="anc-6n-gaS"/>
+                                    <tabBarItem tag="2" systemItem="contacts" id="QpW-zW-j10"/>
+                                    <tabBarItem tag="3" systemItem="search" id="4wM-p7-jo0"/>
+                                    <tabBarItem tag="4" systemItem="favorites" id="zSD-A0-VjR"/>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="Zaz-3h-VwW" id="f0G-kC-QIb"/>
+                                </connections>
                             </tabBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oft-ic-TSp">
                                 <rect key="frame" x="0.0" y="64" width="320" height="398"/>
@@ -86,6 +89,7 @@
                     <navigationItem key="navigationItem" title="Welcome to OpenSilo" id="fgi-2W-oTh"/>
                     <connections>
                         <outlet property="messageInput" destination="RNs-N7-jud" id="XCV-0w-iXE"/>
+                        <outlet property="tabBar" destination="Ywv-iq-Nko" id="f8a-hu-EV6"/>
                         <outlet property="tableView" destination="oft-ic-TSp" id="uDE-wx-RE9"/>
                     </connections>
                 </viewController>

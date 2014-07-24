@@ -11,18 +11,18 @@
 
 @interface OSUser : MTLModel
 
-@property (nonatomic, weak) NSString *userId;
-@property (nonatomic, weak) NSString *email;
-@property (nonatomic, weak) NSString *status;
-@property (nonatomic, weak) NSString *picture;
-@property (nonatomic, weak) NSString *firstName;
-@property (nonatomic, weak) NSString *lastName;
+@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSString *picture;
+@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, weak) NSString *displayName;
 @property (nonatomic, weak) NSString *role;
 @property (nonatomic, weak) NSString *timezone;
 @property (nonatomic, weak) NSDictionary *permissions;
 @property (nonatomic, weak) NSString *company;
-@property (nonatomic, weak) NSString *jobTitle;
+@property (nonatomic, strong) NSString *jobTitle;
 @property (nonatomic, weak) NSString *department;
 @property (nonatomic, weak) NSString *address;
 @property (nonatomic, weak) NSString *lastSeen;

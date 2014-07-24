@@ -12,15 +12,15 @@
 #import "LIALinkedInHttpClient.h"
 #import "LIALinkedInApplication.h"
 #import "OSViewController.h"
+#import "OSLeftPanelViewController.h"
+#import "OSRightPanelViewController.h"
 #import "OSAppDelegate.h"
-#import "OSPostRequest.h"
-#import "OSRequestUtils.h"
-#import "OSUser.h"
+#import "OSSidePanelController.h"
 #import "OSSession.h"
-#import <APToast/UIView+APToast.h>
+#import "OSRequestUtils.h"
 #import "OSToastUtils.h"
 #import "OSUIMacro.h"
-
+#import <APToast/UIView+APToast.h>
 
 @interface OSLoginViewController ()
 
@@ -49,69 +49,60 @@
     // Do any additional setup after loading the view.
 }
 
-//-(IBAction)onClickLogin:(id)sender {
-//
-//    NSDictionary *parameters = @{@"email": self.usernamerTextfield.text,
-//                                 @"password": self.passwordTextfield.text};
-//
-//    OSPostRequest *loginRequest = [[OSPostRequest alloc]init];
-//    
-//    [loginRequest postApiRequest:@"api/user/login" params:parameters setAuthHeader:NO responseBlock:^(id responseObject, NSError *error) {
-//        
-//        if (!error) {
-//            
-//            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-//            OSViewController *mainVC = [storyBoard instantiateInitialViewController];
-//            OSAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-//            appDelegate.window.rootViewController = mainVC;
-//            
-//        }
-//    
-//    }];
-//
-//}
-//
 -(IBAction)onClickLogin:(id)sender {
-
     [self.view endEditing:YES];
     NSDictionary *parameters = @{@"email": self.usernamerTextfield.text,
                                  @"password": self.passwordTextfield.text};
     OSRequestUtils *loginRequest = [[OSRequestUtils alloc]init];
     [loginRequest httpRequestWithURL:@"api/user/login" andType:@"POST" andAuthHeader:NO andParameters:parameters andResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if(error == nil)
-        {
+        
+        if (!error) {
+
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             if ([[json objectForKey:@"success"] boolValue]) {
                 NSDictionary *userInfo = [json objectForKey:@"result"][0];
                 [[OSSession getInstance] setToken:[userInfo objectForKey:@"access_token"]];
+                
                 if (![OSSession getInstance].user) {
                     [[OSSession getInstance] setUser: [[OSUser alloc]init]];
                 }
-                [[OSSession getInstance].user setUserId:[json objectForKey:@"id"]];
-                [[OSSession getInstance].user setFirstName:[json objectForKey:@"first_name"]];
-                [[OSSession getInstance].user setLastName:[json objectForKey:@"last_name"]];
-                [[OSSession getInstance].user setDisplayName:[json objectForKey:@"display_name"]];
-                [[OSSession getInstance].user setPicture:[json objectForKey:@"picture"]];
-                [[OSSession getInstance].user setCompany:[json objectForKey:@"company"]];
-                [[OSSession getInstance].user setAddress:[json objectForKey:@"address"]];
-                [[OSSession getInstance].user setRole:[json objectForKey:@"role"]];
-                [[OSSession getInstance].user setEmail:[json objectForKey:@"email"]];
-                [[OSSession getInstance].user setJobTitle:[json objectForKey:@"knowledge_title"]];
-                [[OSSession getInstance].user setStatus:[json objectForKey:@"status"]];
-                [[OSSession getInstance].user setLastSeen:[json objectForKey:@"last_seen"]];
-                [[OSSession getInstance].user setDepartment:[json objectForKey:@"department"]];
+                [[OSSession getInstance].user setUserId:[userInfo objectForKey:@"user_id"]];
+                [[OSSession getInstance].user setFirstName:[userInfo objectForKey:@"first_name"]];
+                [[OSSession getInstance].user setLastName:[userInfo objectForKey:@"last_name"]];
+                [[OSSession getInstance].user setDisplayName:[userInfo objectForKey:@"display_name"]];
+                [[OSSession getInstance].user setPicture:[userInfo objectForKey:@"picture"]];
+                [[OSSession getInstance].user setCompany:[userInfo objectForKey:@"company"]];
+                [[OSSession getInstance].user setAddress:[userInfo objectForKey:@"address"]];
+                [[OSSession getInstance].user setRole:[userInfo objectForKey:@"role"]];
+                [[OSSession getInstance].user setEmail:[userInfo objectForKey:@"email"]];
+                [[OSSession getInstance].user setJobTitle:[userInfo objectForKey:@"knowledge_title"]];
+                [[OSSession getInstance].user setStatus:[userInfo objectForKey:@"status"]];
+                [[OSSession getInstance].user setLastSeen:[userInfo objectForKey:@"last_seen"]];
+                [[OSSession getInstance].user setDepartment:[userInfo objectForKey:@"department"]];
+                
+//                NSLog(@"%@",[OSSession getInstance].user);
                 
                 UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
                 OSViewController *mainVC = [storyBoard instantiateInitialViewController];
-                OSAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-                appDelegate.window.rootViewController = mainVC;
+                
+                UIStoryboard *rightStoryboard = [UIStoryboard storyboardWithName:@"rightPanel" bundle:nil];
+                OSRightPanelViewController *rightPanelViewController = [rightStoryboard instantiateInitialViewController];
+                
+                UIStoryboard *leftStoryboard = [UIStoryboard storyboardWithName:@"leftPanel" bundle:nil];
+                OSLeftPanelViewController *leftPanelController = [leftStoryboard instantiateInitialViewController];
+                
+                [[OSSidePanelController sharedSidePanelController] setLeftPanel:leftPanelController];
+                [[OSSidePanelController sharedSidePanelController] setRightPanel:rightPanelViewController];
+                [[OSSidePanelController sharedSidePanelController] setCenterPanel:mainVC];
+                
             }else{
                 [self.view ap_makeToastView:[[OSToastUtils getInstance] getToastMessage:@"Invalid credentials" andType:TOAST_FAIL] duration:4.f position:APToastPositionBottom];
             }
         }
+    
     }];
-}
 
+}
 
 - (void)didReceiveMemoryWarning
 {

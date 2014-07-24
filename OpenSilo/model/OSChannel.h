@@ -11,8 +11,8 @@
 
 @interface OSChannel : MTLModel
 
-@property (nonatomic, weak) NSString *channelId;
-@property (nonatomic, weak) NSString *channelName;
+@property (nonatomic, strong) NSString *channelId;
+@property (nonatomic, strong) NSString *channelName;
 @property (nonatomic, weak) NSString *ownerId;
 @property (nonatomic, weak) NSString *status;
 @property (nonatomic, weak) NSString *boxFolderId;

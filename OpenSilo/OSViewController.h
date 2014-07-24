@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ECSlidingViewController.h"
 #import "OSChannel.h"
 #import <Firebase/Firebase.h>
 
-@interface OSViewController : UIViewController <ECSlidingViewControllerDelegate,UITableViewDataSource, UITableViewDelegate>
+@interface OSViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITabBarDelegate>
 
 /*
 ** @return Firebase API object that will handle data requests
@@ -44,5 +43,7 @@
 */
 
 @property (weak, nonatomic) IBOutlet UITextField *messageInput;
+
+@property (nonatomic, weak) IBOutlet UITabBar *tabBar;
 
 @end
