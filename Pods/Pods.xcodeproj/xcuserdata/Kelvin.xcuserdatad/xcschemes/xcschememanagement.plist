@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-JASidePanels.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>01E92F931A7740719B960A09</key>
+		<key>081510FC35044FCAAB536F49</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15E32BFEFCF64EDEBDCDB192</key>
+		<key>1AD8D5F301AA49D688E223EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>160C7C44CD8E430AB71611D1</key>
+		<key>2AA0C4690250485C9FB9D933</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>289DF30AC21B4A44BB6FE5AD</key>
+		<key>59EB6CFF959D46C68BD91BF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>60D326F027BE431F96B56F8B</key>
+		<key>A15CB039257B4853B2DF3CCC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>913907D82F024AC8964DAB1F</key>
+		<key>DB01C2015B28423A9AD18806</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C1C8D32A34EF4BC2922CF5F4</key>
+		<key>DF16F55E4ADA4D2193B688FE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E8F38F9DE5C44A0490DB879D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E590F321-9E4F-488D-9A74-0A31DE857AA0</string>
+	<string>B97E226B-B038-44F3-9BB4-7832EA4B803C</string>
 	<key>IDESourceControlProjectName</key>
 	<string>OpenSilo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CAEB99E7-7632-4BA6-828E-B5999D4DF9ED</key>
-		<string>https://github.com/weapon3042/Feng.git</string>
+		<key>89BF9C67-7862-4EC5-ABCD-41B456ECDE6B</key>
+		<string>https://github.com/weapon3042/Feng</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>OpenSilo.xcworkspace</string>
+	<string>OpenSilo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CAEB99E7-7632-4BA6-828E-B5999D4DF9ED</key>
-		<string>..</string>
+		<key>89BF9C67-7862-4EC5-ABCD-41B456ECDE6B</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/weapon3042/Feng.git</string>
+	<string>https://github.com/weapon3042/Feng</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CAEB99E7-7632-4BA6-828E-B5999D4DF9ED</string>
+	<string>89BF9C67-7862-4EC5-ABCD-41B456ECDE6B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CAEB99E7-7632-4BA6-828E-B5999D4DF9ED</string>
+			<string>89BF9C67-7862-4EC5-ABCD-41B456ECDE6B</string>
 			<key>IDESourceControlWCCName</key>
 			<string>OpenSiloProject</string>
 		</dict>

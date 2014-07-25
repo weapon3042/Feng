@@ -1,4 +1,4 @@
-//
+ //
 //  OSRightPanelViewController.m
 //  OpenSilo
 //
@@ -16,6 +16,7 @@
 #import "OSUIMacro.h"
 #import "OSSession.h"
 #import "OSChannel.h"
+#import "OSWebServiceMacro.h"
 
 static NSString * const peopleCellIdentifier = @"OSPeopleTableViewCell";
 static NSString * const fileCellIdentifier = @"OSFileTableViewCell";
@@ -52,12 +53,11 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self fetchPeople];
     });
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -197,25 +197,21 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 #pragma mark Fetch People List from server
 
 -(void)fetchPeople{
-    
+    NSString *currentChannelId = DEFAULT_CHANNEL_ID;
     OSGetRequest *request = [[OSGetRequest alloc]init];
-    OSChannel *channel = [OSSession getInstance].currentChannel;
-    if (channel) {
-        if (channel.channelId) {
-            NSString *currentChannelId = channel.channelId;
-//            NSString *currentChannelId = @"53c3edb594e4bf0fc7b0fe83";
-            [request getApiRequest:[NSString stringWithFormat:@"api/channels/%@/users",currentChannelId] params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
-                if (!error) {
-                    NSDictionary *response =  [NSDictionary dictionaryWithDictionary:responseObject];
-                    //NSLog(@"json:%@",json);
-                    self.peopleArray = [response objectForKey:@"result"];
-                    self.selectedArray = self.peopleArray[0];
-                    //reload data
-                    [self.tableView reloadData];
-                }
-            }];
-        }
+    if ( [OSSession getInstance].currentChannel.channelId) {
+        currentChannelId = [OSSession getInstance].currentChannel.channelId;
     }
+    [request getApiRequest:[NSString stringWithFormat:@"api/channels/%@/users",currentChannelId] params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            NSDictionary *response =  [NSDictionary dictionaryWithDictionary:responseObject];
+            //NSLog(@"json:%@",json);
+            self.peopleArray = [response objectForKey:@"result"];
+            self.selectedArray = self.peopleArray[0];
+            //reload data
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 -(void)invitePeople{

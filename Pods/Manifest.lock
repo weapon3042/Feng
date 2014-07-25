@@ -23,6 +23,7 @@ PODS:
   - Firebase (1.0.9)
   - IOSLinkedInAPI (2.0.0):
     - AFNetworking (>= 2.0.0)
+  - JASidePanels (1.3.2)
   - Mantle (1.5):
     - Mantle/extobjc
   - Mantle/extobjc (1.5)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - ECSlidingViewController (~> 2.0.0)
   - Firebase (~> 1.0.0)
   - IOSLinkedInAPI
+  - JASidePanels (~> 1.3.2)
   - Mantle (~> 1.3)
 
 SPEC CHECKSUMS:
@@ -41,6 +43,7 @@ SPEC CHECKSUMS:
   ECSlidingViewController: 6c11fadb10d720c2d48bc577962332bdd4264c9f
   Firebase: 9ed1c8e37b4ea658c3a9eb5539edfc5fb8933f21
   IOSLinkedInAPI: 5b400668a260a3594af94e363ade95933ce22db8
+  JASidePanels: ca943907d88a0738c80755204c6098969d43e4e9
   Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
 
 COCOAPODS: 0.33.1

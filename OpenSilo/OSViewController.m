@@ -13,6 +13,7 @@
 #import "OSConstant.h"
 #import "OSTranscriptTableViewCell.h"
 #import "OSDateTimeUtils.h"
+#import "OSWebServiceMacro.h"
 
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
@@ -27,7 +28,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     // Initialize the root of our Firebase namespace.
     if (![OSSession getInstance].currentChannel.fireBaseId) {
-        self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/-JSci45WgWPIMMQf_O8m/messages",fireBaseUrl]];
+        self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,DEFAULT_CHANNEL_ID]];
     } else {
         self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,[OSSession getInstance].currentChannel.fireBaseId]];
         self.navigationItem.title = [OSSession getInstance].currentChannel.channelName;
