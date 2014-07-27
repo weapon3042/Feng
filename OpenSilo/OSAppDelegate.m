@@ -9,6 +9,8 @@
 #import "OSAppDelegate.h"
 #import "OSSidePanelController.h"
 #import "OSLoginViewController.h"
+#import "OSGetRequest.h"
+#import "OSSession.h"
 
 @implementation OSAppDelegate
 
@@ -29,7 +31,26 @@
 
     [self.window makeKeyAndVisible];
     
+    [self getAllUsers];
+    
     return YES;
+}
+
+-(void) getAllUsers
+{
+    OSGetRequest *request = [[OSGetRequest alloc]init];
+    [request getApiRequest:[NSString stringWithFormat:@"api/users"] params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            NSArray *array = responseObject[@"result"];
+            NSMutableDictionary *allUsers = [[NSMutableDictionary alloc]init];
+            for (NSDictionary *dict in array) {
+                [allUsers setObject:dict forKey:dict[@"user_id"]];
+            }
+            
+            [[OSSession getInstance] setAllUsers:allUsers];
+//            NSLog(@"%@",allUsers);
+        }
+    }];
 }
 
 #pragma mark Register Token on server

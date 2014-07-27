@@ -7,3 +7,4 @@
 //
 
 NSString * const kChannelDidSelectNotification = @"kChannelDidSelectNotification";
+NSString * const kRoomDidSelectNotification = @"kRoomDidSelectNotification";

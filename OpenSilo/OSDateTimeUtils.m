@@ -7,7 +7,7 @@
 //
 
 #import "OSDateTimeUtils.h"
-static NSString * const timeFormat = @"hh:mm a, MMM dd, yyyy";
+static NSString * const timeFormat = @"hh:mm a/MMM dd, yyyy";
 @implementation OSDateTimeUtils
 
 + (OSDateTimeUtils *)getInstance

@@ -10,7 +10,7 @@
 #import "OSChannel.h"
 #import <Firebase/Firebase.h>
 
-@interface OSViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITabBarDelegate>
+@interface OSViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 /*
 ** @return Firebase API object that will handle data requests
@@ -44,6 +44,5 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *messageInput;
 
-@property (nonatomic, weak) IBOutlet UITabBar *tabBar;
 
 @end

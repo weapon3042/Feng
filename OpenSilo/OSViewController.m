@@ -14,9 +14,17 @@
 #import "OSTranscriptTableViewCell.h"
 #import "OSDateTimeUtils.h"
 #import "OSWebServiceMacro.h"
+#import "OSGetRequest.h"
+#import "OSSession.h"
+#import "OSUIMacro.h"
 
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
+
+@interface OSViewController()
+
+
+@end
 
 @implementation OSViewController
 
@@ -27,13 +35,9 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     self.channelThread = [[NSMutableArray alloc] init];
     
     // Initialize the root of our Firebase namespace.
-    if (![OSSession getInstance].currentChannel.fireBaseId) {
-        self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,DEFAULT_CHANNEL_ID]];
-    } else {
-        self.firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,[OSSession getInstance].currentChannel.fireBaseId]];
-        self.navigationItem.title = [OSSession getInstance].currentChannel.channelName;
-    }
-    
+    NSString *channelId = [OSSession getInstance].currentChannel.fireBaseId ? [OSSession getInstance].currentChannel.fireBaseId : DEFAULT_CHANNEL_ID;
+    NSString *url = [NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,channelId];
+    self.firebase = [[Firebase alloc] initWithUrl:url];
     [self.firebase authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
         
         [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
@@ -66,11 +70,32 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 
     //customize the navigation bar
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setImage:[UIImage imageNamed:@"icon"] forState:UIControlStateNormal];
-    [backBtn setFrame:CGRectMake(0,0,25,20)];
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:backBtn]];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    UIView *navView=[[UIView alloc] initWithFrame:CGRectMake(0, 0,320, 44)];
+    
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setImage:[UIImage imageNamed:@"nav-left"] forState:UIControlStateNormal];
+    [leftBtn setFrame:CGRectMake(0,0,44,44)];
+    
+    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [searchBtn setImage:[UIImage imageNamed:@"nav-search"] forState:UIControlStateNormal];
+    [searchBtn setFrame:CGRectMake(200,0,44,44)];
+    
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setImage:[UIImage imageNamed:@"nav-right"] forState:UIControlStateNormal];
+    [rightBtn setFrame:CGRectMake(260,0,44,44)];
+    
+    [navView addSubview:leftBtn];
+    [navView addSubview:searchBtn];
+    [navView addSubview:rightBtn];
+    
+    navView.backgroundColor=UIColorFromRGB(0x3b95c7);
+    [self.navigationController.navigationBar addSubview:navView];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -113,19 +138,21 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     NSDictionary *message = [self.channelThread objectAtIndex:indexPath.row];
     
-    
+    NSString *userId = message[@"user_id"];
+    NSDictionary *userInfo = [[OSSession getInstance].allUsers objectForKey:userId];
     if([message isKindOfClass:[NSDictionary class]]){
         
         cell.message.text =  @"asbc";
-        cell.fullName.text = message[@"user_id"];
-        
+        cell.fullName.text = [NSString stringWithFormat:@"%@ %@", userInfo[@"first_name"], userInfo[@"last_name"]];
     }
     cell.message.text =  message[@"text"];
-    cell.fullName.text = message[@"user_id"];
     NSString *messageTimestamp = message[@"timestamp"];
-    cell.messageTime.text = [[OSDateTimeUtils getInstance] convertDateTimeFromUTCtoLocalForDateTime:[messageTimestamp longLongValue]];
-#warning pic url should be dynamic
-    NSURL *url = [NSURL URLWithString:@"http://google.com"];
+    NSString *timeDetails = [[OSDateTimeUtils getInstance] convertDateTimeFromUTCtoLocalForDateTime:[messageTimestamp longLongValue]];
+    NSArray *foo = [timeDetails componentsSeparatedByString: @"/"];
+    NSString *time = [foo objectAtIndex: 0];
+    NSString *date = [foo objectAtIndex: 1];
+    cell.messageTime.text = time;
+    NSURL *url = [NSURL URLWithString:userInfo[@"picture"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"imgPlaceholder"];
     __weak OSTranscriptTableViewCell *weakCell = cell;
@@ -231,6 +258,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     [UIView commitAnimations];
 }
 
+/*
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     int selectedTag=tabBar.selectedItem.tag;
 //    NSLog(@"%@",[OSSession getInstance].user);
@@ -257,5 +285,5 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
         NSLog(@"Authentication status was cancelled! %@", error);
     }];
 }
-
+*/
 @end

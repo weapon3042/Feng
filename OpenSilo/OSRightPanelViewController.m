@@ -53,11 +53,11 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self fetchPeople];
     });
-    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning

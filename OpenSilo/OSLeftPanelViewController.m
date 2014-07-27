@@ -99,6 +99,7 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
 {
 
     if (self.segment.selectedSegmentIndex == 0){
+        [[OSSession getInstance] setCurrentSection:@"channel"];
         NSDictionary *dict = [self.channels objectAtIndex:(NSInteger)indexPath.row];
         if (dict) {
             if (![OSSession getInstance].currentChannel) {
@@ -113,12 +114,19 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
             [[OSSession getInstance].currentChannel setFireBaseId:dict[@"firebase_channel_name"]];
             [[OSSession getInstance].currentChannel setFiles:dict[@"files"]];
             [[OSSession getInstance].currentChannel setUsers:dict[@"users"]];
-            
             [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
-            
-            
             [[OSSidePanelController sharedSidePanelController] showCenterPanelAnimated:YES];
             
+        }
+    }else if (self.segment.selectedSegmentIndex == 1){
+        [[OSSession getInstance] setCurrentSection:@"room"];
+        NSDictionary *dict = [self.rooms objectAtIndex:(NSInteger)indexPath.row];
+        if (dict) {
+            if (![OSSession getInstance].currentRoom) {
+                [[OSSession getInstance] setCurrentRoom: [[OSRoom alloc]init]];
+                [[OSSession getInstance].currentRoom setRoomId:dict[@"id"]];
+                [[OSSession getInstance].currentRoom setTitle:dict[@"id"]];
+            }
         }
     }
     
