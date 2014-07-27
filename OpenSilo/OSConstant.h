@@ -7,3 +7,4 @@
 //
 
 extern NSString * const kChannelDidSelectNotification;
+extern NSString * const kRoomDidSelectNotification;

@@ -23,7 +23,6 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 @interface OSViewController()
 
-
 @end
 
 @implementation OSViewController
@@ -32,26 +31,62 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 {
     [super viewWillAppear:animated];
    
-    self.channelThread = [[NSMutableArray alloc] init];
+    self.array = [[NSMutableArray alloc] init];
     
-    // Initialize the root of our Firebase namespace.
-    NSString *channelId = [OSSession getInstance].currentChannel.fireBaseId ? [OSSession getInstance].currentChannel.fireBaseId : DEFAULT_CHANNEL_ID;
-    NSString *url = [NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,channelId];
-    self.firebase = [[Firebase alloc] initWithUrl:url];
-    [self.firebase authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
-        
-        [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
-            // Add the chat message to the array.
-            [self.channelThread addObject:snapshot.value];
-            // Reload the table view so the new message will show up.
-            [self.tableView reloadData];
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.channelThread.count -1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    NSString *currentSection = [OSSession getInstance].currentSection ? [OSSession getInstance].currentSection : @"channel" ;
+    
+    if ([currentSection isEqualToString:@"channel"]) {//display channel information to the center
+        // Initialize the root of our Firebase namespace.
+        NSString *channelId = [OSSession getInstance].currentChannel.fireBaseId ? [OSSession getInstance].currentChannel.fireBaseId : DEFAULT_CHANNEL_ID;
+        NSString *url = [NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,channelId];
+        self.firebase = [[Firebase alloc] initWithUrl:url];
+        [self.firebase authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
+            [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+                [self.array addObject:snapshot.value];
+                [self.tableView reloadData];
+                if (self.array.count > 1) {
+                    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.array.count -1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                }
+            }];
+        } withCancelBlock:^(NSError* error) {
+            NSLog(@"Authentication status was cancelled! %@", error);
         }];
-        
-    } withCancelBlock:^(NSError* error) {
-        NSLog(@"Authentication status was cancelled! %@", error);
-    }];
+    }
     
+    if ([currentSection isEqualToString:@"room"]){//display room information
+        [self drawRoomTopicView];
+        // Initialize the root of our Firebase namespace.
+        NSString *roomId = [OSSession getInstance].currentRoom.fireBaseId ? [OSSession getInstance].currentRoom.fireBaseId : DEFAULT_ROOM_ID;
+        NSString *url = [NSString stringWithFormat:@"%@resolutionrooms/%@/messages",fireBaseUrl,roomId];
+        self.firebase = [[Firebase alloc] initWithUrl:url];
+        [self.firebase authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
+            [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+                [self.array addObject:snapshot.value];
+                [self.tableView reloadData];
+                if (self.array.count > 1) {
+                    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:(self.array.count -1) inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                }
+            }];
+        } withCancelBlock:^(NSError* error) {
+            NSLog(@"Authentication status was cancelled! %@", error);
+        }];
+    }
+    
+}
+
+
+-(void) drawRoomTopicView
+{
+    self.roomView.hidden = NO;
+    UIView *bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.roomView.frame.size.height-1, self.roomView.frame.size.width, 1)];
+    bottomLine.backgroundColor = UIColorFromRGB(0xcccccc);
+    [self.roomView addSubview:bottomLine];
+    self.roomTitle.text = [OSSession getInstance].currentRoom.title;
+    self.roomDescription.text = [OSSession getInstance].currentRoom.description;
+    self.roomSnippet.text = [OSSession getInstance].currentRoom.snippet;
+    CGRect tableViewContainerFrame = self.tableViewContainer.frame;
+    tableViewContainerFrame.origin.y = self.roomView.frame.size.height + 64 + 10;
+    [self.tableViewContainer setFrame:tableViewContainerFrame];
 }
 
 - (void)viewDidLoad
@@ -68,27 +103,27 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(viewWillAppear:) name:kChannelDidSelectNotification object:nil];
 
-
     //customize the navigation bar
     UIView *navView=[[UIView alloc] initWithFrame:CGRectMake(0, 0,320, 44)];
     
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:[UIImage imageNamed:@"nav-left"] forState:UIControlStateNormal];
-    [leftBtn setFrame:CGRectMake(0,0,44,44)];
+    [leftBtn setFrame:CGRectMake(10,7,30,30)];
     
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [searchBtn setImage:[UIImage imageNamed:@"nav-search"] forState:UIControlStateNormal];
-    [searchBtn setFrame:CGRectMake(200,0,44,44)];
+    [searchBtn setFrame:CGRectMake(220,7,30,30)];
     
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBtn setImage:[UIImage imageNamed:@"nav-right"] forState:UIControlStateNormal];
-    [rightBtn setFrame:CGRectMake(260,0,44,44)];
+    [rightBtn setFrame:CGRectMake(280,7,30,30)];
     
     [navView addSubview:leftBtn];
     [navView addSubview:searchBtn];
     [navView addSubview:rightBtn];
     
     navView.backgroundColor=UIColorFromRGB(0x3b95c7);
+    
     [self.navigationController.navigationBar addSubview:navView];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
@@ -122,7 +157,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 - (NSInteger)tableView:(UITableView*)table numberOfRowsInSection:(NSInteger)section
 {
     // This is the number of chat messages.
-    return [self.channelThread count];
+    return [self.array count];
 
 }
 
@@ -136,7 +171,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     OSTranscriptTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:transcriptCellIdentifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    NSDictionary *message = [self.channelThread objectAtIndex:indexPath.row];
+    NSDictionary *message = [self.array objectAtIndex:indexPath.row];
     
     NSString *userId = message[@"user_id"];
     NSDictionary *userInfo = [[OSSession getInstance].allUsers objectForKey:userId];

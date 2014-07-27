@@ -124,9 +124,25 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
         if (dict) {
             if (![OSSession getInstance].currentRoom) {
                 [[OSSession getInstance] setCurrentRoom: [[OSRoom alloc]init]];
-                [[OSSession getInstance].currentRoom setRoomId:dict[@"id"]];
-                [[OSSession getInstance].currentRoom setTitle:dict[@"id"]];
             }
+            [[OSSession getInstance].currentRoom setRoomId:dict[@"id"]];
+            [[OSSession getInstance].currentRoom setTitle:dict[@"title"]];
+            [[OSSession getInstance].currentRoom setFireBaseId:dict[@"firebase_resolutionroom_name"]];
+            [[OSSession getInstance].currentRoom setDescription:dict[@"description"]];
+            [[OSSession getInstance].currentRoom setSnippet:dict[@"snippet"]];
+            [[OSSession getInstance].currentRoom setCreateTime:dict[@"created_on"]];
+            [[OSSession getInstance].currentRoom setResolvedTime:dict[@"resolved_on"]];
+            [[OSSession getInstance].currentRoom setTags:dict[@"tags"]];
+            [[OSSession getInstance].currentRoom setExperts:dict[@"experts"]];
+            [[OSSession getInstance].currentRoom setHelpfulExperts:dict[@"helpful_experts"]];
+            [[OSSession getInstance].currentRoom setInvitedUsers:dict[@"invited_experts"]];
+            [[OSSession getInstance].currentRoom setOwnerId:dict[@"owner_id"]];
+            [[OSSession getInstance].currentRoom setFiles:dict[@"files"]];
+            [[OSSession getInstance].currentRoom setDeleted:[dict[@"is_deleted"] boolValue]];
+            [[OSSession getInstance].currentRoom setResolved:[dict[@"resolved"] boolValue]];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
+            [[OSSidePanelController sharedSidePanelController] showCenterPanelAnimated:YES];
+
         }
     }
     

@@ -26,12 +26,12 @@
     
     [sidePanelController setCenterPanel:loginViewController];
     
-    
     [[self window] setRootViewController:sidePanelController];
 
     [self.window makeKeyAndVisible];
     
     [self getAllUsers];
+    
     
     return YES;
 }

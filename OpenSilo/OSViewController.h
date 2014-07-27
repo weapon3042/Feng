@@ -23,20 +23,20 @@
 ** @return Array that will hold chat thread
 */
 
-@property (nonatomic, strong) NSMutableArray *channelThread;
+@property (nonatomic, strong) NSMutableArray *array;
 
 
 /*
 ** @return Table View resonpsible for displaying chat data
 */
 
+@property (weak, nonatomic) IBOutlet UIView *tableViewContainer;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
-/*
-** @return The currently viewed channel
-*/
-
-@property (nonatomic, weak) OSChannel *currentChannel;
+@property (weak, nonatomic) IBOutlet UIView *roomView;
+@property (weak, nonatomic) IBOutlet UILabel *roomTitle;
+@property (weak, nonatomic) IBOutlet UILabel *roomDescription;
+@property (weak, nonatomic) IBOutlet UILabel *roomSnippet;
 
 /*
 ** @return Chat Input for user
