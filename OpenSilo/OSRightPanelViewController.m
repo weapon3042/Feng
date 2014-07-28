@@ -17,10 +17,15 @@
 #import "OSSession.h"
 #import "OSChannel.h"
 #import "OSWebServiceMacro.h"
+#import <Firebase/Firebase.h>
 
 static NSString * const peopleCellIdentifier = @"OSPeopleTableViewCell";
 static NSString * const fileCellIdentifier = @"OSFileTableViewCell";
 static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
+
+@interface OSRightPanelViewController()
+
+@end
 
 @implementation OSRightPanelViewController
 
@@ -109,16 +114,27 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
                                          [weakCell.thumbProgressView stopAnimating];
                                      }];
             cell.thumbProgressView.hidesWhenStopped=YES;
-            UIColor *statusColor = [UIColor greenColor];
-#warning need to confirm colors for status, status is null in dict
-            //online/offline/idle/away/busy
-            //if ([[dict objectForKey:@"status"] isEqualToString:@"online"]) statusColor = [UIColor greenColor];
-            cell.status.backgroundColor = statusColor;
-            //customize cell's style
-            [cell.status.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-            [cell.status.layer setBorderWidth: 2.0];
+            Firebase *firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@/presence/%@",fireBaseUrl,userInfoDict[@"user_id"]]];
+//            NSLog(@"userId:%@", userInfoDict[@"user_id"]);
+            cell.status.backgroundColor = USER_AWAY;
+            [firebase authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
+                [firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+//                    NSLog(@"status:%@", snapshot.value);
+//                    online/offline/idle/away/busy
+                    if ([snapshot.value isEqualToString:@"online"]) {
+                        NSLog(@"userId:%@", userInfoDict[@"user_id"]);
+                        cell.status.backgroundColor = USER_ONLINE;
+                    }
+                    if ([snapshot.value isEqualToString:@"busy"]) {
+                        cell.status.backgroundColor = USER_BUSY;
+                    }
+                }];
+            } withCancelBlock:^(NSError* error) {
+                NSLog(@"error:%@",error);
+            }];
+//            customize cell's style
             [cell.status.layer setMasksToBounds:YES];
-            [cell.status.layer setCornerRadius:6.0];
+            [cell.status.layer setCornerRadius:5.0];
             [cell.pic.layer setMasksToBounds:YES];
             [cell.pic.layer setCornerRadius:22.0];
 

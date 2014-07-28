@@ -36,6 +36,9 @@ label.font = [UIFont fontWithName:fontName size:fontSize];
 
 #define TOAST_SUC @"Success"
 #define TOAST_FAIL @"Failure"
+#define USER_ONLINE UIColorFromRGB(0x69C915)
+#define USER_BUSY [UIColor yellowColor]
+#define USER_AWAY [UIColor grayColor]
 
 #define fireBaseUrl @"https://incandescent-fire-1647.firebaseio.com/"
 

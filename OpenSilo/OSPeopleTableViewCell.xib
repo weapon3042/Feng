@@ -36,12 +36,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AAA-cZ-jhg" userLabel="status">
-                        <rect key="frame" x="32" y="38" width="12" height="12"/>
+                        <rect key="frame" x="34" y="42" width="10" height="10"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="deviceRGB"/>
-                <color key="tintColor" patternImage="D235A1A6-C279-467D-939D-A3D3F34CCB2C" colorSpace="pattern"/>
+                <color key="tintColor" patternImage="6A500BE7-4CC7-42C1-9A42-AC5F4E394AEE" colorSpace="pattern"/>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="deviceRGB"/>
             <color key="tintColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="deviceRGB"/>
@@ -55,7 +55,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="D235A1A6-C279-467D-939D-A3D3F34CCB2C" width="320" height="460">
+        <image name="6A500BE7-4CC7-42C1-9A42-AC5F4E394AEE" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

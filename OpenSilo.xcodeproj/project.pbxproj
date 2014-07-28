@@ -242,7 +242,6 @@
 		9A6B60D1196D19710016D83B /* OpenSilo */ = {
 			isa = PBXGroup;
 			children = (
-				9A3FFA5A1985D32400237AD1 /* Transition */,
 				9A6C7E26197785AF0053AC76 /* OSMacro.h */,
 				9A6C7E27197785CA0053AC76 /* OSUIMacro.h */,
 				9A6C7E28197785CA0053AC76 /* OSWebServiceMacro.h */,
@@ -333,6 +332,7 @@
 		B62F33DD197A65EB00BD8CEA /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				9A3FFA5A1985D32400237AD1 /* Transition */,
 				B62F33F5197AE69700BD8CEA /* UITableViewCell */,
 			);
 			name = ThirdParty;

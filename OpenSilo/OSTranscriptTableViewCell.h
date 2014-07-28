@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *thumbProgressView;
 @property (nonatomic, weak) IBOutlet UIImageView *pic;
+@property (nonatomic, weak) IBOutlet UIImageView *status;
 @property (nonatomic, weak) IBOutlet UILabel *messageTime;
 @property (nonatomic, weak) IBOutlet UILabel *message;
 @property (nonatomic, weak) IBOutlet UILabel *fullName;

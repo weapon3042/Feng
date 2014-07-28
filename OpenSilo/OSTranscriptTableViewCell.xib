@@ -42,6 +42,10 @@
                         <rect key="frame" x="20" y="20" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </activityIndicatorView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vk0-kE-AFt" userLabel="status">
+                        <rect key="frame" x="40" y="42" width="10" height="10"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -49,6 +53,7 @@
                 <outlet property="message" destination="CoB-Gd-Sa8" id="1hS-XG-PFJ"/>
                 <outlet property="messageTime" destination="kkb-vf-E5W" id="3pB-mM-qJb"/>
                 <outlet property="pic" destination="8l8-iy-Ujh" id="QTb-XI-XIX"/>
+                <outlet property="status" destination="Vk0-kE-AFt" id="TPQ-FO-x48"/>
                 <outlet property="thumbProgressView" destination="ggT-C1-l4y" id="tYh-jJ-lqQ"/>
             </connections>
         </tableViewCell>

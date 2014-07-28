@@ -40,7 +40,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     if ([currentSection isEqualToString:@"channel"]) {//display channel information to the center
         // Initialize the root of our Firebase namespace.
-        NSString *channelId = [OSSession getInstance].currentChannel.fireBaseId ? [OSSession getInstance].currentChannel.fireBaseId : DEFAULT_CHANNEL_ID;
+        NSString *channelId = [OSSession getInstance].currentChannel.fireBaseId ? [OSSession getInstance].currentChannel.fireBaseId : DEFAULT_FIREBASE_CHANNEL_ID;
         NSString *url = [NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,channelId];
         self.firebase = [[Firebase alloc] initWithUrl:url];
         [self.firebase authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
@@ -237,6 +237,25 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
                                  [weakCell.thumbProgressView stopAnimating];
                              }];
     cell.thumbProgressView.hidesWhenStopped=YES;
+    Firebase *fb = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@/presence/%@",fireBaseUrl,userInfo[@"user_id"]]];
+    //online/offline/idle/away/busy
+    cell.status.backgroundColor = USER_AWAY;
+    [fb authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
+        [fb observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+            //NSLog(@"status:%@", snapshot.value);
+            if ([snapshot.value isEqualToString:@"online"]) {
+                NSLog(@"userId:%@", userInfo[@"user_id"]);
+                cell.status.backgroundColor = USER_ONLINE;
+            }
+            if ([snapshot.value isEqualToString:@"busy"]) {
+                cell.status.backgroundColor = USER_BUSY;
+            }
+        }];
+    } withCancelBlock:^(NSError* error) {
+        NSLog(@"error:%@",error);
+    }];
+    [cell.status.layer setMasksToBounds:YES];
+    [cell.status.layer setCornerRadius:5.0];
     [cell.pic.layer setMasksToBounds:YES];
     [cell.pic.layer setCornerRadius:22.0];
     return cell;
