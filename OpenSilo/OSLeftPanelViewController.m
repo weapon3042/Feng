@@ -13,7 +13,6 @@
 #import "OSGetRequest.h"
 #import "OSSession.h"
 #import "OSConstant.h"
-#import "OSSidePanelController.h"
 
 static NSString * const channelCellIdentifier = @"Channel Cell Identifier";
 static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
@@ -25,7 +24,14 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
 -(void)viewWillAppear:(BOOL)animated {
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self fetchChannels];
+        if (self.segment.selectedSegmentIndex == 0) {
+            [self fetchChannels];
+        } else if(self.segment.selectedSegmentIndex == 1) {
+            [self fetchRooms];
+        } else {
+            [self fetchFavoriteRooms];
+        }
+
     });
 }
 
@@ -37,9 +43,9 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
     
     [self.navigationController.navigationBar setHidden:NO];
     
-    UIColor *backgroundColor = [UIColor colorWithRed:76/255.0 green:76/255.0 blue:76/255.0 alpha:1.0];
-    self.tableView.backgroundView = [[UIView alloc]initWithFrame:self.tableView.bounds];
-    self.tableView.backgroundView.backgroundColor = backgroundColor;
+//    UIColor *backgroundColor = [UIColor colorWithRed:76/255.0 green:76/255.0 blue:76/255.0 alpha:1.0];
+//    self.tableView.backgroundView = [[UIView alloc]initWithFrame:self.tableView.bounds];
+//    self.tableView.backgroundView.backgroundColor = backgroundColor;
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -98,6 +104,7 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    [self.slidingViewController resetTopViewAnimated:YES];
     if (self.segment.selectedSegmentIndex == 0){
         [[OSSession getInstance] setCurrentSection:@"channel"];
         NSDictionary *dict = [self.channels objectAtIndex:(NSInteger)indexPath.row];
@@ -115,7 +122,6 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
             [[OSSession getInstance].currentChannel setFiles:dict[@"files"]];
             [[OSSession getInstance].currentChannel setUsers:dict[@"users"]];
             [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
-            [[OSSidePanelController sharedSidePanelController] showCenterPanelAnimated:YES];
             
         }
     }else if (self.segment.selectedSegmentIndex == 1){
@@ -141,7 +147,6 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
             [[OSSession getInstance].currentRoom setDeleted:[dict[@"is_deleted"] boolValue]];
             [[OSSession getInstance].currentRoom setResolved:[dict[@"resolved"] boolValue]];
             [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
-            [[OSSidePanelController sharedSidePanelController] showCenterPanelAnimated:YES];
 
         }
     }

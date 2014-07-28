@@ -20,10 +20,10 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="topViewControllerStoryboardId" value="OSViewController"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="anchorRightRevealAmount">
-                            <integer key="value" value="240"/>
+                            <integer key="value" value="280"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="anchorLeftRevealAmount">
-                            <integer key="value" value="240"/>
+                            <integer key="value" value="280"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </viewController>

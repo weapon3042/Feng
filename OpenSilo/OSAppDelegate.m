@@ -7,7 +7,6 @@
 //
 
 #import "OSAppDelegate.h"
-#import "OSSidePanelController.h"
 #import "OSLoginViewController.h"
 #import "OSGetRequest.h"
 #import "OSSession.h"
@@ -15,24 +14,8 @@
 @implementation OSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self setWindow:window];
-    
-    UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    OSLoginViewController *loginViewController = [loginStoryboard instantiateInitialViewController];
-    
-    OSSidePanelController *sidePanelController = [OSSidePanelController sharedSidePanelController];
-    
-    [sidePanelController setCenterPanel:loginViewController];
-    
-    [[self window] setRootViewController:sidePanelController];
-
-    [self.window makeKeyAndVisible];
-    
+{    
     [self getAllUsers];
-    
-    
     return YES;
 }
 

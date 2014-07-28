@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "OSChannel.h"
 #import <Firebase/Firebase.h>
+#import "ECSlidingViewController.h"
+#import "UIViewController+ECSlidingViewController.h"
 
-@interface OSViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface OSViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ECSlidingViewControllerDelegate>
 
 /*
 ** @return Firebase API object that will handle data requests

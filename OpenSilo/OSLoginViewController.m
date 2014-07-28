@@ -15,7 +15,6 @@
 #import "OSLeftPanelViewController.h"
 #import "OSRightPanelViewController.h"
 #import "OSAppDelegate.h"
-#import "OSSidePanelController.h"
 #import "OSSession.h"
 #import "OSRequestUtils.h"
 #import "OSToastUtils.h"
@@ -85,15 +84,8 @@
                 UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
                 OSViewController *mainVC = [storyBoard instantiateInitialViewController];
                 
-                UIStoryboard *rightStoryboard = [UIStoryboard storyboardWithName:@"rightPanel" bundle:nil];
-                OSRightPanelViewController *rightPanelViewController = [rightStoryboard instantiateInitialViewController];
-                
-                UIStoryboard *leftStoryboard = [UIStoryboard storyboardWithName:@"leftPanel" bundle:nil];
-                OSLeftPanelViewController *leftPanelController = [leftStoryboard instantiateInitialViewController];
-                
-                [[OSSidePanelController sharedSidePanelController] setLeftPanel:leftPanelController];
-                [[OSSidePanelController sharedSidePanelController] setRightPanel:rightPanelViewController];
-                [[OSSidePanelController sharedSidePanelController] setCenterPanel:mainVC];
+                OSAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+                appDelegate.window.rootViewController = mainVC;
                 
             }else{
                 [self.view ap_makeToastView:[[OSToastUtils getInstance] getToastMessage:@"Invalid credentials" andType:TOAST_FAIL] duration:4.f position:APToastPositionBottom];

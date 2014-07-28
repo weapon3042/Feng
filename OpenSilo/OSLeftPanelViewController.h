@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ECSlidingViewController.h"
+#import "UIViewController+ECSlidingViewController.h"
 
-@interface OSLeftPanelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface OSLeftPanelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,ECSlidingViewControllerDelegate>
 
 
 /*

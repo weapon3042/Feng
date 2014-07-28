@@ -1,3 +1,4 @@
+
 //
 //  OSViewController.m
 //  OpenSilo
@@ -17,11 +18,13 @@
 #import "OSGetRequest.h"
 #import "OSSession.h"
 #import "OSUIMacro.h"
+#import "METransitions.h"
 
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 @interface OSViewController()
+@property (nonatomic, strong) METransitions *transitions;
 
 @end
 
@@ -102,6 +105,8 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
      name:UIKeyboardWillHideNotification object:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(viewWillAppear:) name:kChannelDidSelectNotification object:nil];
+  
+    [self configureSlidingMenu];
 
     //customize the navigation bar
     UIView *navView=[[UIView alloc] initWithFrame:CGRectMake(0, 0,320, 44)];
@@ -109,7 +114,8 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:[UIImage imageNamed:@"nav-left"] forState:UIControlStateNormal];
     [leftBtn setFrame:CGRectMake(10,7,30,30)];
-    
+    [leftBtn addTarget:self action:@selector(anchorRight) forControlEvents:UIControlEventTouchUpInside];
+
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [searchBtn setImage:[UIImage imageNamed:@"nav-search"] forState:UIControlStateNormal];
     [searchBtn setFrame:CGRectMake(220,7,30,30)];
@@ -117,6 +123,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBtn setImage:[UIImage imageNamed:@"nav-right"] forState:UIControlStateNormal];
     [rightBtn setFrame:CGRectMake(280,7,30,30)];
+    [rightBtn addTarget:self action:@selector(anchorLeft) forControlEvents:UIControlEventTouchUpInside];
     
     [navView addSubview:leftBtn];
     [navView addSubview:searchBtn];
@@ -136,6 +143,34 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     [self registerCustomCellsFromNibs];
     
+    
+}
+
+#pragma mark - ECSlidingViewController Delegate
+-(void)anchorRight
+{
+    [self.slidingViewController anchorTopViewToRightAnimated:YES];
+}
+
+-(void)anchorLeft
+{
+    [self.slidingViewController anchorTopViewToLeftAnimated:YES];
+}
+
+-(void) configureSlidingMenu
+{
+    NSDictionary *transitionData = self.transitions.all[2];
+    id<ECSlidingViewControllerDelegate> transition = transitionData[@"transition"];
+    if (transition == (id)[NSNull null]) {
+        self.slidingViewController.delegate = nil;
+    } else {
+        self.slidingViewController.delegate = transition;
+    }
+    
+    self.transitions.dynamicTransition.slidingViewController = self.slidingViewController;
+    self.slidingViewController.underLeftViewController = [[UIStoryboard storyboardWithName:@"leftPanel" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"OSLeftPanelViewController"];
+    self.slidingViewController.underRightViewController = [[UIStoryboard storyboardWithName:@"rightPanel" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"OSRightPanelViewController"];
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     
 }
 
@@ -291,6 +326,16 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     self.view.frame = CGRectOffset(self.view.frame, 0, y);
     
     [UIView commitAnimations];
+}
+
+#pragma mark - Properties
+
+- (METransitions *)transitions {
+    if (_transitions) return _transitions;
+    
+    _transitions = [[METransitions alloc] init];
+    
+    return _transitions;
 }
 
 /*
