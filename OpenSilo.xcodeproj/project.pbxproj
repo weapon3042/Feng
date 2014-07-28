@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A3FFA611985D33A00237AD1 /* MEFoldAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3FFA5C1985D33A00237AD1 /* MEFoldAnimationController.m */; };
-		9A3FFA621985D33A00237AD1 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3FFA5E1985D33A00237AD1 /* MEZoomAnimationController.m */; };
-		9A3FFA631985D33A00237AD1 /* MEDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3FFA601985D33A00237AD1 /* MEDynamicTransition.m */; };
-		9A3FFA661985D3CD00237AD1 /* METransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3FFA651985D3CD00237AD1 /* METransitions.m */; };
+		9A28E11B1986FCA60054FE35 /* MEDynamicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A28E1151986FCA60054FE35 /* MEDynamicTransition.m */; };
+		9A28E11C1986FCA60054FE35 /* MEFoldAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A28E1171986FCA60054FE35 /* MEFoldAnimationController.m */; };
+		9A28E11D1986FCA60054FE35 /* METransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A28E1191986FCA60054FE35 /* METransitions.m */; };
+		9A28E11E1986FCA60054FE35 /* MEZoomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A28E11A1986FCA60054FE35 /* MEZoomAnimationController.m */; };
 		9A6B60CC196D19710016D83B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6B60CB196D19710016D83B /* Foundation.framework */; };
 		9A6B60CE196D19710016D83B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6B60CD196D19710016D83B /* CoreGraphics.framework */; };
 		9A6B60D0196D19710016D83B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6B60CF196D19710016D83B /* UIKit.framework */; };
@@ -71,14 +71,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9A3FFA5B1985D33A00237AD1 /* MEFoldAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEFoldAnimationController.h; sourceTree = "<group>"; };
-		9A3FFA5C1985D33A00237AD1 /* MEFoldAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEFoldAnimationController.m; sourceTree = "<group>"; };
-		9A3FFA5D1985D33A00237AD1 /* MEZoomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEZoomAnimationController.h; sourceTree = "<group>"; };
-		9A3FFA5E1985D33A00237AD1 /* MEZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEZoomAnimationController.m; sourceTree = "<group>"; };
-		9A3FFA5F1985D33A00237AD1 /* MEDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDynamicTransition.h; sourceTree = "<group>"; };
-		9A3FFA601985D33A00237AD1 /* MEDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEDynamicTransition.m; sourceTree = "<group>"; };
-		9A3FFA641985D3CD00237AD1 /* METransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METransitions.h; sourceTree = "<group>"; };
-		9A3FFA651985D3CD00237AD1 /* METransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METransitions.m; sourceTree = "<group>"; };
+		9A28E1141986FCA60054FE35 /* MEDynamicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDynamicTransition.h; sourceTree = "<group>"; };
+		9A28E1151986FCA60054FE35 /* MEDynamicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEDynamicTransition.m; sourceTree = "<group>"; };
+		9A28E1161986FCA60054FE35 /* MEFoldAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEFoldAnimationController.h; sourceTree = "<group>"; };
+		9A28E1171986FCA60054FE35 /* MEFoldAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEFoldAnimationController.m; sourceTree = "<group>"; };
+		9A28E1181986FCA60054FE35 /* METransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METransitions.h; sourceTree = "<group>"; };
+		9A28E1191986FCA60054FE35 /* METransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METransitions.m; sourceTree = "<group>"; };
+		9A28E11A1986FCA60054FE35 /* MEZoomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEZoomAnimationController.m; sourceTree = "<group>"; };
+		9A28E11F1986FCD10054FE35 /* MEZoomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEZoomAnimationController.h; sourceTree = "<group>"; };
 		9A6B60C8196D19710016D83B /* OpenSilo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSilo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6B60CB196D19710016D83B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9A6B60CD196D19710016D83B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -190,14 +190,14 @@
 		9A3FFA5A1985D32400237AD1 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
-				9A3FFA641985D3CD00237AD1 /* METransitions.h */,
-				9A3FFA651985D3CD00237AD1 /* METransitions.m */,
-				9A3FFA5B1985D33A00237AD1 /* MEFoldAnimationController.h */,
-				9A3FFA5C1985D33A00237AD1 /* MEFoldAnimationController.m */,
-				9A3FFA5D1985D33A00237AD1 /* MEZoomAnimationController.h */,
-				9A3FFA5E1985D33A00237AD1 /* MEZoomAnimationController.m */,
-				9A3FFA5F1985D33A00237AD1 /* MEDynamicTransition.h */,
-				9A3FFA601985D33A00237AD1 /* MEDynamicTransition.m */,
+				9A28E1141986FCA60054FE35 /* MEDynamicTransition.h */,
+				9A28E1151986FCA60054FE35 /* MEDynamicTransition.m */,
+				9A28E1161986FCA60054FE35 /* MEFoldAnimationController.h */,
+				9A28E1171986FCA60054FE35 /* MEFoldAnimationController.m */,
+				9A28E11F1986FCD10054FE35 /* MEZoomAnimationController.h */,
+				9A28E11A1986FCA60054FE35 /* MEZoomAnimationController.m */,
+				9A28E1181986FCA60054FE35 /* METransitions.h */,
+				9A28E1191986FCA60054FE35 /* METransitions.m */,
 			);
 			name = Transition;
 			sourceTree = "<group>";
@@ -578,28 +578,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A3FFA631985D33A00237AD1 /* MEDynamicTransition.m in Sources */,
 				B64B69281975AC17009F7B05 /* OSChannel.m in Sources */,
 				9AF10DA91976230A00474A2A /* OSChilli.m in Sources */,
 				9A6B60DC196D19710016D83B /* OSAppDelegate.m in Sources */,
 				9A6B60D8196D19710016D83B /* main.m in Sources */,
 				9AADA58D19799B07000F8DED /* OSGetRequest.m in Sources */,
+				9A28E11E1986FCA60054FE35 /* MEZoomAnimationController.m in Sources */,
 				9AF10DA019761BD600474A2A /* OSUser.m in Sources */,
-				9A3FFA611985D33A00237AD1 /* MEFoldAnimationController.m in Sources */,
+				9A28E11D1986FCA60054FE35 /* METransitions.m in Sources */,
+				9A28E11C1986FCA60054FE35 /* MEFoldAnimationController.m in Sources */,
 				9AF10DAD19762A5E00474A2A /* OSTag.m in Sources */,
 				B61592391981A4C200D3AE9C /* OSRequestUtils.m in Sources */,
 				B6354EDF197ED80D00CC720C /* OSTranscriptTableViewCell.m in Sources */,
 				9A6C7E231977859D0053AC76 /* OSLoginViewController.m in Sources */,
 				9A6B6108196D22C90016D83B /* OSLeftPanelViewController.m in Sources */,
 				9AF10D9D19761BBC00474A2A /* OSSession.m in Sources */,
-				9A3FFA661985D3CD00237AD1 /* METransitions.m in Sources */,
 				9ADD59D1197E35630090DBC4 /* OSConstant.m in Sources */,
 				B62F33FA197AE69700BD8CEA /* UITableViewCell+NIB.m in Sources */,
 				B6354EE4197EFAF500CC720C /* OSPeopleTableViewCell.m in Sources */,
 				9AADA59019799B78000F8DED /* OSPostRequest.m in Sources */,
 				9A6B60E2196D19720016D83B /* OSViewController.m in Sources */,
-				9A3FFA621985D33A00237AD1 /* MEZoomAnimationController.m in Sources */,
 				9AF10DA81976230A00474A2A /* OSMessage.m in Sources */,
+				9A28E11B1986FCA60054FE35 /* MEDynamicTransition.m in Sources */,
 				9AAB08391978D9CE00FBE96D /* OSDateTimeUtils.m in Sources */,
 				B64B692B1975AE89009F7B05 /* OSRoom.m in Sources */,
 				B6354EDB197C807800CC720C /* OSRightPanelViewController.m in Sources */,
