@@ -8,10 +8,13 @@ layer.shadowOffset = CGSizeMake(1,1);\
 CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:view.bounds].CGPath;\
 view.layer.shadowPath = shadowPath;
 
-#define SET_BORDER(view,border)\
-view.layer.borderColor = [[UIColor colorWithWhite:0.882 alpha:1.000] CGColor];\
-view.layer.cornerRadius = 0.5;\
+#define SET_BORDER(view)\
+view.layer.borderColor = [[UIColor whiteColor] CGColor];\
+view.layer.cornerRadius = 5;\
 view.layer.borderWidth = 1;
+
+#define SET_TEXTFIELD_TRANPARENT(view)\
+[view setBackgroundColor:[UIColor clearColor]];
 
 #define FontRegular @"Avenir"
 #define FontHeavy @"Avenir-Heavy"
