@@ -39,7 +39,7 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.view.backgroundColor = [UIColor clearColor];
     _checkbox = NO;
-    SET_BORDER(_createAccountButton);
+    
     SET_BORDER(_emailText);
     SET_BORDER(_passwordText);
     SET_BORDER(_passwordConfirmText);
