@@ -21,7 +21,7 @@
 @property (nonatomic, weak) NSString *role;
 @property (nonatomic, weak) NSString *timezone;
 @property (nonatomic, weak) NSDictionary *permissions;
-@property (nonatomic, weak) NSString *company;
+@property (nonatomic, strong) NSString *company;
 @property (nonatomic, strong) NSString *jobTitle;
 @property (nonatomic, weak) NSString *department;
 @property (nonatomic, weak) NSString *address;

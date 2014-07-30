@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OSSignUpEmailViewController : UIViewController
+@interface OSSignUpViewController : UIViewController
+
 
 @end
