@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 
 @property (nonatomic, strong) NSMutableArray *peopleArray;
-@property (weak, nonatomic) IBOutlet UITextField *invitePeopleText;
+@property (weak, nonatomic) IBOutlet UIButton *invitePeopleButton;
 @property (nonatomic, strong) NSMutableArray *fileArray;
 @property (weak, nonatomic) IBOutlet UIButton *uploadFileButton;
 @property (nonatomic, strong) NSMutableArray *pinArray;

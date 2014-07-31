@@ -20,11 +20,19 @@
                                 <rect key="frame" x="50" y="0.0" width="270" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Invite People" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EI2-cy-mdN" userLabel="txtInvite">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgJ-tH-CF8" userLabel="btnInvite">
                                         <rect key="frame" x="20" y="72" width="220" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.21745780679999999" green="0.76125353979999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Invite">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickInvite:" destination="rxK-Am-a4D" eventType="touchUpInside" id="aBa-t4-Ppe"/>
+                                        </connections>
+                                    </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qkU-b0-RuB" userLabel="segControl">
                                         <rect key="frame" x="20" y="29" width="220" height="29"/>
                                         <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
@@ -44,7 +52,7 @@
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR9-Y3-BUD" userLabel="btnUpload">
                                         <rect key="frame" x="20" y="72" width="220" height="30"/>
                                         <color key="backgroundColor" red="0.21745780682880811" green="0.76125353976668286" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Upload file"/>
                                     </button>
@@ -111,7 +119,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
-                        <outlet property="invitePeopleText" destination="EI2-cy-mdN" id="Ut1-4j-TAg"/>
+                        <outlet property="invitePeopleButton" destination="ZgJ-tH-CF8" id="eE5-HX-cxG"/>
                         <outlet property="pinQuestionsText" destination="BnN-Xr-VkU" id="Qf6-85-qbC"/>
                         <outlet property="segment" destination="qkU-b0-RuB" id="hbm-g9-aJw"/>
                         <outlet property="tableView" destination="KNX-8g-fst" id="Umk-uL-O3y"/>

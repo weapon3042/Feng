@@ -10,8 +10,9 @@
 #import "ECSlidingViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
 
-@interface OSLeftPanelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,ECSlidingViewControllerDelegate>
-
+@interface OSLeftPanelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ECSlidingViewControllerDelegate>{
+    int selectedIndex;
+}
 
 /*
 ** @return The table view displaying each individual data set
@@ -23,21 +24,32 @@
 ** @return Segmented Control that switches in between the three data sets
 */
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 
 /*
 ** Array sets for data objects
 */
-
+@property (nonatomic, strong)NSMutableIndexSet *expandedSections;
 @property (nonatomic, strong) NSMutableArray *channels;
 @property (nonatomic, strong) NSMutableArray *rooms;
 @property (nonatomic, strong) NSMutableArray *favorites;
+@property (nonatomic, strong) NSMutableArray *inbox;
+
 
 /*
-** @return The current data set the viewer is using
+** @return The user name label
 */
 
-@property (nonatomic, strong) NSMutableArray *selectedArray;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+
+/*
+** @return The user profile imageView
+*/
+
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+
+/**/
+
+@property (nonatomic, strong) NSArray *list;
 
 @end
 

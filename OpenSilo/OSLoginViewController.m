@@ -102,47 +102,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-//--------------------------------linkedIn login section-----------------
-- (IBAction)onClickLinkedIn:(id)sender {
-    [self.client getAuthorizationCode:^(NSString *code) {
-        [self.client getAccessToken:code success:^(NSDictionary *accessTokenData) {
-            NSString *accessToken = [accessTokenData objectForKey:@"access_token"];
-            [self requestMeWithToken:accessToken];
-        }failure:^(NSError *error) {
-            NSLog(@"Quering accessToken failed %@", error);
-        }];
-    }                      cancel:^{
-        NSLog(@"Authorization was cancelled by user");
-    }                     failure:^(NSError *error) {
-        NSLog(@"Authorization failed %@", error);
-    }];
-}
-
-- (void)requestMeWithToken:(NSString *)accessToken {
-    [self.client GET:[NSString stringWithFormat:@"https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email-address,pictureUrl,public-profile-url)?oauth2_access_token=%@&format=json", accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
-        NSLog(@"current user %@", result);
-        
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-        OSViewController *mainVC = [storyBoard instantiateInitialViewController];
-        OSAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-        appDelegate.window.rootViewController = mainVC;
-        
-    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed to fetch current user %@", error);
-    }];
-    
-}
-
-- (LIALinkedInHttpClient *)client {
-    LIALinkedInApplication *application = [LIALinkedInApplication applicationWithRedirectURL:API_HOME
-                                                                                    clientId:LI_API
-                                                                                clientSecret:LI_SECRET
-                                                                                       state:@"DCEEFWF45453sdffef424"
-                                                                               grantedAccess:@[@"r_fullprofile", @"r_emailaddress"]];//@"r_network",
-    return [LIALinkedInHttpClient clientForApplication:application presentingViewController:nil];
-}
-
 /*
 #pragma mark - Navigation
 

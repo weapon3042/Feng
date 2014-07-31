@@ -13,41 +13,44 @@
 #import "OSGetRequest.h"
 #import "OSSession.h"
 #import "OSConstant.h"
+#import "DTCustomColoredAccessory.h"
 
-static NSString * const channelCellIdentifier = @"Channel Cell Identifier";
-static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
+static NSString * const listCellIdentifier = @"LeftPanelCell";
+static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
 
 
 @implementation OSLeftPanelViewController
 
 
+
 -(void)viewWillAppear:(BOOL)animated {
+    
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        if (self.segment.selectedSegmentIndex == 0) {
             [self fetchChannels];
-        } else if(self.segment.selectedSegmentIndex == 1) {
             [self fetchRooms];
-        } else {
             [self fetchFavoriteRooms];
-        }
-
     });
+
 }
+
 
 - (void)viewDidLoad{
     
     [super viewDidLoad];
     
-    self.selectedArray = self.channels;
-    
     [self.navigationController.navigationBar setHidden:NO];
     
-//    UIColor *backgroundColor = [UIColor colorWithRed:76/255.0 green:76/255.0 blue:76/255.0 alpha:1.0];
-//    self.tableView.backgroundView = [[UIView alloc]initWithFrame:self.tableView.bounds];
-//    self.tableView.backgroundView.backgroundColor = backgroundColor;
-
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _list = @[@"Favorites",@"Channels",@"Rooms",@"Inbox",@"Search",@"Ask a Question",@"Create a Channel",@"Settings"];
+    
+    
+    //Table view
+    [[self tableView] setBackgroundColor:[UIColor clearColor]];
+    [[self tableView] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    if (!_expandedSections)
+    {
+        _expandedSections = [[NSMutableIndexSet alloc] init];
+    }
     
 }
 
@@ -56,75 +59,216 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Expanding
+
+- (BOOL)tableView:(UITableView *)tableView canCollapseSection:(NSInteger)section
+{
+    if (section<4) return YES;
+    
+    return NO;
+}
+
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.selectedArray.count;
+    if ([self tableView:tableView canCollapseSection:section])
+    {
+        if ([_expandedSections containsIndex:section])
+        {
+            switch (section) {
+                case 0:
+                    return _rooms.count?_rooms.count:1;
+                    break;
+                    
+                case 1:
+                    return _channels.count?_channels.count:1;
+                    break;
+                    
+                case 2:
+                    return _favorites.count?_favorites.count:1;
+                    break;
+                    
+                case 3:
+                    return _inbox.count?_inbox.count:1;
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+        }
+        
+        return 1; // only top row showing
+    }
+    
+    // Return the number of rows in the section.
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *CellIdentifier = @"leftPanelCell";
     
-    if (self.segment.selectedSegmentIndex == 0){
-    
-        UITableViewCell *channelCell = [tableView dequeueReusableCellWithIdentifier:channelCellIdentifier forIndexPath:indexPath];
-        
-        channelCell.textLabel.text = [self.selectedArray objectAtIndex:indexPath.row][@"channel_name"];
-        
-        return channelCell;
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    else if (self.segment.selectedSegmentIndex == 1){
-        
-        UITableViewCell *roomCell = [tableView dequeueReusableCellWithIdentifier:roomcellIdentifier forIndexPath:indexPath];
-        
-        roomCell.textLabel.text =[self.selectedArray objectAtIndex:indexPath.row][@"title"];
-        
-        return roomCell;
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    // Configure the cell...
     
+    if ([self tableView:tableView canCollapseSection:indexPath.section])
+    {
+        // first row
+        if (!indexPath.row)
+        {
+            switch (indexPath.section) {
+                case 0:
+                    cell.textLabel.text = @"Rooms"; // only top row showing
+                    break;
+                    
+                case 1:
+                    cell.textLabel.text = @"Channels"; // only top row showing
+                    break;
+                    
+                case 2:
+                    cell.textLabel.text = @"Favorites"; // only top row showing
+                    break;
+                
+                case 3:
+                    cell.textLabel.text = @"Inbox"; // only top row showing
+                    break;
+
+                    
+                default:
+                    break;
+            }
+            
+            
+            if ([_expandedSections containsIndex:indexPath.section])
+            {
+                cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeUp];
+            }
+            else
+            {
+                cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeDown];
+            }
+        }
+        else
+        {
+            // all other rows
+            
+            switch (indexPath.section) {
+                case 0:
+                    cell.textLabel.text = _rooms[indexPath.row][@"title"];
+                    break;
+                    
+                case 1:
+                    cell.textLabel.text = _channels[indexPath.row][@"channel_name"];
+                    break;
+                    
+                case 2:
+                    cell.textLabel.text = _favorites[indexPath.row][@"title"];
+                    break;
+                
+                case 3:
+                    cell.textLabel.text = _inbox[indexPath.row][@"title"];
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+           cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor whiteColor] type:DTCustomColoredAccessoryTypeRight];
+            cell.textLabel.textColor = [UIColor lightGrayColor];
+            cell.textLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:14.0f];
+        }
     }
+    else
+    {
+        cell.accessoryView = nil;
+        cell.textLabel.text = _list[indexPath.row+4];
+        
+    }
+    return cell;
     
-    else if (self.segment.selectedSegmentIndex == 2){
-        
-        UITableViewCell *roomCell = [tableView dequeueReusableCellWithIdentifier:roomcellIdentifier forIndexPath:indexPath];
-        
-        roomCell.textLabel.text = [self.selectedArray objectAtIndex:indexPath.row][@"title"];
-        
-        return roomCell;
-        
-    }
-   
-    return nil;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
 
-    [self.slidingViewController resetTopViewAnimated:YES];
-    if (self.segment.selectedSegmentIndex == 0){
-        [[OSSession getInstance] setCurrentSection:@"channel"];
-        NSDictionary *dict = [self.channels objectAtIndex:(NSInteger)indexPath.row];
-        if (dict) {
-            if (![OSSession getInstance].currentChannel) {
-                [[OSSession getInstance] setCurrentChannel: [[OSChannel alloc]init]];
-            }
-            [[OSSession getInstance].currentChannel setChannelId:dict[@"id"]];
-            [[OSSession getInstance].currentChannel setChannelName:dict[@"channel_name"]];
-            [[OSSession getInstance].currentChannel setOwnerId:dict[@"owner_user_id"]];
-            [[OSSession getInstance].currentChannel setStatus:dict[@"status"]];
-            [[OSSession getInstance].currentChannel setBoxFolderId:dict[@"box_folder_id"]];
-            [[OSSession getInstance].currentChannel setPrivacySetting:dict[@"privacy_setting"]];
-            [[OSSession getInstance].currentChannel setFireBaseId:dict[@"firebase_channel_name"]];
-            [[OSSession getInstance].currentChannel setFiles:dict[@"files"]];
-            [[OSSession getInstance].currentChannel setUsers:dict[@"users"]];
-            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    if(selectedIndex == indexPath.row && indexPath.section == 0){
+//        return 100;
+//    }
+//    else return 44;
+//    
+//}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([self tableView:tableView canCollapseSection:indexPath.section])
+    {
+        if (!indexPath.row)
+        {
+            [self.tableView beginUpdates];
             
+            // only first row toggles exapand/collapse
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            
+            NSInteger section = indexPath.section;
+            BOOL currentlyExpanded = [_expandedSections containsIndex:section];
+            NSInteger rows;
+            
+            NSMutableArray *tmpArray = [NSMutableArray array];
+            
+            if (currentlyExpanded)
+            {
+                rows = [self tableView:tableView numberOfRowsInSection:section];
+                [_expandedSections removeIndex:section];
+                
+            }
+            else
+            {
+                [_expandedSections addIndex:section];
+                rows = [self tableView:tableView numberOfRowsInSection:section];
+            }
+            
+            for (int i=1; i<rows; i++)
+            {
+                NSIndexPath *tmpIndexPath = [NSIndexPath indexPathForRow:i inSection:section];
+                [tmpArray addObject:tmpIndexPath];
+            }
+            
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            
+            if (currentlyExpanded)
+            {
+                [tableView deleteRowsAtIndexPaths:tmpArray
+                                 withRowAnimation:UITableViewRowAnimationTop];
+                
+                cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeDown];
+                
+            }
+            else
+            {
+                [tableView insertRowsAtIndexPaths:tmpArray
+                                 withRowAnimation:UITableViewRowAnimationTop];
+                cell.accessoryView =  [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeUp];
+                
+            }
+            
+            [self.tableView endUpdates];
         }
-    }else if (self.segment.selectedSegmentIndex == 1){
+    }
+    //click to update center view
+    if (indexPath.section == 0 && indexPath.row != 0) {
+        [self.slidingViewController resetTopViewAnimated:YES];
         [[OSSession getInstance] setCurrentSection:@"room"];
         NSDictionary *dict = [self.rooms objectAtIndex:(NSInteger)indexPath.row];
         if (dict) {
@@ -147,38 +291,72 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
             [[OSSession getInstance].currentRoom setDeleted:[dict[@"is_deleted"] boolValue]];
             [[OSSession getInstance].currentRoom setResolved:[dict[@"resolved"] boolValue]];
             [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
-
+            
         }
     }
-    
-}
+    if (indexPath.section == 1 && indexPath.row != 0) {
+         [self.slidingViewController resetTopViewAnimated:YES];
+        [[OSSession getInstance] setCurrentSection:@"channel"];
+        NSDictionary *dict = [self.channels objectAtIndex:(NSInteger)indexPath.row];
+        if (dict) {
+            if (![OSSession getInstance].currentChannel) {
+                [[OSSession getInstance] setCurrentChannel: [[OSChannel alloc]init]];
+            }
+            [[OSSession getInstance].currentChannel setChannelId:dict[@"id"]];
+            [[OSSession getInstance].currentChannel setChannelName:dict[@"channel_name"]];
+            [[OSSession getInstance].currentChannel setOwnerId:dict[@"owner_user_id"]];
+            [[OSSession getInstance].currentChannel setStatus:dict[@"status"]];
+            [[OSSession getInstance].currentChannel setBoxFolderId:dict[@"box_folder_id"]];
+            [[OSSession getInstance].currentChannel setPrivacySetting:dict[@"privacy_setting"]];
+            [[OSSession getInstance].currentChannel setFireBaseId:dict[@"firebase_channel_name"]];
+            [[OSSession getInstance].currentChannel setFiles:dict[@"files"]];
+            [[OSSession getInstance].currentChannel setUsers:dict[@"users"]];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
+            
+        }
 
-#pragma mark - Segmented Switch
-
-- (IBAction)changeSeg:(id)sender {
-    
-    switch (self.segment.selectedSegmentIndex) {
-            
-        case 0:{
-            [self fetchChannels];
-        }
-        break;
-            
-        case 1:{
-            [self fetchRooms];
-        }
-        break;
-            
-        case 2:{
-            [self fetchFavoriteRooms];
-        }
-        break;
-            
     }
-    
-    [self.tableView reloadData];
-    
+
 }
+
+
+
+//-(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    
+//    if(section ==1) return 1.0;
+//    
+//    return 0;
+//}
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//    if (self.segment.selectedSegmentIndex == 0){
+//        NSDictionary *dict = [self.channels objectAtIndex:(NSInteger)indexPath.row];
+//        if (dict) {
+//            if (![OSSession getInstance].currentChannel) {
+//                [[OSSession getInstance] setCurrentChannel: [[OSChannel alloc]init]];
+//            }
+//            [[OSSession getInstance].currentChannel setChannelId:dict[@"id"]];
+//            [[OSSession getInstance].currentChannel setChannelName:dict[@"channel_name"]];
+//            [[OSSession getInstance].currentChannel setOwnerId:dict[@"owner_user_id"]];
+//            [[OSSession getInstance].currentChannel setStatus:dict[@"status"]];
+//            [[OSSession getInstance].currentChannel setBoxFolderId:dict[@"box_folder_id"]];
+//            [[OSSession getInstance].currentChannel setPrivacySetting:dict[@"privacy_setting"]];
+//            [[OSSession getInstance].currentChannel setFireBaseId:dict[@"firebase_channel_name"]];
+//            [[OSSession getInstance].currentChannel setFiles:dict[@"files"]];
+//            [[OSSession getInstance].currentChannel setUsers:dict[@"users"]];
+//            
+//            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
+//            
+//            
+//            [[OSSidePanelController sharedSidePanelController] showCenterPanelAnimated:YES];
+//            
+//        }
+//    }
+//    
+//}
+
 
 #pragma mark Api Requests
 
@@ -189,9 +367,9 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
     [channelRequest getApiRequest:@"api/channels" params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
         if (!error) {
             NSDictionary *response =  [NSDictionary dictionaryWithDictionary:responseObject];
+            
             self.channels = [response objectForKey:@"result"];
-            self.selectedArray = self.channels;
-            [self.tableView reloadData];
+
         }
     }];
     
@@ -206,8 +384,7 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
         if (!error) {
             NSDictionary *response =  [NSDictionary dictionaryWithDictionary:responseObject];
             self.rooms = [response objectForKey:@"result"];
-            self.selectedArray = self.rooms;
-            [self.tableView reloadData];
+//            [self.tableView reloadData];
         }
     }];
     
@@ -224,8 +401,7 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
             NSArray *arr = [response objectForKey:@"result"];
             if ([arr count]>0) {
                 self.favorites = [arr[0] objectForKey:@"favorite_rooms"];
-                self.selectedArray = self.favorites;
-                [self.tableView reloadData];
+//                [self.tableView reloadData];
             }
         }
     }];
@@ -233,3 +409,4 @@ static NSString * const roomcellIdentifier = @"Channel Cell Identifier";
 }
 
 @end
+

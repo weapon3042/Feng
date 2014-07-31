@@ -17,6 +17,7 @@
 #import "OSSession.h"
 #import "OSChannel.h"
 #import "OSWebServiceMacro.h"
+#import "OSInvitePeopleViewController.h"
 #import <Firebase/Firebase.h>
 
 static NSString * const peopleCellIdentifier = @"OSPeopleTableViewCell";
@@ -51,7 +52,7 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
     [self.view addGestureRecognizer:tap];
     [self registerCustomCellsFromNibs];
     
-    self.invitePeopleText.hidden = NO;
+    self.invitePeopleButton.hidden = NO;
     self.uploadFileButton.hidden =YES;
     self.pinQuestionsText.hidden = YES;
 
@@ -122,7 +123,7 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 //                    NSLog(@"status:%@", snapshot.value);
 //                    online/offline/idle/away/busy
                     if ([snapshot.value isEqualToString:@"online"]) {
-                        NSLog(@"userId:%@", userInfoDict[@"user_id"]);
+//                        NSLog(@"userId:%@", userInfoDict[@"user_id"]);
                         cell.status.backgroundColor = USER_ONLINE;
                     }
                     if ([snapshot.value isEqualToString:@"busy"]) {
@@ -172,7 +173,7 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
         case 0:
         {
             [self fetchPeople];
-            self.invitePeopleText.hidden = NO;
+            self.invitePeopleButton.hidden = NO;
             self.uploadFileButton.hidden = YES;
             self.pinQuestionsText.hidden = YES;
         }
@@ -181,7 +182,7 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
         case 1:
         {
             [self fetchFiles];
-            self.invitePeopleText.hidden = YES;
+            self.invitePeopleButton.hidden = YES;
             self.uploadFileButton.hidden = NO;
             self.pinQuestionsText.hidden = YES;
         }
@@ -190,7 +191,7 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
         case 2:
         {
             [self fetchPinnedQuestions];
-            self.invitePeopleText.hidden = YES;
+            self.invitePeopleButton.hidden = YES;
             self.uploadFileButton.hidden = YES;
             self.pinQuestionsText.hidden = NO;
         }
@@ -230,9 +231,11 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
     }];
 }
 
--(void)invitePeople{
-    
-    
+- (IBAction)onClickInvite:(id)sender
+{
+    UIStoryboard *right = [UIStoryboard storyboardWithName:@"rightPanel" bundle:[NSBundle mainBundle]];
+    OSInvitePeopleViewController *viewController = [right instantiateViewControllerWithIdentifier:@"OSInvitePeopleViewController"];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 -(void)registerCustomCellsFromNibs

@@ -40,6 +40,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     if ([currentSection isEqualToString:@"channel"]) {//display channel information to the center
         // Initialize the root of our Firebase namespace.
+        [self hideRooleTopicView];
         NSString *channelId = [OSSession getInstance].currentChannel.fireBaseId ? [OSSession getInstance].currentChannel.fireBaseId : DEFAULT_FIREBASE_CHANNEL_ID;
         NSString *url = [NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,channelId];
         self.firebase = [[Firebase alloc] initWithUrl:url];
@@ -57,7 +58,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     }
     
     if ([currentSection isEqualToString:@"room"]){//display room information
-        [self drawRoomTopicView];
+        [self displayRoomTopicView];
         // Initialize the root of our Firebase namespace.
         NSString *roomId = [OSSession getInstance].currentRoom.fireBaseId ? [OSSession getInstance].currentRoom.fireBaseId : DEFAULT_ROOM_ID;
         NSString *url = [NSString stringWithFormat:@"%@resolutionrooms/%@/messages",fireBaseUrl,roomId];
@@ -77,8 +78,14 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
 }
 
+-(void) hideRooleTopicView{
+    self.roomView.hidden = YES;
+    CGRect tableViewContainerFrame = self.tableViewContainer.frame;
+    tableViewContainerFrame.origin.y = 64;
+    [self.tableViewContainer setFrame:tableViewContainerFrame];
+}
 
--(void) drawRoomTopicView
+-(void) displayRoomTopicView
 {
     self.roomView.hidden = NO;
     UIView *bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.roomView.frame.size.height-1, self.roomView.frame.size.width, 1)];
@@ -244,7 +251,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
         [fb observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
             //NSLog(@"status:%@", snapshot.value);
             if ([snapshot.value isEqualToString:@"online"]) {
-                NSLog(@"userId:%@", userInfo[@"user_id"]);
+//                NSLog(@"userId:%@", userInfo[@"user_id"]);
                 cell.status.backgroundColor = USER_ONLINE;
             }
             if ([snapshot.value isEqualToString:@"busy"]) {
