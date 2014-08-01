@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OSInvitePeopleViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic, weak) NSMutableArray *peopleArray;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface OSInvitePeopleViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate, UISearchBarDelegate>
 
 @end

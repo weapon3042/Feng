@@ -28,7 +28,8 @@
 /*
 ** Array sets for data objects
 */
-@property (nonatomic, strong)NSMutableIndexSet *expandedSections;
+
+@property (nonatomic, strong) NSMutableIndexSet *expandedSections;
 @property (nonatomic, strong) NSMutableArray *channels;
 @property (nonatomic, strong) NSMutableArray *rooms;
 @property (nonatomic, strong) NSMutableArray *favorites;
@@ -40,11 +41,11 @@
 */
 
 @property (weak, nonatomic) IBOutlet UILabel *userName;
-
+@property (weak, nonatomic) IBOutlet UILabel *jobTitle;
 /*
 ** @return The user profile imageView
 */
-
+@property (weak, nonatomic) IBOutlet UIImageView *status;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 
 /**/

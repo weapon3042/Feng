@@ -12,6 +12,9 @@
 #import "ECSlidingViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
 #import "OSSearchViewController.h"
+#import "OSAskQuestionViewController.h"
+#import "OSCreateChannelViewController.h"
+#import "OSInvitePeopleViewController.h"
 
 @interface OSViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ECSlidingViewControllerDelegate>
 
@@ -22,6 +25,9 @@
 @property (nonatomic, strong) Firebase *firebase;
 
 @property (nonatomic, strong) OSSearchViewController * searchViewController;
+@property (nonatomic, strong) OSAskQuestionViewController * askQuestioinViewController;
+@property (nonatomic, strong) OSCreateChannelViewController * createChannelViewController;
+@property (nonatomic, strong) OSInvitePeopleViewController * invitePeopleViewController;
 
 /*
 ** @return Array that will hold chat thread

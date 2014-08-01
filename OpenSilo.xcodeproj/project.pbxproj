@@ -62,6 +62,8 @@
 		B6A5E121198AEC1500772EC8 /* AskQuestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A5E120198AEC1500772EC8 /* AskQuestion.storyboard */; };
 		B6A5E123198AEC6E00772EC8 /* CreateChannel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A5E122198AEC6E00772EC8 /* CreateChannel.storyboard */; };
 		B6A5E126198AEC8000772EC8 /* OSCreateChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5E125198AEC8000772EC8 /* OSCreateChannelViewController.m */; };
+		B6E16F26198C44FE00346242 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E16F25198C44FE00346242 /* Signup.storyboard */; };
+		B6E16F29198C4AA600346242 /* OSUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E16F28198C4AA600346242 /* OSUserUtils.m */; };
 		D351182AA7EE403B88B60017 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E4F483B40D4402BEB0FB55 /* libPods.a */; };
 		E7A7230A19772911000A8BCC /* OSDataManger.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A7230919772911000A8BCC /* OSDataManger.m */; };
 		E7DE37B3197AFA6D00BA623E /* Avenir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7DE37B2197AFA6D00BA623E /* Avenir.ttf */; };
@@ -177,6 +179,9 @@
 		B6A5E122198AEC6E00772EC8 /* CreateChannel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateChannel.storyboard; sourceTree = "<group>"; };
 		B6A5E124198AEC8000772EC8 /* OSCreateChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCreateChannelViewController.h; sourceTree = "<group>"; };
 		B6A5E125198AEC8000772EC8 /* OSCreateChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCreateChannelViewController.m; sourceTree = "<group>"; };
+		B6E16F25198C44FE00346242 /* Signup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
+		B6E16F27198C4AA600346242 /* OSUserUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUserUtils.h; sourceTree = "<group>"; };
+		B6E16F28198C4AA600346242 /* OSUserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUserUtils.m; sourceTree = "<group>"; };
 		E5E4F483B40D4402BEB0FB55 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A7230819772911000A8BCC /* OSDataManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDataManger.h; sourceTree = "<group>"; };
 		E7A7230919772911000A8BCC /* OSDataManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDataManger.m; sourceTree = "<group>"; };
@@ -343,6 +348,7 @@
 				9A6C7E24197785A70053AC76 /* Login.storyboard */,
 				9A6B60DD196D19710016D83B /* Main.storyboard */,
 				B64876ED19883BE800B42189 /* Entrance.storyboard */,
+				B6E16F25198C44FE00346242 /* Signup.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -440,6 +446,8 @@
 				9AAB08381978D9CE00FBE96D /* OSDateTimeUtils.m */,
 				9ADD59CF197E35630090DBC4 /* OSConstant.h */,
 				9ADD59D0197E35630090DBC4 /* OSConstant.m */,
+				B6E16F27198C4AA600346242 /* OSUserUtils.h */,
+				B6E16F28198C4AA600346242 /* OSUserUtils.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -629,6 +637,7 @@
 				9A6B60DF196D19710016D83B /* Main.storyboard in Resources */,
 				9A6C7E25197785A70053AC76 /* Login.storyboard in Resources */,
 				B6A5E112198AD16A00772EC8 /* Search.storyboard in Resources */,
+				B6E16F26198C44FE00346242 /* Signup.storyboard in Resources */,
 				9A6B6110196D2D3F0016D83B /* Configure.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -715,6 +724,7 @@
 				B61592361981A3DF00D3AE9C /* OSToastUtils.m in Sources */,
 				B6A5E126198AEC8000772EC8 /* OSCreateChannelViewController.m in Sources */,
 				E7A7230A19772911000A8BCC /* OSDataManger.m in Sources */,
+				B6E16F29198C4AA600346242 /* OSUserUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@
 #import "OSSession.h"
 #import "OSUIMacro.h"
 #import "METransitions.h"
-
+#import "OSUserUtils.h"
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
@@ -32,6 +32,14 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
+    [super viewWillAppear:animated];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[OSUserUtils getInstance] reloadAllUsers];
+    });
+    
+    
     [super viewWillAppear:animated];
    
     self.array = [[NSMutableArray alloc] init];
@@ -40,7 +48,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
     if ([currentSection isEqualToString:@"channel"]) {//display channel information to the center
         // Initialize the root of our Firebase namespace.
-        [self hideRooleTopicView];
+        [self hideRoomTopicView];
         NSString *channelId = [OSSession getInstance].currentChannel.fireBaseId ? [OSSession getInstance].currentChannel.fireBaseId : DEFAULT_FIREBASE_CHANNEL_ID;
         NSString *url = [NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,channelId];
         self.firebase = [[Firebase alloc] initWithUrl:url];
@@ -78,7 +86,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     
 }
 
--(void) hideRooleTopicView{
+-(void) hideRoomTopicView{
     self.roomView.hidden = YES;
     CGRect tableViewContainerFrame = self.tableViewContainer.frame;
     tableViewContainerFrame.origin.y = 64;
@@ -193,14 +201,36 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 -(void)updateCenterViewController: (NSNotification *)notif
 {
-        if (!self.searchViewController) {
-            
-            UIStoryboard *searchStoryboary = [UIStoryboard storyboardWithName:(NSString *)notif.object bundle:[NSBundle mainBundle]];
-            self.searchViewController = (OSSearchViewController *)[searchStoryboary instantiateInitialViewController];
-        }
+    NSString *storyboardName = (NSString *)notif.object;
+    if ( [storyboardName isEqualToString:@"Search"]) {
+        UIStoryboard *searchStoryboary = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
+        self.searchViewController = (OSSearchViewController *)[searchStoryboary instantiateInitialViewController];
         [self addChildViewController: self.searchViewController];
         [self.view addSubview:self.searchViewController.view];
         self.searchViewController.view.autoresizesSubviews = YES;
+    }else if ([storyboardName isEqualToString:@"AskQuestion"]){
+        UIStoryboard *askQuestionStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
+        self.askQuestioinViewController = (OSAskQuestionViewController *)[askQuestionStoryboard instantiateInitialViewController];[self addChildViewController: self.askQuestioinViewController];
+        [self.view addSubview:self.askQuestioinViewController.view];
+        self.askQuestioinViewController.view.autoresizesSubviews = YES;
+    
+    }else if ([storyboardName isEqualToString:@"CreateChannel"]){
+        UIStoryboard *createChannelStoryboary = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
+        self.createChannelViewController = (OSCreateChannelViewController *)[createChannelStoryboary instantiateInitialViewController];
+        [self addChildViewController: self.createChannelViewController];
+        [self.view addSubview:self.createChannelViewController.view];
+        self.createChannelViewController.view.autoresizesSubviews = YES;
+        
+    }else if ([storyboardName isEqualToString:@"InvitePeople"]){
+        UIStoryboard *createChannelStoryboary = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
+        self.invitePeopleViewController = (OSInvitePeopleViewController *)[createChannelStoryboary instantiateInitialViewController];
+        [self addChildViewController: self.invitePeopleViewController];
+        [self.view addSubview:self.invitePeopleViewController.view];
+        self.invitePeopleViewController.view.autoresizesSubviews = YES;
+    }
+    
+    
+    
 }
 
 

@@ -14,6 +14,8 @@
 #import "OSSession.h"
 #import "OSConstant.h"
 #import "DTCustomColoredAccessory.h"
+#import "UIImageView+AFNetworking.h"
+#import <Firebase/Firebase.h>
 
 static NSString * const listCellIdentifier = @"LeftPanelCell";
 static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
@@ -39,6 +41,8 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
     
     [super viewDidLoad];
     
+    [self drawUserInfoView];
+    
     [self.navigationController.navigationBar setHidden:NO];
     
     _list = @[kFavoritesTab,kChannelTab,kRoomTab,kInboxTab,kSearchTab,kAskQuestionTab,kCreateChannelTab,kSettingsTab];
@@ -51,6 +55,41 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
         _expandedSections = [[NSMutableIndexSet alloc] init];
     }
     
+}
+
+-(void) drawUserInfoView{
+    NSURL *url = [NSURL URLWithString:[OSSession getInstance].user.picture];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"imgPlaceholder"];
+    [_userImage setImageWithURLRequest:request
+                      placeholderImage:placeholderImage
+                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                               } failure:^(NSURLRequest *request,
+                                           NSHTTPURLResponse *response, NSError *error) {
+                               }];
+    _userName.text = [NSString stringWithFormat:@"%@ %@",[OSSession getInstance].user.firstName, [OSSession getInstance].user.lastName];
+    _jobTitle.text = [OSSession getInstance].user.jobTitle;
+    _status.backgroundColor = USER_AWAY;
+    Firebase *firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@/presence/%@",fireBaseUrl,[OSSession getInstance].user.userId]];
+    [firebase authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
+        [firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+            //                    NSLog(@"status:%@", snapshot.value);
+            //                    online/offline/idle/away/busy
+            if ([snapshot.value isEqualToString:@"online"]) {
+                //                        NSLog(@"userId:%@", userInfoDict[@"user_id"]);
+                _status.backgroundColor = USER_ONLINE;
+            }
+            if ([snapshot.value isEqualToString:@"busy"]) {
+                _status.backgroundColor = USER_BUSY;
+            }
+        }];
+    } withCancelBlock:^(NSError* error) {
+        NSLog(@"error:%@",error);
+    }];
+    [_userImage.layer setMasksToBounds:YES];
+    [_userImage.layer setCornerRadius:22.0];
+    [_status.layer setMasksToBounds:YES];
+    [_status.layer setCornerRadius:5.0];
 }
 
 - (void)didReceiveMemoryWarning{

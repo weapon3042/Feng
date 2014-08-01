@@ -53,7 +53,7 @@
 }
 
 - (IBAction)signUpWithEmail:(id)sender {
-    UIStoryboard *entrance = [UIStoryboard storyboardWithName:@"Entrance" bundle:[NSBundle mainBundle]];
+    UIStoryboard *entrance = [UIStoryboard storyboardWithName:@"Signup" bundle:[NSBundle mainBundle]];
     OSSignUpViewController *viewController = [entrance instantiateViewControllerWithIdentifier:@"OSSignUpViewController"];
     [self.navigationController pushViewController:viewController animated:YES];
 }

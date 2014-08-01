@@ -45,7 +45,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"LoginBackground"]]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
     // Do any additional setup after loading the view.
+    [self drawView];
+}
+
+- (void) drawView
+{
+    SET_BORDER(_usernamerTextfield);
+    SET_BORDER(_passwordTextfield);
+    SET_TEXTFIELD_TRANPARENT(_usernamerTextfield);
+    SET_TEXTFIELD_TRANPARENT(_passwordTextfield);
 }
 
 -(IBAction)onClickLogin:(id)sender {

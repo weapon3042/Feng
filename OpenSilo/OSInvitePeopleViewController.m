@@ -12,9 +12,14 @@
 #import <Firebase/Firebase.h>
 #import "OSUIMacro.h"
 #import "UIImageView+AFNetworking.h"
+#import "OSGetRequest.h"
 
 @interface OSInvitePeopleViewController ()
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) NSMutableArray *filteredArray;
+@property (nonatomic, strong) NSMutableArray *peopleArray;
+@property (nonatomic, strong) NSMutableArray *selectedArray;
 @end
 
 @implementation OSInvitePeopleViewController
@@ -31,6 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self registerCustomCellsFromNibs];
+    self.tableView.separatorColor = [UIColor clearColor];
     // Do any additional setup after loading the view.
 }
 
@@ -49,15 +56,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.peopleArray.count;
+    return self.selectedArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    OSPeopleTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"OSInvitePeopleTableViewCell" forIndexPath:indexPath];
-    NSDictionary *dict = [self.peopleArray objectAtIndex:indexPath.row];
-    NSDictionary *userInfoDict = dict[@"user_id"];
+    OSPeopleTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"OSPeopleTableViewCell" forIndexPath:indexPath];
+    NSDictionary *userInfoDict = [self.selectedArray objectAtIndex:indexPath.row];
     cell.fullName.text = [NSString stringWithFormat:@"%@ %@",userInfoDict[@"first_name"],userInfoDict[@"last_name"]];
+    cell.fullName.textColor = [UIColor blackColor];
     cell.jobTitle.text = userInfoDict[@"knowledge_title"];
     NSURL *url = [NSURL URLWithString:[userInfoDict objectForKey:@"picture"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -72,6 +84,7 @@
                              } failure:^(NSURLRequest *request,
                                          NSHTTPURLResponse *response, NSError *error) {
                                  [weakCell.thumbProgressView stopAnimating];
+                                 weakCell.thumbProgressView.hidden = YES;
                              }];
     cell.thumbProgressView.hidesWhenStopped=YES;
     Firebase *firebase = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@/presence/%@",fireBaseUrl,userInfoDict[@"user_id"]]];
@@ -101,10 +114,58 @@
     return cell;
 }
 
--(void)fetchPeople{
-    self.peopleArray = [NSMutableArray arrayWithArray:[[OSSession getInstance].allUsers allValues]];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OSPeopleTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    self.searchBar.text = [self.searchBar.text stringByAppendingString:[NSString stringWithFormat:@"%@, ",cell.fullName.text]];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.selectedArray = self.peopleArray;
     [self.tableView reloadData];
 }
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if (searchText.length>0) {
+        [self searchForText:searchText];
+    }else{
+        self.selectedArray = self.peopleArray;
+        [self.tableView reloadData];
+
+    }
+}
+
+-(void)registerCustomCellsFromNibs
+{
+    [self.tableView registerNib:[UINib nibWithNibName:@"OSPeopleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"OSPeopleTableViewCell"];
+}
+
+-(void)fetchPeople{
+    OSGetRequest *request = [[OSGetRequest alloc]init];
+    [request getApiRequest:[NSString stringWithFormat:@"api/users"] params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            self.peopleArray = responseObject[@"result"];
+            self.selectedArray = self.peopleArray;
+            [self.tableView reloadData];
+        }
+    }];
+   
+}
+
+- (void)searchForText:(NSString *)searchText
+{
+    if (searchText) {
+        NSString *predicateFormat = @"%K CONTAINS[cd] %@";
+        NSString *searchAttribute = @"email";
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateFormat, searchAttribute, searchText];
+        self.filteredArray = [NSMutableArray arrayWithArray:[self.peopleArray filteredArrayUsingPredicate:predicate]];
+        self.selectedArray = self.filteredArray;
+        [self.tableView reloadData];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {

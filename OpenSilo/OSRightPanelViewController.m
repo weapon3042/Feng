@@ -18,6 +18,7 @@
 #import "OSChannel.h"
 #import "OSWebServiceMacro.h"
 #import "OSInvitePeopleViewController.h"
+#import "OSConstant.h"
 #import <Firebase/Firebase.h>
 
 static NSString * const peopleCellIdentifier = @"OSPeopleTableViewCell";
@@ -233,9 +234,8 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 
 - (IBAction)onClickInvite:(id)sender
 {
-    UIStoryboard *right = [UIStoryboard storyboardWithName:@"rightPanel" bundle:[NSBundle mainBundle]];
-    OSInvitePeopleViewController *viewController = [right instantiateViewControllerWithIdentifier:@"OSInvitePeopleViewController"];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self.slidingViewController resetTopViewAnimated:YES];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:@"InvitePeople"];
 }
 
 -(void)registerCustomCellsFromNibs
