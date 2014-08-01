@@ -195,11 +195,10 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 {
         if (!self.searchViewController) {
             
-            UIStoryboard *searchStoryboary = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+            UIStoryboard *searchStoryboary = [UIStoryboard storyboardWithName:(NSString *)notif.object bundle:[NSBundle mainBundle]];
             self.searchViewController = (OSSearchViewController *)[searchStoryboary instantiateInitialViewController];
         }
         [self addChildViewController: self.searchViewController];
-//        self.searchViewController.view.frame = CGRectMake(221, 66, 803, 682);
         [self.view addSubview:self.searchViewController.view];
         self.searchViewController.view.autoresizesSubviews = YES;
 }

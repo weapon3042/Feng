@@ -13,9 +13,9 @@ NSString * const kChannelTab = @"kChannelTab";
 NSString * const kRoomTab = @"kRoomTab";
 NSString * const kFavoritesTab = @"kFavoritesTab";
 NSString * const kInboxTab = @"kInboxTab";
-NSString * const kSearchTab = @"kSearchTab";
-NSString * const kAskQuestionTab = @"kAskQuestionTab";
-NSString * const kCreateChannelTab = @"kCreateChannelTab";
+NSString * const kSearchTab = @"Search";
+NSString * const kAskQuestionTab = @"AskQuestion";
+NSString * const kCreateChannelTab = @"CreateChannel";
 NSString * const kSettingsTab = @"kSettingsTab";
 
 
