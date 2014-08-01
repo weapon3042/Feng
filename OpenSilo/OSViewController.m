@@ -112,6 +112,9 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
      name:UIKeyboardWillHideNotification object:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(viewWillAppear:) name:kChannelDidSelectNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCenterViewController:) name:kUpdateCenterViewNotification object:nil];
+
   
     [self configureSlidingMenu];
 
@@ -187,6 +190,21 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)updateCenterViewController: (NSNotification *)notif
+{
+        if (!self.searchViewController) {
+            
+            UIStoryboard *searchStoryboary = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+            self.searchViewController = (OSSearchViewController *)[searchStoryboary instantiateInitialViewController];
+        }
+        [self addChildViewController: self.searchViewController];
+//        self.searchViewController.view.frame = CGRectMake(221, 66, 803, 682);
+        [self.view addSubview:self.searchViewController.view];
+        self.searchViewController.view.autoresizesSubviews = YES;
+}
+
+
 
 #pragma mark - Table View Data Source
 

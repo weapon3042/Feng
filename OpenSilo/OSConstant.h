@@ -8,3 +8,12 @@
 
 extern NSString * const kChannelDidSelectNotification;
 extern NSString * const kRoomDidSelectNotification;
+extern NSString * const kUpdateCenterViewNotification;
+extern NSString * const kChannelTab;
+extern NSString * const kRoomTab;
+extern NSString * const kFavoritesTab;
+extern NSString * const kInboxTab;
+extern NSString * const kSearchTab;
+extern NSString * const kAskQuestionTab;
+extern NSString * const kCreateChannelTab;
+extern NSString * const kSettingsTab;

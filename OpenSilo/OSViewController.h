@@ -11,6 +11,7 @@
 #import <Firebase/Firebase.h>
 #import "ECSlidingViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
+#import "OSSearchViewController.h"
 
 @interface OSViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ECSlidingViewControllerDelegate>
 
@@ -20,6 +21,7 @@
 
 @property (nonatomic, strong) Firebase *firebase;
 
+@property (nonatomic, strong) OSSearchViewController * searchViewController;
 
 /*
 ** @return Array that will hold chat thread

@@ -41,8 +41,7 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
     
     [self.navigationController.navigationBar setHidden:NO];
     
-    _list = @[@"Favorites",@"Channels",@"Rooms",@"Inbox",@"Search",@"Ask a Question",@"Create a Channel",@"Settings"];
-    
+    _list = @[kFavoritesTab,kChannelTab,kRoomTab,kInboxTab,kSearchTab,kAskQuestionTab,kCreateChannelTab,kSettingsTab];
     
     //Table view
     [[self tableView] setBackgroundColor:[UIColor clearColor]];
@@ -212,6 +211,8 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    [self.slidingViewController resetTopViewAnimated:YES];
+    
     if ([self tableView:tableView canCollapseSection:indexPath.section])
     {
         if (!indexPath.row)
@@ -290,7 +291,7 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
             [[OSSession getInstance].currentRoom setFiles:dict[@"files"]];
             [[OSSession getInstance].currentRoom setDeleted:[dict[@"is_deleted"] boolValue]];
             [[OSSession getInstance].currentRoom setResolved:[dict[@"resolved"] boolValue]];
-            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:kRoomTab];
             
         }
     }
@@ -311,10 +312,17 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
             [[OSSession getInstance].currentChannel setFireBaseId:dict[@"firebase_channel_name"]];
             [[OSSession getInstance].currentChannel setFiles:dict[@"files"]];
             [[OSSession getInstance].currentChannel setUsers:dict[@"users"]];
-            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:nil];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:kCreateChannelTab];
             
         }
 
+    }
+    
+    else if(indexPath.section>3){
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:_list[indexPath.row+4]];
+
+        
     }
 
 }
