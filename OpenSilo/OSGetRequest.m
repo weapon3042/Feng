@@ -9,6 +9,7 @@
 #import "OSGetRequest.h"
 #import "OSDataManger.h"
 #import "OSWebServiceMacro.h"
+#import "OSSession.h"
 
 @implementation OSGetRequest
 
@@ -19,7 +20,7 @@
     [urlSession setRequestSerializer:[AFJSONRequestSerializer new]];
     
     if(setAuthHeader)
-        [urlSession.requestSerializer setValue:TestToken forHTTPHeaderField:@"Authorization"];
+        [urlSession.requestSerializer setValue:[OSSession getInstance].token forHTTPHeaderField:@"Authorization"];
     
     [urlSession.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
     

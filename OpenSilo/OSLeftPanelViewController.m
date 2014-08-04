@@ -250,7 +250,6 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [self.slidingViewController resetTopViewAnimated:YES];
     
     if ([self tableView:tableView canCollapseSection:indexPath.section])
     {
@@ -305,6 +304,7 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
             
             [self.tableView endUpdates];
         }
+        
     }
     //click to update center view
     if (indexPath.section == 0 && indexPath.row != 0) {

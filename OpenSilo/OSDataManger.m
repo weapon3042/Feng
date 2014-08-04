@@ -8,7 +8,7 @@
 
 #import "OSDataManger.h"
 #import "OSWebServiceMacro.h"
-
+#import "OSSession.h"
 
 @implementation OSDataManger
 
@@ -39,7 +39,7 @@
         
         methodType = @"POST";
         
-        [urlRequest addValue:TestToken forHTTPHeaderField:@"Authorization"];
+        [urlRequest addValue:[OSSession getInstance].token forHTTPHeaderField:@"Authorization"];
         
     }
     

@@ -8,6 +8,7 @@
 
 #import "OSRequestUtils.h"
 #import "OSWebServiceMacro.h"
+#import "OSSession.h"
 
 @implementation OSRequestUtils
 
@@ -23,7 +24,7 @@
     [urlRequest setHTTPMethod:methodType];
     if ([methodType isEqualToString:@"GET"]) {
         if (authHeader) {
-            [urlRequest addValue:TestToken forHTTPHeaderField:@"Authorization"];
+            [urlRequest addValue:[OSSession getInstance].token forHTTPHeaderField:@"Authorization"];
         }
     }
     if (params) {
