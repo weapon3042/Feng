@@ -26,8 +26,8 @@
 @property (nonatomic, weak) NSString *ownerId;
 @property (nonatomic, weak) NSArray *files;
 @property (nonatomic, weak) NSArray *settings;
-@property (nonatomic, assign, getter = isDeleted) BOOL *deleted;
-@property (nonatomic, assign, getter = isResolved) BOOL *resolved;
+@property (nonatomic, assign, getter = isDeleted) BOOL deleted;
+@property (nonatomic, assign, getter = isResolved) BOOL resolved;
 @property (nonatomic, weak) NSArray *messages;
 @property (nonatomic, weak) NSNumber *favoriteCount;
 

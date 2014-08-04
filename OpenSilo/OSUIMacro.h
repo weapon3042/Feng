@@ -10,8 +10,13 @@ view.layer.shadowPath = shadowPath;
 
 #define SET_BORDER(view)\
 view.layer.borderColor = [[UIColor whiteColor] CGColor];\
-view.layer.cornerRadius = 5;\
 view.layer.borderWidth = 1;
+
+#define SET_ROUNDED_CORNER(view)\
+view.layer.cornerRadius = 2;
+
+#define SET_NAVIGATION_BAR_BG_COLOR(view)\
+view.backgroundColor = OS_BLUE_BUTTON;
 
 #define SET_TEXTFIELD_TRANPARENT(view)\
 [view setBackgroundColor:[UIColor clearColor]];
@@ -32,6 +37,8 @@ label.font = [UIFont fontWithName:fontName size:fontSize];
 #define RIGHT_PANEL_BGCOLOR UIColorFromRGB(0xF7F7F7)
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define OS_BLUE_BUTTON UIColorFromRGB(0x32A5D3)
 
 #define USER_DEFAULTS [NSUserDefault standardUserDefaults]
 

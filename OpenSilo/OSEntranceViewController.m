@@ -41,9 +41,17 @@
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.view.backgroundColor = [UIColor clearColor];
-    SET_BORDER(_linkedInButton);
+    [self drawView];
+}
+
+-(void) drawView
+{
+    _linkedInButton.backgroundColor = OS_BLUE_BUTTON;
     SET_BORDER(_emailButton);
     SET_BORDER(_logInButton);
+    SET_ROUNDED_CORNER(_linkedInButton);
+    SET_ROUNDED_CORNER(_emailButton);
+    SET_ROUNDED_CORNER(_logInButton);
 }
 
 - (void)didReceiveMemoryWarning

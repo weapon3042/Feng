@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 OpenSilo Co. All rights reserved.
 //
 
-NSString * const kChannelDidSelectNotification = @"kChannelDidSelectNotification";
-NSString * const kRoomDidSelectNotification = @"kRoomDidSelectNotification";
 NSString * const kUpdateCenterViewNotification = @"kUpdateCenterViewNotification";
-NSString * const kChannelTab = @"kChannelTab";
-NSString * const kRoomTab = @"kRoomTab";
+NSString * const kChannelTab = @"Channel";
+NSString * const kRoomTab = @"Room";
 NSString * const kFavoritesTab = @"kFavoritesTab";
 NSString * const kInboxTab = @"kInboxTab";
 NSString * const kSearchTab = @"Search";
 NSString * const kAskQuestionTab = @"AskQuestion";
 NSString * const kCreateChannelTab = @"CreateChannel";
 NSString * const kSettingsTab = @"kSettingsTab";
+
+NSString * const kInvitePeople = @"InvitePeople";
 
 

@@ -56,10 +56,15 @@
 
 - (void) drawView
 {
-    SET_BORDER(_usernamerTextfield);
-    SET_BORDER(_passwordTextfield);
-    SET_TEXTFIELD_TRANPARENT(_usernamerTextfield);
-    SET_TEXTFIELD_TRANPARENT(_passwordTextfield);
+    SET_ROUNDED_CORNER(_usernamerTextfield);
+    SET_ROUNDED_CORNER(_passwordTextfield);
+    _loginButton.backgroundColor = OS_BLUE_BUTTON;
+    _usernamerTextfield.backgroundColor = [UIColor colorWithRed:204 green:204 blue:204 alpha:0.8];
+    _passwordTextfield.backgroundColor = [UIColor colorWithRed:204 green:204 blue:204 alpha:0.8];
+    _usernamerTextfield.layer.borderColor = [[UIColor colorWithRed:204 green:204 blue:204 alpha:0.8] CGColor];
+    _usernamerTextfield.layer.borderWidth = 1;
+    _passwordTextfield.layer.borderColor = [[UIColor colorWithRed:204 green:204 blue:204 alpha:0.8] CGColor];
+    _passwordTextfield.layer.borderWidth = 1;
 }
 
 -(IBAction)onClickLogin:(id)sender {

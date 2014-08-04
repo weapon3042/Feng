@@ -33,15 +33,15 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
             [self fetchRooms];
             [self fetchFavoriteRooms];
     });
-
+    
+    [self drawUserInfoView];
+    
 }
 
 
 - (void)viewDidLoad{
     
     [super viewDidLoad];
-    
-    [self drawUserInfoView];
     
     [self.navigationController.navigationBar setHidden:NO];
     
@@ -64,6 +64,7 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
     [_userImage setImageWithURLRequest:request
                       placeholderImage:placeholderImage
                                success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                   _userImage.image = image;
                                } failure:^(NSURLRequest *request,
                                            NSHTTPURLResponse *response, NSError *error) {
                                }];
@@ -250,7 +251,6 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     if ([self tableView:tableView canCollapseSection:indexPath.section])
     {
         if (!indexPath.row)
@@ -304,7 +304,6 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
             
             [self.tableView endUpdates];
         }
-        
     }
     //click to update center view
     if (indexPath.section == 0 && indexPath.row != 0) {
@@ -330,9 +329,8 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
             [[OSSession getInstance].currentRoom setFiles:dict[@"files"]];
             [[OSSession getInstance].currentRoom setDeleted:[dict[@"is_deleted"] boolValue]];
             [[OSSession getInstance].currentRoom setResolved:[dict[@"resolved"] boolValue]];
-            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:kRoomTab];
-            
         }
+        [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:kRoomTab];
     }
     if (indexPath.section == 1 && indexPath.row != 0) {
          [self.slidingViewController resetTopViewAnimated:YES];
@@ -351,14 +349,13 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
             [[OSSession getInstance].currentChannel setFireBaseId:dict[@"firebase_channel_name"]];
             [[OSSession getInstance].currentChannel setFiles:dict[@"files"]];
             [[OSSession getInstance].currentChannel setUsers:dict[@"users"]];
-            [[NSNotificationCenter defaultCenter]postNotificationName:kChannelDidSelectNotification object:kCreateChannelTab];
-            
         }
+        [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:kChannelTab];
 
     }
     
     else if(indexPath.section>3){
-        
+        [self.slidingViewController resetTopViewAnimated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:_list[indexPath.row+4]];
 
         

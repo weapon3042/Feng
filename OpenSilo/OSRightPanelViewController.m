@@ -52,11 +52,19 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
     
     [self.view addGestureRecognizer:tap];
     [self registerCustomCellsFromNibs];
+    [self drawView];
     
+}
+
+-(void)drawView
+{
     self.invitePeopleButton.hidden = NO;
     self.uploadFileButton.hidden =YES;
     self.pinQuestionsText.hidden = YES;
-
+    _invitePeopleButton.backgroundColor = OS_BLUE_BUTTON;
+    _uploadFileButton.backgroundColor = OS_BLUE_BUTTON;
+    SET_ROUNDED_CORNER(_invitePeopleButton);
+    SET_ROUNDED_CORNER(_uploadFileButton);
 }
 
 -(void)viewWillAppear:(BOOL)animated {
