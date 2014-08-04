@@ -93,6 +93,8 @@
     _roomTitle.text = room.title;
     _roomDescription.text = room.description;
     _roomSnippet.text = room.snippet;
+    SET_BORDER_GREY(_messageInput);
+    SET_ROUNDED_CORNER(_messageInput);
 }
 
 

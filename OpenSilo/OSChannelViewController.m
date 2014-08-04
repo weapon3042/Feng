@@ -83,8 +83,15 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self registerCustomCellsFromNibs];
+    
+    [self drawView];
 }
 
+-(void) drawView
+{
+    SET_BORDER_GREY(_messageInput);
+    SET_ROUNDED_CORNER(_messageInput);
+}
 
 #pragma mark - Table View Data Source
 

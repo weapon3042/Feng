@@ -57,11 +57,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f3W-BL-UsS" userLabel="Table View">
-                                <rect key="frame" x="0.0" y="264" width="320" height="266"/>
+                                <rect key="frame" x="0.0" y="264" width="320" height="257"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SzO-3d-wEP">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="266"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="257"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" rowHeight="60" id="dUc-CX-y6f">
@@ -82,17 +82,31 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVz-Qn-QMG" userLabel="Text Input View">
-                                <rect key="frame" x="0.0" y="530" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="522" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your message here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gdS-Ha-I3l">
-                                        <rect key="frame" x="38" y="5" width="250" height="30"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TS-eh-kXj" userLabel="line">
+                                        <rect key="frame" x="0.0" y="1" width="320" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Type your message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t0a-SP-h0P">
+                                        <rect key="frame" x="38" y="8" width="220" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="3lG-aZ-Udr" id="bov-ce-YUP"/>
-                                        </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMM-b1-2cl">
+                                        <rect key="frame" x="263" y="9" width="50" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="attach-icon" translatesAutoresizingMaskIntoConstraints="NO" id="0RG-FS-E6c">
+                                        <rect key="frame" x="10" y="14" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -101,7 +115,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="r7s-NB-flj"/>
                     <connections>
-                        <outlet property="messageInput" destination="gdS-Ha-I3l" id="23j-UR-osD"/>
+                        <outlet property="messageInput" destination="t0a-SP-h0P" id="qbO-tS-EEX"/>
                         <outlet property="roomDescription" destination="UOV-Jm-2uW" id="vai-ZP-PC2"/>
                         <outlet property="roomSnippet" destination="qnt-3n-qMM" id="YAb-JS-W2e"/>
                         <outlet property="roomTitle" destination="aNy-Yk-Bhn" id="Skc-w0-olD"/>
@@ -250,6 +264,9 @@
             <point key="canvasLocation" x="640" y="26"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="attach-icon" width="22" height="24"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

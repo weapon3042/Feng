@@ -12,6 +12,10 @@ view.layer.shadowPath = shadowPath;
 view.layer.borderColor = [[UIColor whiteColor] CGColor];\
 view.layer.borderWidth = 1;
 
+#define SET_BORDER_GREY(view)\
+view.layer.borderColor = [[UIColor lightGrayColor] CGColor];\
+view.layer.borderWidth = 1;
+
 #define SET_ROUNDED_CORNER(view)\
 view.layer.cornerRadius = 2;
 
