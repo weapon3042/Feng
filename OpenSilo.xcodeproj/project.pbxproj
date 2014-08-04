@@ -65,6 +65,8 @@
 		B6A5E121198AEC1500772EC8 /* AskQuestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A5E120198AEC1500772EC8 /* AskQuestion.storyboard */; };
 		B6A5E123198AEC6E00772EC8 /* CreateChannel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A5E122198AEC6E00772EC8 /* CreateChannel.storyboard */; };
 		B6A5E126198AEC8000772EC8 /* OSCreateChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5E125198AEC8000772EC8 /* OSCreateChannelViewController.m */; };
+		B6DFEEE8199034C600DE8BC8 /* OSChannelSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DFEEE7199034C600DE8BC8 /* OSChannelSettingViewController.m */; };
+		B6DFEEEB19903A1E00DE8BC8 /* OSRoomSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DFEEEA19903A1E00DE8BC8 /* OSRoomSettingViewController.m */; };
 		B6E16F26198C44FE00346242 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E16F25198C44FE00346242 /* Signup.storyboard */; };
 		B6E16F29198C4AA600346242 /* OSUserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E16F28198C4AA600346242 /* OSUserUtils.m */; };
 		B6E16F2B198D9B5E00346242 /* Channel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E16F2A198D9B5E00346242 /* Channel.storyboard */; };
@@ -190,6 +192,10 @@
 		B6A5E122198AEC6E00772EC8 /* CreateChannel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateChannel.storyboard; sourceTree = "<group>"; };
 		B6A5E124198AEC8000772EC8 /* OSCreateChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCreateChannelViewController.h; sourceTree = "<group>"; };
 		B6A5E125198AEC8000772EC8 /* OSCreateChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCreateChannelViewController.m; sourceTree = "<group>"; };
+		B6DFEEE6199034C600DE8BC8 /* OSChannelSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSChannelSettingViewController.h; sourceTree = "<group>"; };
+		B6DFEEE7199034C600DE8BC8 /* OSChannelSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSChannelSettingViewController.m; sourceTree = "<group>"; };
+		B6DFEEE919903A1E00DE8BC8 /* OSRoomSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSRoomSettingViewController.h; sourceTree = "<group>"; };
+		B6DFEEEA19903A1E00DE8BC8 /* OSRoomSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSRoomSettingViewController.m; sourceTree = "<group>"; };
 		B6E16F25198C44FE00346242 /* Signup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
 		B6E16F27198C4AA600346242 /* OSUserUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUserUtils.h; sourceTree = "<group>"; };
 		B6E16F28198C4AA600346242 /* OSUserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUserUtils.m; sourceTree = "<group>"; };
@@ -484,10 +490,17 @@
 				B6A5E125198AEC8000772EC8 /* OSCreateChannelViewController.m */,
 				B6E16F2E198D9BA000346242 /* OSChannelViewController.h */,
 				B6E16F2F198D9BA000346242 /* OSChannelViewController.m */,
+				B6DFEEE6199034C600DE8BC8 /* OSChannelSettingViewController.h */,
+				B6DFEEE7199034C600DE8BC8 /* OSChannelSettingViewController.m */,
 				B6E16F31198D9BAC00346242 /* OSRoomViewController.h */,
 				B6E16F32198D9BAC00346242 /* OSRoomViewController.m */,
+<<<<<<< HEAD
 				9AB7AF5019903CE70008D9B8 /* OSSettingViewController.h */,
 				9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */,
+=======
+				B6DFEEE919903A1E00DE8BC8 /* OSRoomSettingViewController.h */,
+				B6DFEEEA19903A1E00DE8BC8 /* OSRoomSettingViewController.m */,
+>>>>>>> 05e3471018ff8c2072d342ee3c8d263b2ff9e132
 			);
 			name = left;
 			sourceTree = "<group>";
@@ -748,6 +761,7 @@
 				9AADA59019799B78000F8DED /* OSPostRequest.m in Sources */,
 				9A6B60E2196D19720016D83B /* OSViewController.m in Sources */,
 				9AF10DA81976230A00474A2A /* OSMessage.m in Sources */,
+				B6DFEEE8199034C600DE8BC8 /* OSChannelSettingViewController.m in Sources */,
 				9A28E11B1986FCA60054FE35 /* MEDynamicTransition.m in Sources */,
 				9AAB08391978D9CE00FBE96D /* OSDateTimeUtils.m in Sources */,
 				B64B692B1975AE89009F7B05 /* OSRoom.m in Sources */,
@@ -755,6 +769,7 @@
 				B6354EDB197C807800CC720C /* OSRightPanelViewController.m in Sources */,
 				B6E16F33198D9BAC00346242 /* OSRoomViewController.m in Sources */,
 				B6A5E110198AD14900772EC8 /* OSSearchViewController.m in Sources */,
+				B6DFEEEB19903A1E00DE8BC8 /* OSRoomSettingViewController.m in Sources */,
 				B61592361981A3DF00D3AE9C /* OSToastUtils.m in Sources */,
 				B6A5E126198AEC8000772EC8 /* OSCreateChannelViewController.m in Sources */,
 				E7A7230A19772911000A8BCC /* OSDataManger.m in Sources */,

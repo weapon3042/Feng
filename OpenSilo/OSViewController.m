@@ -53,10 +53,21 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     [leftBtn setImage:[UIImage imageNamed:@"nav-left"] forState:UIControlStateNormal];
     [leftBtn setFrame:CGRectMake(10,7,30,30)];
     [leftBtn addTarget:self action:@selector(anchorRight) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [titleBtn setFrame:CGRectMake(50,7,80,30)];
+#warning title should be dynamic
+    [titleBtn setTitle:@"Welcome" forState:UIControlStateNormal];
+    [titleBtn addTarget:self action:@selector(onClickDropDown) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *dropBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [dropBtn setImage:[UIImage imageNamed:@"nav-drop"] forState:UIControlStateNormal];
+    [dropBtn setFrame:CGRectMake(140,10,20,30)];
+    [dropBtn addTarget:self action:@selector(anchorRight) forControlEvents:UIControlEventTouchUpInside];
 
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [searchBtn setImage:[UIImage imageNamed:@"nav-search"] forState:UIControlStateNormal];
-    [searchBtn setFrame:CGRectMake(220,7,30,30)];
+    [searchBtn setFrame:CGRectMake(240,7,30,30)];
     [searchBtn addTarget:self action:@selector(onClickSearch) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -65,6 +76,8 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     [rightBtn addTarget:self action:@selector(anchorLeft) forControlEvents:UIControlEventTouchUpInside];
     
     [navView addSubview:leftBtn];
+    [navView addSubview:titleBtn];
+    [navView addSubview:dropBtn];
     [navView addSubview:searchBtn];
     [navView addSubview:rightBtn];
     
@@ -196,9 +209,15 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 -(void) onClickSearch
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:kSearchTab];
-    UIStoryboard *entrance = [UIStoryboard storyboardWithName:@"Search" bundle:[NSBundle mainBundle]];
+    UIStoryboard *entrance = [UIStoryboard storyboardWithName:kSearchTab bundle:[NSBundle mainBundle]];
     OSSearchViewController *viewController = [entrance instantiateViewControllerWithIdentifier:@"OSSearchViewController"];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+-(void) onClickDropDown
+{
+    UIStoryboard *entrance = [UIStoryboard storyboardWithName:kChannelTab bundle:[NSBundle mainBundle]];
+    OSSearchViewController *viewController = [entrance instantiateViewControllerWithIdentifier:@"OSChannelSettingViewController"];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

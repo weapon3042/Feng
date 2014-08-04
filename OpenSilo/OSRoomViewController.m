@@ -44,7 +44,6 @@
         [[OSUserUtils getInstance] reloadAllUsers];
     });
     
-    
     [super viewWillAppear:animated];
     
     self.array = [[NSMutableArray alloc] init];
@@ -65,6 +64,7 @@
     } withCancelBlock:^(NSError* error) {
         NSLog(@"Authentication status was cancelled! %@", error);
     }];
+
 }
 
 - (void)viewDidLoad
@@ -83,6 +83,16 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self registerCustomCellsFromNibs];
+    
+    [self drawView];
+}
+
+-(void) drawView
+{
+    OSRoom *room = [OSSession getInstance].currentRoom;
+    _roomTitle.text = room.title;
+    _roomDescription.text = room.description;
+    _roomSnippet.text = room.snippet;
 }
 
 
