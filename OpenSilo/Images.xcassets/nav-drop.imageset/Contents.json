@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "BG.png"
+      "filename" : "nav-drop.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "BG-1.png"
+      "filename" : "nav-drop-1.png"
     }
   ],
   "info" : {
