@@ -31,6 +31,9 @@
 		9AAB08391978D9CE00FBE96D /* OSDateTimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAB08381978D9CE00FBE96D /* OSDateTimeUtils.m */; };
 		9AADA58D19799B07000F8DED /* OSGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AADA58C19799B07000F8DED /* OSGetRequest.m */; };
 		9AADA59019799B78000F8DED /* OSPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AADA58F19799B78000F8DED /* OSPostRequest.m */; };
+		9AB7AF4F19903B9D0008D9B8 /* OSForgotPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7AF4E19903B9D0008D9B8 /* OSForgotPassword.xib */; };
+		9AB7AF5219903CE70008D9B8 /* OSSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */; };
+		9AB7AF5419903D470008D9B8 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7AF5319903D470008D9B8 /* Setting.storyboard */; };
 		9ADD59D1197E35630090DBC4 /* OSConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD59D0197E35630090DBC4 /* OSConstant.m */; };
 		9AF10D9D19761BBC00474A2A /* OSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10D9C19761BBC00474A2A /* OSSession.m */; };
 		9AF10DA019761BD600474A2A /* OSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10D9F19761BD600474A2A /* OSUser.m */; };
@@ -129,6 +132,10 @@
 		9AADA58C19799B07000F8DED /* OSGetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSGetRequest.m; sourceTree = "<group>"; };
 		9AADA58E19799B78000F8DED /* OSPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSPostRequest.h; sourceTree = "<group>"; };
 		9AADA58F19799B78000F8DED /* OSPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSPostRequest.m; sourceTree = "<group>"; };
+		9AB7AF4E19903B9D0008D9B8 /* OSForgotPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSForgotPassword.xib; sourceTree = "<group>"; };
+		9AB7AF5019903CE70008D9B8 /* OSSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSettingViewController.h; sourceTree = "<group>"; };
+		9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSettingViewController.m; sourceTree = "<group>"; };
+		9AB7AF5319903D470008D9B8 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		9ADD59CF197E35630090DBC4 /* OSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSConstant.h; sourceTree = "<group>"; };
 		9ADD59D0197E35630090DBC4 /* OSConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSConstant.m; sourceTree = "<group>"; };
 		9AF10D9B19761BBC00474A2A /* OSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSession.h; sourceTree = "<group>"; };
@@ -359,6 +366,7 @@
 				9A6B60DD196D19710016D83B /* Main.storyboard */,
 				B64876ED19883BE800B42189 /* Entrance.storyboard */,
 				B6E16F25198C44FE00346242 /* Signup.storyboard */,
+				9AB7AF5319903D470008D9B8 /* Setting.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -366,6 +374,7 @@
 		9AF10DAF1976345C00474A2A /* Nib */ = {
 			isa = PBXGroup;
 			children = (
+				9AB7AF4E19903B9D0008D9B8 /* OSForgotPassword.xib */,
 				B6354EE1197EFAF500CC720C /* OSPeopleTableViewCell.h */,
 				B6354EE2197EFAF500CC720C /* OSPeopleTableViewCell.m */,
 				B6354EE3197EFAF500CC720C /* OSPeopleTableViewCell.xib */,
@@ -477,6 +486,8 @@
 				B6E16F2F198D9BA000346242 /* OSChannelViewController.m */,
 				B6E16F31198D9BAC00346242 /* OSRoomViewController.h */,
 				B6E16F32198D9BAC00346242 /* OSRoomViewController.m */,
+				9AB7AF5019903CE70008D9B8 /* OSSettingViewController.h */,
+				9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */,
 			);
 			name = left;
 			sourceTree = "<group>";
@@ -641,7 +652,9 @@
 			files = (
 				B6A5E11A198AE71700772EC8 /* InvitePeople.storyboard in Resources */,
 				B6354EE0197ED80D00CC720C /* OSTranscriptTableViewCell.xib in Resources */,
+				9AB7AF5419903D470008D9B8 /* Setting.storyboard in Resources */,
 				B6A5E123198AEC6E00772EC8 /* CreateChannel.storyboard in Resources */,
+				9AB7AF4F19903B9D0008D9B8 /* OSForgotPassword.xib in Resources */,
 				B6E16F2D198D9B6900346242 /* Room.storyboard in Resources */,
 				B6354EE5197EFAF500CC720C /* OSPeopleTableViewCell.xib in Resources */,
 				9A6B60E4196D19720016D83B /* Images.xcassets in Resources */,
@@ -715,6 +728,7 @@
 				9A6B60DC196D19710016D83B /* OSAppDelegate.m in Sources */,
 				9A6B60D8196D19710016D83B /* main.m in Sources */,
 				9AADA58D19799B07000F8DED /* OSGetRequest.m in Sources */,
+				9AB7AF5219903CE70008D9B8 /* OSSettingViewController.m in Sources */,
 				9A28E11E1986FCA60054FE35 /* MEZoomAnimationController.m in Sources */,
 				B64876EC19883BB000B42189 /* OSEntranceViewController.m in Sources */,
 				B6A5E10D198AC59C00772EC8 /* OSInvitePeopleViewController.m in Sources */,

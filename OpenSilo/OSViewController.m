@@ -20,6 +20,7 @@
 #import "OSUIMacro.h"
 #import "METransitions.h"
 #import "OSUserUtils.h"
+#import "OSSession.h"
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
@@ -171,6 +172,13 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
         [self.view addSubview:self.roomViewController.view];
         self.roomViewController.view.autoresizesSubviews = YES;
         
+    } else if([storyboardName isEqualToString:kSettingsTab]) {
+        UIStoryboard *settingStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
+        self.settingViewController = (OSSettingViewController *)[settingStoryboard instantiateInitialViewController];
+        [self addChildViewController: self.settingViewController];
+        [self.view addSubview:self.settingViewController.view];
+        self.settingViewController.view.autoresizesSubviews = YES;
+
     }
     
     

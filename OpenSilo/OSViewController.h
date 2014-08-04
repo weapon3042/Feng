@@ -17,6 +17,7 @@
 #import "OSInvitePeopleViewController.h"
 #import "OSChannelViewController.h"
 #import "OSRoomViewController.h"
+#import "OSSettingViewController.h"
 
 @interface OSViewController : UIViewController <ECSlidingViewControllerDelegate>
 
@@ -26,6 +27,6 @@
 @property (nonatomic, strong) OSInvitePeopleViewController * invitePeopleViewController;
 @property (nonatomic, strong) OSChannelViewController * channelViewController;
 @property (nonatomic, strong) OSRoomViewController * roomViewController;
-
+@property (nonatomic, strong) OSSettingViewController *settingViewController;
 
 @end
