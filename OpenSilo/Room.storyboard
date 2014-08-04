@@ -131,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="-340" y="26"/>
         </scene>
-        <!--Channel Setting View Controller-->
+        <!--Room Setting View Controller-->
         <scene sceneID="Sut-CR-Yka">
             <objects>
-                <viewController id="bW5-yx-vGh" customClass="OSChannelSettingViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="OSRoomSettingViewController" storyboardIdentifier="OSRoomSettingViewController" id="bW5-yx-vGh" customClass="OSRoomSettingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="221-yF-IxV"/>
                         <viewControllerLayoutGuide type="bottom" id="Z3x-Yf-Xs3"/>

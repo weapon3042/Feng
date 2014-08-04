@@ -494,13 +494,10 @@
 				B6DFEEE7199034C600DE8BC8 /* OSChannelSettingViewController.m */,
 				B6E16F31198D9BAC00346242 /* OSRoomViewController.h */,
 				B6E16F32198D9BAC00346242 /* OSRoomViewController.m */,
-<<<<<<< HEAD
 				9AB7AF5019903CE70008D9B8 /* OSSettingViewController.h */,
 				9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */,
-=======
 				B6DFEEE919903A1E00DE8BC8 /* OSRoomSettingViewController.h */,
 				B6DFEEEA19903A1E00DE8BC8 /* OSRoomSettingViewController.m */,
->>>>>>> 05e3471018ff8c2072d342ee3c8d263b2ff9e132
 			);
 			name = left;
 			sourceTree = "<group>";

@@ -3,7 +3,7 @@
 //  OpenSilo
 //
 //  Created by Peng Wan & Elmir Kouliev on 14-7-18.
-//  Copyright (c) 2014年 OpenSilo Inc. All rights reserved.
+//  Copyright (c) 2014 OpenSilo Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
