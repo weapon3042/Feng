@@ -1,21 +1,18 @@
 //
-//  OSAskQuestionViewController.m
+//  OSSendMessageViewController.m
 //  OpenSilo
 //
-//  Created by Peng Wan & Elmir Kouliev on 7/31/14.
+//  Created by Peng Wan & Elmir Kouliev on 8/5/14.
 //  Copyright (c) 2014 OpenSilo Co. All rights reserved.
 //
 
-#import "OSAskQuestionViewController.h"
-#import "OSUIMacro.h"
+#import "OSSendMessageViewController.h"
 
-@interface OSAskQuestionViewController ()
-
-@property (weak, nonatomic) IBOutlet UIButton *tagExperts;
+@interface OSSendMessageViewController ()
 
 @end
 
-@implementation OSAskQuestionViewController
+@implementation OSSendMessageViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,8 +27,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    SET_ROUNDED_CORNER(_tagExperts);
-    _tagExperts.backgroundColor = OS_BLUE_BUTTON;
 }
 
 - (void)didReceiveMemoryWarning

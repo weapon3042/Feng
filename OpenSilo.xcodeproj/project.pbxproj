@@ -54,6 +54,9 @@
 		B64876F119883F2400B42189 /* OSSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64876F019883F2400B42189 /* OSSignUpViewController.m */; };
 		B64B69281975AC17009F7B05 /* OSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B64B69271975AC17009F7B05 /* OSChannel.m */; };
 		B64B692B1975AE89009F7B05 /* OSRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = B64B692A1975AE89009F7B05 /* OSRoom.m */; };
+		B691721E199174FC00E9F63B /* OSInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B691721D199174FC00E9F63B /* OSInboxViewController.m */; };
+		B69172201991753500E9F63B /* Inbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B691721F1991753500E9F63B /* Inbox.storyboard */; };
+		B6917229199180A100E9F63B /* OSSendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6917228199180A100E9F63B /* OSSendMessageViewController.m */; };
 		B6A5E10D198AC59C00772EC8 /* OSInvitePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5E10C198AC59C00772EC8 /* OSInvitePeopleViewController.m */; };
 		B6A5E110198AD14900772EC8 /* OSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5E10F198AD14900772EC8 /* OSSearchViewController.m */; };
 		B6A5E112198AD16A00772EC8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A5E111198AD16A00772EC8 /* Search.storyboard */; };
@@ -175,6 +178,11 @@
 		B64B69271975AC17009F7B05 /* OSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSChannel.m; path = model/OSChannel.m; sourceTree = "<group>"; };
 		B64B69291975AE89009F7B05 /* OSRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSRoom.h; path = model/OSRoom.h; sourceTree = "<group>"; };
 		B64B692A1975AE89009F7B05 /* OSRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSRoom.m; path = model/OSRoom.m; sourceTree = "<group>"; };
+		B691721C199174FC00E9F63B /* OSInboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSInboxViewController.h; sourceTree = "<group>"; };
+		B691721D199174FC00E9F63B /* OSInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSInboxViewController.m; sourceTree = "<group>"; };
+		B691721F1991753500E9F63B /* Inbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inbox.storyboard; sourceTree = "<group>"; };
+		B6917227199180A100E9F63B /* OSSendMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSendMessageViewController.h; sourceTree = "<group>"; };
+		B6917228199180A100E9F63B /* OSSendMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSendMessageViewController.m; sourceTree = "<group>"; };
 		B6A5E10B198AC59C00772EC8 /* OSInvitePeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSInvitePeopleViewController.h; sourceTree = "<group>"; };
 		B6A5E10C198AC59C00772EC8 /* OSInvitePeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSInvitePeopleViewController.m; sourceTree = "<group>"; };
 		B6A5E10E198AD14900772EC8 /* OSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSearchViewController.h; sourceTree = "<group>"; };
@@ -477,6 +485,17 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		B69172261991807C00E9F63B /* inbox */ = {
+			isa = PBXGroup;
+			children = (
+				B691721C199174FC00E9F63B /* OSInboxViewController.h */,
+				B691721D199174FC00E9F63B /* OSInboxViewController.m */,
+				B6917227199180A100E9F63B /* OSSendMessageViewController.h */,
+				B6917228199180A100E9F63B /* OSSendMessageViewController.m */,
+			);
+			name = inbox;
+			sourceTree = "<group>";
+		};
 		B6A5E127198AEC8400772EC8 /* left */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +517,7 @@
 				9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */,
 				B6DFEEE919903A1E00DE8BC8 /* OSRoomSettingViewController.h */,
 				B6DFEEEA19903A1E00DE8BC8 /* OSRoomSettingViewController.m */,
+				B69172261991807C00E9F63B /* inbox */,
 			);
 			name = left;
 			sourceTree = "<group>";
@@ -540,6 +560,7 @@
 				B6A5E122198AEC6E00772EC8 /* CreateChannel.storyboard */,
 				B6E16F2A198D9B5E00346242 /* Channel.storyboard */,
 				B6E16F2C198D9B6900346242 /* Room.storyboard */,
+				B691721F1991753500E9F63B /* Inbox.storyboard */,
 			);
 			name = left;
 			sourceTree = "<group>";
@@ -671,6 +692,7 @@
 				B6354ED3197C804700CC720C /* rightPanel.storyboard in Resources */,
 				9A6B60D6196D19710016D83B /* InfoPlist.strings in Resources */,
 				B6A5E121198AEC1500772EC8 /* AskQuestion.storyboard in Resources */,
+				B69172201991753500E9F63B /* Inbox.storyboard in Resources */,
 				B64876EE19883BE800B42189 /* Entrance.storyboard in Resources */,
 				B6A5E11C198AEA9900772EC8 /* leftPanel.storyboard in Resources */,
 				E7DE37B3197AFA6D00BA623E /* Avenir.ttf in Resources */,
@@ -745,8 +767,10 @@
 				B6E16F30198D9BA000346242 /* OSChannelViewController.m in Sources */,
 				9AF10DA019761BD600474A2A /* OSUser.m in Sources */,
 				9A28E11D1986FCA60054FE35 /* METransitions.m in Sources */,
+				B6917229199180A100E9F63B /* OSSendMessageViewController.m in Sources */,
 				9A28E11C1986FCA60054FE35 /* MEFoldAnimationController.m in Sources */,
 				9AF10DAD19762A5E00474A2A /* OSTag.m in Sources */,
+				B691721E199174FC00E9F63B /* OSInboxViewController.m in Sources */,
 				B61592391981A4C200D3AE9C /* OSRequestUtils.m in Sources */,
 				B6354EDF197ED80D00CC720C /* OSTranscriptTableViewCell.m in Sources */,
 				9A6C7E231977859D0053AC76 /* OSLoginViewController.m in Sources */,

@@ -102,7 +102,7 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
 
 - (BOOL)tableView:(UITableView *)tableView canCollapseSection:(NSInteger)section
 {
-    if (section<4) return YES;
+    if (section<3) return YES;
     
     return NO;
 }
@@ -111,7 +111,7 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -121,19 +121,15 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
         {
             switch (section) {
                 case 0:
+                    return _favorites.count?_favorites.count:1;
+                    break;
+                    
+                case 2:
                     return _rooms.count?_rooms.count:1;
                     break;
                     
                 case 1:
                     return _channels.count?_channels.count:1;
-                    break;
-                    
-                case 2:
-                    return _favorites.count?_favorites.count:1;
-                    break;
-                    
-                case 3:
-                    return _inbox.count?_inbox.count:1;
                     break;
                     
                 default:
@@ -146,7 +142,7 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
     }
     
     // Return the number of rows in the section.
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -169,22 +165,17 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
         {
             switch (indexPath.section) {
                 case 0:
+                    cell.textLabel.text = @"Favorites"; // only top row showing
+                    break;
+                    
+                case 2:
                     cell.textLabel.text = @"Rooms"; // only top row showing
                     break;
                     
                 case 1:
                     cell.textLabel.text = @"Channels"; // only top row showing
                     break;
-                    
-                case 2:
-                    cell.textLabel.text = @"Favorites"; // only top row showing
-                    break;
-                
-                case 3:
-                    cell.textLabel.text = @"Inbox"; // only top row showing
-                    break;
 
-                    
                 default:
                     break;
             }
@@ -205,7 +196,7 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
             
             switch (indexPath.section) {
                 case 0:
-                    cell.textLabel.text = _rooms[indexPath.row][@"title"];
+                    cell.textLabel.text = _favorites[indexPath.row][@"title"];
                     break;
                     
                 case 1:
@@ -213,18 +204,14 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
                     break;
                     
                 case 2:
-                    cell.textLabel.text = _favorites[indexPath.row][@"title"];
-                    break;
-                
-                case 3:
-                    cell.textLabel.text = _inbox[indexPath.row][@"title"];
+                    cell.textLabel.text = _rooms[indexPath.row][@"title"];
                     break;
                     
                 default:
                     break;
             }
             
-           cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor whiteColor] type:DTCustomColoredAccessoryTypeRight];
+            cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor whiteColor] type:DTCustomColoredAccessoryTypeRight];
             cell.textLabel.textColor = [UIColor lightGrayColor];
             cell.textLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:14.0f];
         }
@@ -232,7 +219,7 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
     else
     {
         cell.accessoryView = nil;
-        cell.textLabel.text = _list[indexPath.row+4];
+        cell.textLabel.text = _list[indexPath.row+3];
         
     }
     return cell;
@@ -306,7 +293,29 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
         }
     }
     //click to update center view
-    if (indexPath.section == 0 && indexPath.row != 0) {
+    if (indexPath.section == 1 && indexPath.row != 0) {
+         [self.slidingViewController resetTopViewAnimated:YES];
+        [[OSSession getInstance] setCurrentSection:@"channel"];
+        NSDictionary *dict = [self.channels objectAtIndex:(NSInteger)indexPath.row];
+        if (dict) {
+            if (![OSSession getInstance].currentChannel) {
+                [[OSSession getInstance] setCurrentChannel: [[OSChannel alloc]init]];
+            }
+            [[OSSession getInstance].currentChannel setChannelId:dict[@"id"]];
+            [[OSSession getInstance].currentChannel setChannelName:dict[@"channel_name"]];
+            [[OSSession getInstance].currentChannel setOwnerId:dict[@"owner_user_id"]];
+            [[OSSession getInstance].currentChannel setStatus:dict[@"status"]];
+            [[OSSession getInstance].currentChannel setBoxFolderId:dict[@"box_folder_id"]];
+            [[OSSession getInstance].currentChannel setPrivacySetting:dict[@"privacy_setting"]];
+            [[OSSession getInstance].currentChannel setFireBaseId:dict[@"firebase_channel_name"]];
+            [[OSSession getInstance].currentChannel setFiles:dict[@"files"]];
+            [[OSSession getInstance].currentChannel setUsers:dict[@"users"]];
+        }
+        [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:kChannelTab];
+
+    }
+    
+    if (indexPath.section == 2 && indexPath.row != 0) {
         [self.slidingViewController resetTopViewAnimated:YES];
         [[OSSession getInstance] setCurrentSection:@"room"];
         NSDictionary *dict = [self.rooms objectAtIndex:(NSInteger)indexPath.row];
@@ -332,33 +341,10 @@ static NSString * const listCellExpandIdentifier = @"LeftPanelExpandableCell";
         }
         [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:kRoomTab];
     }
-    if (indexPath.section == 1 && indexPath.row != 0) {
-         [self.slidingViewController resetTopViewAnimated:YES];
-        [[OSSession getInstance] setCurrentSection:@"channel"];
-        NSDictionary *dict = [self.channels objectAtIndex:(NSInteger)indexPath.row];
-        if (dict) {
-            if (![OSSession getInstance].currentChannel) {
-                [[OSSession getInstance] setCurrentChannel: [[OSChannel alloc]init]];
-            }
-            [[OSSession getInstance].currentChannel setChannelId:dict[@"id"]];
-            [[OSSession getInstance].currentChannel setChannelName:dict[@"channel_name"]];
-            [[OSSession getInstance].currentChannel setOwnerId:dict[@"owner_user_id"]];
-            [[OSSession getInstance].currentChannel setStatus:dict[@"status"]];
-            [[OSSession getInstance].currentChannel setBoxFolderId:dict[@"box_folder_id"]];
-            [[OSSession getInstance].currentChannel setPrivacySetting:dict[@"privacy_setting"]];
-            [[OSSession getInstance].currentChannel setFireBaseId:dict[@"firebase_channel_name"]];
-            [[OSSession getInstance].currentChannel setFiles:dict[@"files"]];
-            [[OSSession getInstance].currentChannel setUsers:dict[@"users"]];
-        }
-        [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:kChannelTab];
-
-    }
     
-    else if(indexPath.section>3){
+    else if(indexPath.section>2){
         [self.slidingViewController resetTopViewAnimated:YES];
-        [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:_list[indexPath.row+4]];
-
-        
+        [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:_list[indexPath.row+3]];
     }
 
 }

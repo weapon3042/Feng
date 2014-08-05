@@ -185,7 +185,14 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
         [self.view addSubview:self.roomViewController.view];
         self.roomViewController.view.autoresizesSubviews = YES;
         
-    } else if([storyboardName isEqualToString:kSettingsTab]) {
+    }else if ([storyboardName isEqualToString:kInboxTab]){//display inbox view
+        UIStoryboard *inboxStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
+        self.inboxViewController = (OSInboxViewController *)[inboxStoryboard instantiateInitialViewController];
+        [self addChildViewController: self.inboxViewController];
+        [self.view addSubview:self.inboxViewController.view];
+        self.inboxViewController.view.autoresizesSubviews = YES;
+        
+    } else if([storyboardName isEqualToString:kSettingsTab]) {//display setting view
         UIStoryboard *settingStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
         self.settingViewController = (OSSettingViewController *)[settingStoryboard instantiateInitialViewController];
         [self addChildViewController: self.settingViewController];
