@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OSSignUpViewController : UIViewController
+@interface OSSignUpDetailsViewController : UIViewController
 
 
 @end

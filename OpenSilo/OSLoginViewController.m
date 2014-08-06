@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernamerTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *forgotPwdButton;
+
 
 @end
 
@@ -113,6 +115,11 @@
     
     }];
 
+}
+
+- (IBAction)onClickForgotPwd:(id)sender
+{
+    
 }
 
 - (void)didReceiveMemoryWarning

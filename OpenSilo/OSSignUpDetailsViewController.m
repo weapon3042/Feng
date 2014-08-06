@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 OpenSilo Co. All rights reserved.
 //
 
-#import "OSSignUpViewController.h"
+#import "OSSignUpDetailsViewController.h"
 #import "OSUIMacro.h"
 #import "OSSession.h"
 
-@interface OSSignUpViewController ()
+@interface OSSignUpDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *firstNameText;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameText;
 @property (weak, nonatomic) IBOutlet UITextField *emailText;
@@ -25,7 +25,7 @@
 @property BOOL checkbox;
 @end
 
-@implementation OSSignUpViewController
+@implementation OSSignUpDetailsViewController
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

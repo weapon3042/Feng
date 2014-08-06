@@ -7,6 +7,8 @@
 //
 
 NSString * const kUpdateCenterViewNotification = @"kUpdateCenterViewNotification";
+
+NSString * const kNotificationTab = @"Notification";
 NSString * const kChannelTab = @"Channel";
 NSString * const kRoomTab = @"Room";
 NSString * const kFavoritesTab = @"kFavoritesTab";
@@ -17,5 +19,4 @@ NSString * const kCreateChannelTab = @"CreateChannel";
 NSString * const kSettingsTab = @"Setting";
 
 NSString * const kInvitePeople = @"InvitePeople";
-
 

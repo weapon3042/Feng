@@ -7,6 +7,7 @@
 //
 
 extern NSString * const kUpdateCenterViewNotification;
+extern NSString * const kNotificationTab;
 extern NSString * const kChannelTab;
 extern NSString * const kRoomTab;
 extern NSString * const kFavoritesTab;

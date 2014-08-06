@@ -54,18 +54,24 @@
                                 <rect key="frame" x="60" y="100" width="200" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Forgot password?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egf-Mp-x63">
-                                <rect key="frame" x="30" y="265" width="140" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RR-u4-CBz">
+                                <rect key="frame" x="30" y="265" width="125" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Forgot password?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClickForgotPwd:" destination="Dpk-mZ-UL9" eventType="touchUpInside" id="aNL-wu-qdP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="KyL-J5-UhF"/>
                     <connections>
+                        <outlet property="forgotPwdButton" destination="1RR-u4-CBz" id="GkD-jq-pwI"/>
                         <outlet property="loginButton" destination="1Iv-Lr-F9a" id="1dr-92-BeL"/>
                         <outlet property="passwordTextfield" destination="GY5-Q2-Shz" id="oWr-0Z-EGe"/>
                         <outlet property="usernamerTextfield" destination="YaZ-Vn-MQl" id="7lD-5E-3Iv"/>

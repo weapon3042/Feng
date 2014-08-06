@@ -73,6 +73,13 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self fetchPeople];
     });
+    //hide pin when a room is selected
+    NSString *currentSection = [OSSession getInstance].currentSection;
+    if ([currentSection isEqualToString:@"room"]) {
+        [_segment removeAllSegments];
+        [_segment insertSegmentWithTitle:@"Team" atIndex:0 animated:NO];
+        [_segment insertSegmentWithTitle:@"Files" atIndex:1 animated:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning

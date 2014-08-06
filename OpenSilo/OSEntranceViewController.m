@@ -7,7 +7,8 @@
 //
 
 #import "OSEntranceViewController.h"
-#import "OSSignUpViewController.h"
+#import "OSSignUpEmailViewController.h"
+#import "OSLoginViewController.h"
 #import "OSUIMacro.h"
 #import "LIALinkedInHttpClient.h"
 #import "LIALinkedInApplication.h"
@@ -62,12 +63,12 @@
 
 - (IBAction)signUpWithEmail:(id)sender {
     UIStoryboard *entrance = [UIStoryboard storyboardWithName:@"Signup" bundle:[NSBundle mainBundle]];
-    OSSignUpViewController *viewController = [entrance instantiateViewControllerWithIdentifier:@"OSSignUpViewController"];
+    OSSignUpEmailViewController *viewController = [entrance instantiateViewControllerWithIdentifier:@"OSSignUpEmailViewController"];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 - (IBAction)login:(id)sender {
     UIStoryboard *entrance = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
-    OSSignUpViewController *viewController = [entrance instantiateViewControllerWithIdentifier:@"OSLoginViewController"];
+    OSLoginViewController *viewController = [entrance instantiateViewControllerWithIdentifier:@"OSLoginViewController"];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
@@ -91,7 +92,7 @@
     [self.client GET:[NSString stringWithFormat:@"https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email-address,pictureUrl,public-profile-url,positions)?oauth2_access_token=%@&format=json", accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
 //        NSLog(@"current user %@", result);
         UIStoryboard *entrance = [UIStoryboard storyboardWithName:@"Entrance" bundle:[NSBundle mainBundle]];
-        OSSignUpViewController *viewController = [entrance instantiateViewControllerWithIdentifier:@"OSSignUpViewController"];
+        OSSignUpEmailViewController *viewController = [entrance instantiateViewControllerWithIdentifier:@"OSSignUpEmailViewController"];
         [[OSSession getInstance] setUser:[[OSUser alloc]init]];
         [OSSession getInstance].user.firstName= result[@"firstName"];
         [OSSession getInstance].user.lastName = result[@"lastName"];
