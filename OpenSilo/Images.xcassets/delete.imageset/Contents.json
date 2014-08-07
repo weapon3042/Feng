@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "delete.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "picture9.png"
+      "filename" : "delete-1.png"
     }
   ],
   "info" : {

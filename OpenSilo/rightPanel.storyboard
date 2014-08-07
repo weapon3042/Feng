@@ -56,11 +56,6 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Upload file"/>
                                     </button>
-                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pin a note" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BnN-Xr-VkU" userLabel="txtPin">
-                                        <rect key="frame" x="20" y="72" width="220" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KNX-8g-fst" userLabel="tableView">
                                         <rect key="frame" x="20" y="118" width="220" height="450"/>
                                         <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="deviceRGB"/>
@@ -120,7 +115,6 @@
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="invitePeopleButton" destination="ZgJ-tH-CF8" id="eE5-HX-cxG"/>
-                        <outlet property="pinQuestionsText" destination="BnN-Xr-VkU" id="Qf6-85-qbC"/>
                         <outlet property="segment" destination="qkU-b0-RuB" id="hbm-g9-aJw"/>
                         <outlet property="tableView" destination="KNX-8g-fst" id="Umk-uL-O3y"/>
                         <outlet property="uploadFileButton" destination="sR9-Y3-BUD" id="Oq7-yO-owL"/>

@@ -501,27 +501,43 @@
 			name = inbox;
 			sourceTree = "<group>";
 		};
+		B691722F1994193200E9F63B /* channel */ = {
+			isa = PBXGroup;
+			children = (
+				B6E16F2E198D9BA000346242 /* OSChannelViewController.h */,
+				B6E16F2F198D9BA000346242 /* OSChannelViewController.m */,
+				B6DFEEE6199034C600DE8BC8 /* OSChannelSettingViewController.h */,
+				B6DFEEE7199034C600DE8BC8 /* OSChannelSettingViewController.m */,
+			);
+			name = channel;
+			sourceTree = "<group>";
+		};
+		B69172301994329300E9F63B /* room */ = {
+			isa = PBXGroup;
+			children = (
+				B6E16F31198D9BAC00346242 /* OSRoomViewController.h */,
+				B6E16F32198D9BAC00346242 /* OSRoomViewController.m */,
+				B6DFEEE919903A1E00DE8BC8 /* OSRoomSettingViewController.h */,
+				B6DFEEEA19903A1E00DE8BC8 /* OSRoomSettingViewController.m */,
+			);
+			name = room;
+			sourceTree = "<group>";
+		};
 		B6A5E127198AEC8400772EC8 /* left */ = {
 			isa = PBXGroup;
 			children = (
 				B6A5E115198AE65300772EC8 /* OSLeftPanelViewController.h */,
 				B6A5E116198AE65300772EC8 /* OSLeftPanelViewController.m */,
+				B691722F1994193200E9F63B /* channel */,
+				B69172301994329300E9F63B /* room */,
 				B6A5E10E198AD14900772EC8 /* OSSearchViewController.h */,
 				B6A5E10F198AD14900772EC8 /* OSSearchViewController.m */,
 				B6A5E11D198AEC0000772EC8 /* OSAskQuestionViewController.h */,
 				B6A5E11E198AEC0000772EC8 /* OSAskQuestionViewController.m */,
 				B6A5E124198AEC8000772EC8 /* OSCreateChannelViewController.h */,
 				B6A5E125198AEC8000772EC8 /* OSCreateChannelViewController.m */,
-				B6E16F2E198D9BA000346242 /* OSChannelViewController.h */,
-				B6E16F2F198D9BA000346242 /* OSChannelViewController.m */,
-				B6DFEEE6199034C600DE8BC8 /* OSChannelSettingViewController.h */,
-				B6DFEEE7199034C600DE8BC8 /* OSChannelSettingViewController.m */,
-				B6E16F31198D9BAC00346242 /* OSRoomViewController.h */,
-				B6E16F32198D9BAC00346242 /* OSRoomViewController.m */,
 				9AB7AF5019903CE70008D9B8 /* OSSettingViewController.h */,
 				9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */,
-				B6DFEEE919903A1E00DE8BC8 /* OSRoomSettingViewController.h */,
-				B6DFEEEA19903A1E00DE8BC8 /* OSRoomSettingViewController.m */,
 				B69172261991807C00E9F63B /* inbox */,
 			);
 			name = left;

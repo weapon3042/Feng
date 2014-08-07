@@ -21,6 +21,8 @@
 #import "METransitions.h"
 #import "OSUserUtils.h"
 #import "OSSession.h"
+#import "OSRoomSettingViewController.h"
+#import "OSChannelSettingViewController.h"
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
@@ -223,8 +225,14 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 -(void) onClickDropDown
 {
-    UIStoryboard *entrance = [UIStoryboard storyboardWithName:kChannelTab bundle:[NSBundle mainBundle]];
-    OSSearchViewController *viewController = [entrance instantiateViewControllerWithIdentifier:@"OSChannelSettingViewController"];
+    /*
+    UIStoryboard *channelSetting = [UIStoryboard storyboardWithName:kChannelTab bundle:[NSBundle mainBundle]];
+    OSChannelSettingViewController *viewController = [channelSetting instantiateViewControllerWithIdentifier:@"OSChannelSettingViewController"];
+    [self.navigationController pushViewController:viewController animated:YES];
+    */
+    
+    UIStoryboard *roomSetting = [UIStoryboard storyboardWithName:kRoomTab bundle:[NSBundle mainBundle]];
+    OSRoomSettingViewController *viewController = [roomSetting instantiateViewControllerWithIdentifier:@"OSRoomSettingViewController"];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

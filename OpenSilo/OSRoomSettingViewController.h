@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OSRoomSettingViewController : UIViewController
+@interface OSRoomSettingViewController : UIViewController<UIScrollViewDelegate>
 
 @end

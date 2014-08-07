@@ -7,8 +7,17 @@
 //
 
 #import "OSRoomSettingViewController.h"
+#import "OSRoom.h"
+#import "OSSession.h"
+#import "OSUIMacro.h"
 
 @interface OSRoomSettingViewController ()
+
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UITextView *titleTextView;
+@property (nonatomic, weak) IBOutlet UITextView *descriptionTextView;
+@property (nonatomic, weak) IBOutlet UITextView *snippetTextView;
+@property (nonatomic, weak) IBOutlet UIView *tagsView;
 
 @end
 
@@ -27,6 +36,29 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self drawView];
+}
+
+- (void) drawView
+{
+    OSRoom *room = [OSSession getInstance].currentRoom;
+    _titleTextView.text = room.title;
+    _descriptionTextView.text = room.description;
+    _snippetTextView.text = room.snippet;
+    NSUInteger index = 0;
+    for (NSString *tag in room.tags) {
+        UIButton *tagButton = [[UIButton alloc]init];
+        [tagButton setFrame:CGRectMake(60 * index + 10, 0, 60, 34)];
+        tagButton.backgroundColor = OS_BLUE_BUTTON;
+        [tagButton setTitle:tag forState:UIControlStateNormal];
+        [tagButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_tagsView addSubview:tagButton];
+        index ++;
+    }
+    
+    
+    [_scrollView setContentSize:CGSizeMake(320,800)];
+    
 }
 
 - (void)didReceiveMemoryWarning
