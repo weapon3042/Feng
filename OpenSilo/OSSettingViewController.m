@@ -9,6 +9,7 @@
 #import "OSSettingViewController.h"
 
 @interface OSSettingViewController ()
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -27,6 +28,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.scrollView setContentSize:CGSizeMake(320.0, 800)];
+    self.scrollView.scrollEnabled = YES;
 }
 
 - (void)didReceiveMemoryWarning

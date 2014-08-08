@@ -25,7 +25,7 @@
     return manager;
 }
 
-+(NSMutableURLRequest *)contructHttpRequestWithURL:(NSString *)url andType:(NSString *)methodType andParameters:(NSDictionary *)params
++(NSMutableURLRequest *)contructHttpRequestWithURL:(NSString *)url andType:(NSString *)methodType andParameters:(NSDictionary *)params andsetAuthHeader:(BOOL)setAuthHeader
 
 {
     

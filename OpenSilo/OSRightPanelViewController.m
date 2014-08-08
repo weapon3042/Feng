@@ -17,6 +17,7 @@
 #import "OSSession.h"
 #import "OSChannel.h"
 #import "OSWebServiceMacro.h"
+#import "OSInviteViewController.h"
 #import "OSInvitePeopleViewController.h"
 #import "OSConstant.h"
 #import <Firebase/Firebase.h>
@@ -80,6 +81,13 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
         [_segment insertSegmentWithTitle:@"Team" atIndex:0 animated:NO];
         [_segment insertSegmentWithTitle:@"Files" atIndex:1 animated:NO];
     }
+    if ([currentSection isEqualToString:@"channel"]) {
+        [_segment removeAllSegments];
+        [_segment insertSegmentWithTitle:@"People" atIndex:0 animated:NO];
+        [_segment insertSegmentWithTitle:@"Files" atIndex:1 animated:NO];
+        [_segment insertSegmentWithTitle:@"Pinned" atIndex:2 animated:NO];
+    }
+    [_segment setSelectedSegmentIndex:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -230,21 +238,25 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 #pragma mark Fetch People List from server
 
 -(void)fetchPeople{
-    NSString *currentChannelId = DEFAULT_CHANNEL_ID;
-    OSGetRequest *request = [[OSGetRequest alloc]init];
-    if ( [OSSession getInstance].currentChannel.channelId) {
-        currentChannelId = [OSSession getInstance].currentChannel.channelId;
-    }
-    [request getApiRequest:[NSString stringWithFormat:@"api/channels/%@/users",currentChannelId] params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
-        if (!error) {
-            NSDictionary *response =  [NSDictionary dictionaryWithDictionary:responseObject];
-            //NSLog(@"json:%@",json);
-            self.peopleArray = [response objectForKey:@"result"];
-            self.selectedArray = self.peopleArray[0];
-            //reload data
-            [self.tableView reloadData];
+    if ([[OSSession getInstance].currentSection isEqualToString:@"room"]) {
+        
+    }else{
+        NSString *currentChannelId = DEFAULT_CHANNEL_ID;
+        OSGetRequest *request = [[OSGetRequest alloc]init];
+        if ( [OSSession getInstance].currentChannel.channelId) {
+            currentChannelId = [OSSession getInstance].currentChannel.channelId;
         }
-    }];
+        [request getApiRequest:[NSString stringWithFormat:@"api/channels/%@/users",currentChannelId] params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+            if (!error) {
+                NSDictionary *response =  [NSDictionary dictionaryWithDictionary:responseObject];
+                //NSLog(@"json:%@",json);
+                self.peopleArray = [response objectForKey:@"result"];
+                self.selectedArray = self.peopleArray[0];
+                //reload data
+                [self.tableView reloadData];
+            }
+        }];
+    }
 }
 
 - (IBAction)onClickInvite:(id)sender
@@ -263,12 +275,18 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 #pragma mark Fetch Files from server
 
 -(void)fetchFiles{
-    
-    OSChannel *channel = [OSSession getInstance].currentChannel;
-    if (channel) {
-        self.fileArray = [channel.files mutableCopy];
-        self.selectedArray = self.fileArray;
+    if ([[OSSession getInstance].currentSection isEqualToString:@"room"]) {
+        OSRoom *room = [OSSession getInstance].currentRoom;
+        if (room) {
+            self.fileArray = room.files;
+        }
+    }else{
+        OSChannel *channel = [OSSession getInstance].currentChannel;
+        if (channel) {
+            self.fileArray = [channel.files mutableCopy];
+        }
     }
+    self.selectedArray = self.fileArray;
     [self.tableView reloadData];
 }
 

@@ -17,6 +17,7 @@
 {
     
     OSDataManger *urlSession = [OSDataManger sharedManager];
+    
     [urlSession setRequestSerializer:[AFJSONRequestSerializer new]];
     
     if(setAuthHeader)

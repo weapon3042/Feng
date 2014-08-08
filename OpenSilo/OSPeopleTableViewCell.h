@@ -15,5 +15,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *status;
 @property (nonatomic, weak) IBOutlet UILabel *jobTitle;
 @property (nonatomic, weak) IBOutlet UILabel *fullName;
-
+@property (nonatomic, strong) NSString *userEmail;
+@property (nonatomic, strong) NSString *userId;
 @end

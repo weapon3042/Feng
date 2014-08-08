@@ -16,5 +16,5 @@ extern NSString * const kSearchTab;
 extern NSString * const kAskQuestionTab;
 extern NSString * const kCreateChannelTab;
 extern NSString * const kSettingsTab;
-
+extern NSString * const kInviteTab;
 extern NSString * const kInvitePeople;

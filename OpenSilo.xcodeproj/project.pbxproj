@@ -33,7 +33,6 @@
 		9AADA59019799B78000F8DED /* OSPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AADA58F19799B78000F8DED /* OSPostRequest.m */; };
 		9AB7AF4F19903B9D0008D9B8 /* OSForgotPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7AF4E19903B9D0008D9B8 /* OSForgotPassword.xib */; };
 		9AB7AF5219903CE70008D9B8 /* OSSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */; };
-		9AB7AF5419903D470008D9B8 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7AF5319903D470008D9B8 /* Setting.storyboard */; };
 		9ADD59D1197E35630090DBC4 /* OSConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD59D0197E35630090DBC4 /* OSConstant.m */; };
 		9AF10D9D19761BBC00474A2A /* OSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10D9C19761BBC00474A2A /* OSSession.m */; };
 		9AF10DA019761BD600474A2A /* OSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10D9F19761BD600474A2A /* OSUser.m */; };
@@ -51,14 +50,10 @@
 		B6354EE5197EFAF500CC720C /* OSPeopleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6354EE3197EFAF500CC720C /* OSPeopleTableViewCell.xib */; };
 		B64876EC19883BB000B42189 /* OSEntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64876EB19883BB000B42189 /* OSEntranceViewController.m */; };
 		B64876EE19883BE800B42189 /* Entrance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B64876ED19883BE800B42189 /* Entrance.storyboard */; };
-		B64876F119883F2400B42189 /* OSSignUpDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64876F019883F2400B42189 /* OSSignUpDetailsViewController.m */; };
+		B64876F119883F2400B42189 /* OSSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64876F019883F2400B42189 /* OSSignUpViewController.m */; };
 		B64B69281975AC17009F7B05 /* OSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B64B69271975AC17009F7B05 /* OSChannel.m */; };
 		B64B692B1975AE89009F7B05 /* OSRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = B64B692A1975AE89009F7B05 /* OSRoom.m */; };
-		B691721E199174FC00E9F63B /* OSInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B691721D199174FC00E9F63B /* OSInboxViewController.m */; };
-		B69172201991753500E9F63B /* Inbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B691721F1991753500E9F63B /* Inbox.storyboard */; };
-		B6917229199180A100E9F63B /* OSSendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6917228199180A100E9F63B /* OSSendMessageViewController.m */; };
-		B691722C1992CC4C00E9F63B /* OSSignUpEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B691722B1992CC4C00E9F63B /* OSSignUpEmailViewController.m */; };
-		B6A5E10D198AC59C00772EC8 /* OSInvitePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5E10C198AC59C00772EC8 /* OSInvitePeopleViewController.m */; };
+		B6A5E10D198AC59C00772EC8 /* OSInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5E10C198AC59C00772EC8 /* OSInviteViewController.m */; };
 		B6A5E110198AD14900772EC8 /* OSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5E10F198AD14900772EC8 /* OSSearchViewController.m */; };
 		B6A5E112198AD16A00772EC8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A5E111198AD16A00772EC8 /* Search.storyboard */; };
 		B6A5E117198AE65300772EC8 /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5E114198AE65300772EC8 /* DTCustomColoredAccessory.m */; };
@@ -79,6 +74,7 @@
 		B6E16F33198D9BAC00346242 /* OSRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E16F32198D9BAC00346242 /* OSRoomViewController.m */; };
 		D351182AA7EE403B88B60017 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E4F483B40D4402BEB0FB55 /* libPods.a */; };
 		E7A7230A19772911000A8BCC /* OSDataManger.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A7230919772911000A8BCC /* OSDataManger.m */; };
+		E7D5434C19912CBA002F0660 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7D5434B19912CBA002F0660 /* Settings.storyboard */; };
 		E7DE37B3197AFA6D00BA623E /* Avenir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7DE37B2197AFA6D00BA623E /* Avenir.ttf */; };
 		E7EBC919197B758000CF5C48 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EBC918197B758000CF5C48 /* libicucore.dylib */; };
 		E7EBC91B197B758D00CF5C48 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EBC91A197B758D00CF5C48 /* CFNetwork.framework */; };
@@ -141,7 +137,6 @@
 		9AB7AF4E19903B9D0008D9B8 /* OSForgotPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSForgotPassword.xib; sourceTree = "<group>"; };
 		9AB7AF5019903CE70008D9B8 /* OSSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSettingViewController.h; sourceTree = "<group>"; };
 		9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSettingViewController.m; sourceTree = "<group>"; };
-		9AB7AF5319903D470008D9B8 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		9ADD59CF197E35630090DBC4 /* OSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSConstant.h; sourceTree = "<group>"; };
 		9ADD59D0197E35630090DBC4 /* OSConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSConstant.m; sourceTree = "<group>"; };
 		9AF10D9B19761BBC00474A2A /* OSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSession.h; sourceTree = "<group>"; };
@@ -173,21 +168,14 @@
 		B64876EA19883BB000B42189 /* OSEntranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEntranceViewController.h; sourceTree = "<group>"; };
 		B64876EB19883BB000B42189 /* OSEntranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEntranceViewController.m; sourceTree = "<group>"; };
 		B64876ED19883BE800B42189 /* Entrance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Entrance.storyboard; sourceTree = "<group>"; };
-		B64876EF19883F2400B42189 /* OSSignUpDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSignUpDetailsViewController.h; sourceTree = "<group>"; };
-		B64876F019883F2400B42189 /* OSSignUpDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSignUpDetailsViewController.m; sourceTree = "<group>"; };
+		B64876EF19883F2400B42189 /* OSSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSignUpViewController.h; sourceTree = "<group>"; };
+		B64876F019883F2400B42189 /* OSSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSignUpViewController.m; sourceTree = "<group>"; };
 		B64B69261975AC17009F7B05 /* OSChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSChannel.h; path = model/OSChannel.h; sourceTree = "<group>"; };
 		B64B69271975AC17009F7B05 /* OSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSChannel.m; path = model/OSChannel.m; sourceTree = "<group>"; };
 		B64B69291975AE89009F7B05 /* OSRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSRoom.h; path = model/OSRoom.h; sourceTree = "<group>"; };
 		B64B692A1975AE89009F7B05 /* OSRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSRoom.m; path = model/OSRoom.m; sourceTree = "<group>"; };
-		B691721C199174FC00E9F63B /* OSInboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSInboxViewController.h; sourceTree = "<group>"; };
-		B691721D199174FC00E9F63B /* OSInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSInboxViewController.m; sourceTree = "<group>"; };
-		B691721F1991753500E9F63B /* Inbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inbox.storyboard; sourceTree = "<group>"; };
-		B6917227199180A100E9F63B /* OSSendMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSendMessageViewController.h; sourceTree = "<group>"; };
-		B6917228199180A100E9F63B /* OSSendMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSendMessageViewController.m; sourceTree = "<group>"; };
-		B691722A1992CC4C00E9F63B /* OSSignUpEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSignUpEmailViewController.h; sourceTree = "<group>"; };
-		B691722B1992CC4C00E9F63B /* OSSignUpEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSignUpEmailViewController.m; sourceTree = "<group>"; };
-		B6A5E10B198AC59C00772EC8 /* OSInvitePeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSInvitePeopleViewController.h; sourceTree = "<group>"; };
-		B6A5E10C198AC59C00772EC8 /* OSInvitePeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSInvitePeopleViewController.m; sourceTree = "<group>"; };
+		B6A5E10B198AC59C00772EC8 /* OSInviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSInviteViewController.h; sourceTree = "<group>"; };
+		B6A5E10C198AC59C00772EC8 /* OSInviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSInviteViewController.m; sourceTree = "<group>"; };
 		B6A5E10E198AD14900772EC8 /* OSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSearchViewController.h; sourceTree = "<group>"; };
 		B6A5E10F198AD14900772EC8 /* OSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSearchViewController.m; sourceTree = "<group>"; };
 		B6A5E111198AD16A00772EC8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -219,6 +207,7 @@
 		E5E4F483B40D4402BEB0FB55 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A7230819772911000A8BCC /* OSDataManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDataManger.h; sourceTree = "<group>"; };
 		E7A7230919772911000A8BCC /* OSDataManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDataManger.m; sourceTree = "<group>"; };
+		E7D5434B19912CBA002F0660 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		E7DE37B2197AFA6D00BA623E /* Avenir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttf; sourceTree = "<group>"; };
 		E7EBC918197B758000CF5C48 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		E7EBC91A197B758D00CF5C48 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -378,12 +367,13 @@
 		9AF10DAE1976344B00474A2A /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B6A5E129198AECDC00772EC8 /* Sides */,
+				9A6B60DD196D19710016D83B /* Main.storyboard */,
 				9A6C7E24197785A70053AC76 /* Login.storyboard */,
 				B64876ED19883BE800B42189 /* Entrance.storyboard */,
 				B6E16F25198C44FE00346242 /* Signup.storyboard */,
-				9A6B60DD196D19710016D83B /* Main.storyboard */,
-				9AB7AF5319903D470008D9B8 /* Setting.storyboard */,
+				B6A5E11B198AEA9900772EC8 /* leftPanel.storyboard */,
+				B6354ED2197C804700CC720C /* rightPanel.storyboard */,
+				B6A5E129198AECDC00772EC8 /* Sides */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -426,10 +416,8 @@
 			children = (
 				B64876EA19883BB000B42189 /* OSEntranceViewController.h */,
 				B64876EB19883BB000B42189 /* OSEntranceViewController.m */,
-				B691722A1992CC4C00E9F63B /* OSSignUpEmailViewController.h */,
-				B691722B1992CC4C00E9F63B /* OSSignUpEmailViewController.m */,
-				B64876EF19883F2400B42189 /* OSSignUpDetailsViewController.h */,
-				B64876F019883F2400B42189 /* OSSignUpDetailsViewController.m */,
+				B64876EF19883F2400B42189 /* OSSignUpViewController.h */,
+				B64876F019883F2400B42189 /* OSSignUpViewController.m */,
 			);
 			name = Entrance;
 			sourceTree = "<group>";
@@ -467,10 +455,14 @@
 		B64B692D1975D37B009F7B05 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E7C0CCCC197F54070026B604 /* Main View Controller */,
 				B64876E41988376A00B42189 /* Entrance */,
 				E7C0CCCE197F54240026B604 /* Login */,
-				E7C0CCCC197F54070026B604 /* Main View Controller */,
+				E783036119915C2A001C098F /* Room */,
+				E783036019915C0E001C098F /* Channel */,
 				E7C0CCCD197F54150026B604 /* Side Views */,
+				E783036319915C83001C098F /* Search & Invite */,
+				E783036219915C6C001C098F /* Settings */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -490,100 +482,64 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		B69172261991807C00E9F63B /* inbox */ = {
-			isa = PBXGroup;
-			children = (
-				B691721C199174FC00E9F63B /* OSInboxViewController.h */,
-				B691721D199174FC00E9F63B /* OSInboxViewController.m */,
-				B6917227199180A100E9F63B /* OSSendMessageViewController.h */,
-				B6917228199180A100E9F63B /* OSSendMessageViewController.m */,
-			);
-			name = inbox;
-			sourceTree = "<group>";
-		};
-		B691722F1994193200E9F63B /* channel */ = {
-			isa = PBXGroup;
-			children = (
-				B6E16F2E198D9BA000346242 /* OSChannelViewController.h */,
-				B6E16F2F198D9BA000346242 /* OSChannelViewController.m */,
-				B6DFEEE6199034C600DE8BC8 /* OSChannelSettingViewController.h */,
-				B6DFEEE7199034C600DE8BC8 /* OSChannelSettingViewController.m */,
-			);
-			name = channel;
-			sourceTree = "<group>";
-		};
-		B69172301994329300E9F63B /* room */ = {
-			isa = PBXGroup;
-			children = (
-				B6E16F31198D9BAC00346242 /* OSRoomViewController.h */,
-				B6E16F32198D9BAC00346242 /* OSRoomViewController.m */,
-				B6DFEEE919903A1E00DE8BC8 /* OSRoomSettingViewController.h */,
-				B6DFEEEA19903A1E00DE8BC8 /* OSRoomSettingViewController.m */,
-			);
-			name = room;
-			sourceTree = "<group>";
-		};
-		B6A5E127198AEC8400772EC8 /* left */ = {
-			isa = PBXGroup;
-			children = (
-				B6A5E115198AE65300772EC8 /* OSLeftPanelViewController.h */,
-				B6A5E116198AE65300772EC8 /* OSLeftPanelViewController.m */,
-				B691722F1994193200E9F63B /* channel */,
-				B69172301994329300E9F63B /* room */,
-				B6A5E10E198AD14900772EC8 /* OSSearchViewController.h */,
-				B6A5E10F198AD14900772EC8 /* OSSearchViewController.m */,
-				B6A5E11D198AEC0000772EC8 /* OSAskQuestionViewController.h */,
-				B6A5E11E198AEC0000772EC8 /* OSAskQuestionViewController.m */,
-				B6A5E124198AEC8000772EC8 /* OSCreateChannelViewController.h */,
-				B6A5E125198AEC8000772EC8 /* OSCreateChannelViewController.m */,
-				9AB7AF5019903CE70008D9B8 /* OSSettingViewController.h */,
-				9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */,
-				B69172261991807C00E9F63B /* inbox */,
-			);
-			name = left;
-			sourceTree = "<group>";
-		};
-		B6A5E128198AEC8A00772EC8 /* right */ = {
-			isa = PBXGroup;
-			children = (
-				B6354ED9197C807800CC720C /* OSRightPanelViewController.h */,
-				B6354EDA197C807800CC720C /* OSRightPanelViewController.m */,
-				B6A5E10B198AC59C00772EC8 /* OSInvitePeopleViewController.h */,
-				B6A5E10C198AC59C00772EC8 /* OSInvitePeopleViewController.m */,
-			);
-			name = right;
-			sourceTree = "<group>";
-		};
 		B6A5E129198AECDC00772EC8 /* Sides */ = {
 			isa = PBXGroup;
 			children = (
-				B6A5E12B198AECF100772EC8 /* left */,
-				B6A5E12A198AECEB00772EC8 /* right */,
-			);
-			name = Sides;
-			sourceTree = "<group>";
-		};
-		B6A5E12A198AECEB00772EC8 /* right */ = {
-			isa = PBXGroup;
-			children = (
-				B6354ED2197C804700CC720C /* rightPanel.storyboard */,
-				B6A5E119198AE71700772EC8 /* InvitePeople.storyboard */,
-			);
-			name = right;
-			sourceTree = "<group>";
-		};
-		B6A5E12B198AECF100772EC8 /* left */ = {
-			isa = PBXGroup;
-			children = (
-				B6A5E11B198AEA9900772EC8 /* leftPanel.storyboard */,
 				B6A5E111198AD16A00772EC8 /* Search.storyboard */,
 				B6A5E120198AEC1500772EC8 /* AskQuestion.storyboard */,
 				B6A5E122198AEC6E00772EC8 /* CreateChannel.storyboard */,
 				B6E16F2A198D9B5E00346242 /* Channel.storyboard */,
 				B6E16F2C198D9B6900346242 /* Room.storyboard */,
-				B691721F1991753500E9F63B /* Inbox.storyboard */,
+				E7D5434B19912CBA002F0660 /* Settings.storyboard */,
+				B6A5E119198AE71700772EC8 /* InvitePeople.storyboard */,
 			);
-			name = left;
+			name = Sides;
+			sourceTree = "<group>";
+		};
+		E783036019915C0E001C098F /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				B6A5E124198AEC8000772EC8 /* OSCreateChannelViewController.h */,
+				B6A5E125198AEC8000772EC8 /* OSCreateChannelViewController.m */,
+				B6E16F2E198D9BA000346242 /* OSChannelViewController.h */,
+				B6E16F2F198D9BA000346242 /* OSChannelViewController.m */,
+				B6DFEEE6199034C600DE8BC8 /* OSChannelSettingViewController.h */,
+				B6DFEEE7199034C600DE8BC8 /* OSChannelSettingViewController.m */,
+			);
+			name = Channel;
+			sourceTree = "<group>";
+		};
+		E783036119915C2A001C098F /* Room */ = {
+			isa = PBXGroup;
+			children = (
+				B6A5E11D198AEC0000772EC8 /* OSAskQuestionViewController.h */,
+				B6A5E11E198AEC0000772EC8 /* OSAskQuestionViewController.m */,
+				B6E16F31198D9BAC00346242 /* OSRoomViewController.h */,
+				B6E16F32198D9BAC00346242 /* OSRoomViewController.m */,
+				B6DFEEE919903A1E00DE8BC8 /* OSRoomSettingViewController.h */,
+				B6DFEEEA19903A1E00DE8BC8 /* OSRoomSettingViewController.m */,
+			);
+			name = Room;
+			sourceTree = "<group>";
+		};
+		E783036219915C6C001C098F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9AB7AF5019903CE70008D9B8 /* OSSettingViewController.h */,
+				9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		E783036319915C83001C098F /* Search & Invite */ = {
+			isa = PBXGroup;
+			children = (
+				B6A5E10E198AD14900772EC8 /* OSSearchViewController.h */,
+				B6A5E10F198AD14900772EC8 /* OSSearchViewController.m */,
+				B6A5E10B198AC59C00772EC8 /* OSInviteViewController.h */,
+				B6A5E10C198AC59C00772EC8 /* OSInviteViewController.m */,
+			);
+			name = "Search & Invite";
 			sourceTree = "<group>";
 		};
 		E7C0CCCC197F54070026B604 /* Main View Controller */ = {
@@ -598,8 +554,10 @@
 		E7C0CCCD197F54150026B604 /* Side Views */ = {
 			isa = PBXGroup;
 			children = (
-				B6A5E127198AEC8400772EC8 /* left */,
-				B6A5E128198AEC8A00772EC8 /* right */,
+				B6A5E115198AE65300772EC8 /* OSLeftPanelViewController.h */,
+				B6A5E116198AE65300772EC8 /* OSLeftPanelViewController.m */,
+				B6354ED9197C807800CC720C /* OSRightPanelViewController.h */,
+				B6354EDA197C807800CC720C /* OSRightPanelViewController.m */,
 				B6A5E113198AE65300772EC8 /* DTCustomColoredAccessory.h */,
 				B6A5E114198AE65300772EC8 /* DTCustomColoredAccessory.m */,
 			);
@@ -704,16 +662,15 @@
 			files = (
 				B6A5E11A198AE71700772EC8 /* InvitePeople.storyboard in Resources */,
 				B6354EE0197ED80D00CC720C /* OSTranscriptTableViewCell.xib in Resources */,
-				9AB7AF5419903D470008D9B8 /* Setting.storyboard in Resources */,
 				B6A5E123198AEC6E00772EC8 /* CreateChannel.storyboard in Resources */,
 				9AB7AF4F19903B9D0008D9B8 /* OSForgotPassword.xib in Resources */,
 				B6E16F2D198D9B6900346242 /* Room.storyboard in Resources */,
+				E7D5434C19912CBA002F0660 /* Settings.storyboard in Resources */,
 				B6354EE5197EFAF500CC720C /* OSPeopleTableViewCell.xib in Resources */,
 				9A6B60E4196D19720016D83B /* Images.xcassets in Resources */,
 				B6354ED3197C804700CC720C /* rightPanel.storyboard in Resources */,
 				9A6B60D6196D19710016D83B /* InfoPlist.strings in Resources */,
 				B6A5E121198AEC1500772EC8 /* AskQuestion.storyboard in Resources */,
-				B69172201991753500E9F63B /* Inbox.storyboard in Resources */,
 				B64876EE19883BE800B42189 /* Entrance.storyboard in Resources */,
 				B6A5E11C198AEA9900772EC8 /* leftPanel.storyboard in Resources */,
 				E7DE37B3197AFA6D00BA623E /* Avenir.ttf in Resources */,
@@ -775,24 +732,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				B64B69281975AC17009F7B05 /* OSChannel.m in Sources */,
-				B64876F119883F2400B42189 /* OSSignUpDetailsViewController.m in Sources */,
+				B64876F119883F2400B42189 /* OSSignUpViewController.m in Sources */,
 				B6A5E11F198AEC0000772EC8 /* OSAskQuestionViewController.m in Sources */,
 				9AF10DA91976230A00474A2A /* OSChilli.m in Sources */,
 				9A6B60DC196D19710016D83B /* OSAppDelegate.m in Sources */,
-				B691722C1992CC4C00E9F63B /* OSSignUpEmailViewController.m in Sources */,
 				9A6B60D8196D19710016D83B /* main.m in Sources */,
 				9AADA58D19799B07000F8DED /* OSGetRequest.m in Sources */,
 				9AB7AF5219903CE70008D9B8 /* OSSettingViewController.m in Sources */,
 				9A28E11E1986FCA60054FE35 /* MEZoomAnimationController.m in Sources */,
 				B64876EC19883BB000B42189 /* OSEntranceViewController.m in Sources */,
-				B6A5E10D198AC59C00772EC8 /* OSInvitePeopleViewController.m in Sources */,
+				B6A5E10D198AC59C00772EC8 /* OSInviteViewController.m in Sources */,
 				B6E16F30198D9BA000346242 /* OSChannelViewController.m in Sources */,
 				9AF10DA019761BD600474A2A /* OSUser.m in Sources */,
 				9A28E11D1986FCA60054FE35 /* METransitions.m in Sources */,
-				B6917229199180A100E9F63B /* OSSendMessageViewController.m in Sources */,
 				9A28E11C1986FCA60054FE35 /* MEFoldAnimationController.m in Sources */,
 				9AF10DAD19762A5E00474A2A /* OSTag.m in Sources */,
-				B691721E199174FC00E9F63B /* OSInboxViewController.m in Sources */,
 				B61592391981A4C200D3AE9C /* OSRequestUtils.m in Sources */,
 				B6354EDF197ED80D00CC720C /* OSTranscriptTableViewCell.m in Sources */,
 				9A6C7E231977859D0053AC76 /* OSLoginViewController.m in Sources */,

@@ -14,7 +14,7 @@
 #import "OSSearchViewController.h"
 #import "OSAskQuestionViewController.h"
 #import "OSCreateChannelViewController.h"
-#import "OSInvitePeopleViewController.h"
+#import "OSInviteViewController.h"
 #import "OSChannelViewController.h"
 #import "OSRoomViewController.h"
 #import "OSSettingViewController.h"
@@ -25,7 +25,7 @@
 @property (nonatomic, strong) OSSearchViewController * searchViewController;
 @property (nonatomic, strong) OSAskQuestionViewController * askQuestioinViewController;
 @property (nonatomic, strong) OSCreateChannelViewController * createChannelViewController;
-@property (nonatomic, strong) OSInvitePeopleViewController * invitePeopleViewController;
+@property (nonatomic, strong) OSInviteViewController * invitePeopleViewController;
 @property (nonatomic, strong) OSChannelViewController * channelViewController;
 @property (nonatomic, strong) OSRoomViewController * roomViewController;
 @property (nonatomic, strong) OSInboxViewController * inboxViewController;

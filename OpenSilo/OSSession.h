@@ -23,4 +23,5 @@
 @property (nonatomic, strong) OSChannel *currentChannel;
 @property (nonatomic, strong) OSRoom *currentRoom;
 @property (nonatomic, strong) NSDictionary *allUsers;
+
 @end

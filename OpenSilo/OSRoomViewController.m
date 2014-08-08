@@ -90,9 +90,30 @@
 -(void) drawView
 {
     OSRoom *room = [OSSession getInstance].currentRoom;
+    OSUser *user = [OSSession getInstance].user;
+    
+    _userName.text = [NSString stringWithFormat:@"%@ %@",user.firstName, user.lastName];
+    
+    NSURL *url = [NSURL URLWithString:[OSSession getInstance].user.picture];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"imgPlaceholder"];
+    
+    [_userImage setImageWithURLRequest:request
+                      placeholderImage:placeholderImage
+                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                   _userImage.image = image;
+                               } failure:^(NSURLRequest *request,
+                                           NSHTTPURLResponse *response, NSError *error) {
+                               }];
+    [_userImage.layer setMasksToBounds:YES];
+    [_userImage.layer setCornerRadius:22.0];
+    
+    
     _roomTitle.text = room.title;
     _roomDescription.text = room.description;
     _roomSnippet.text = room.snippet;
+    
+    
     SET_BORDER_GREY(_messageInput);
     SET_ROUNDED_CORNER(_messageInput);
 }
