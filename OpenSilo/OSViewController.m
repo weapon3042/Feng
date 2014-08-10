@@ -168,10 +168,10 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
         
     }else if ([storyboardName isEqualToString:kInvitePeople]){//display invite view
         UIStoryboard *createChannelStoryboary = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
-        self.invitePeopleViewController = (OSInviteViewController *)[createChannelStoryboary instantiateInitialViewController];
-        [self addChildViewController: self.invitePeopleViewController];
-        [self.view addSubview:self.invitePeopleViewController.view];
-        self.invitePeopleViewController.view.autoresizesSubviews = YES;
+        self.inviteViewController = (OSInviteViewController *)[createChannelStoryboary instantiateInitialViewController];
+        [self addChildViewController: self.inviteViewController];
+        [self.view addSubview:self.inviteViewController.view];
+        self.inviteViewController.view.autoresizesSubviews = YES;
         
     }else if ([storyboardName isEqualToString:kChannelTab]){//display channel view
         UIStoryboard *channelStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
@@ -203,10 +203,10 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
     } else if([storyboardName isEqualToString:kInvitePeople]) {
         UIStoryboard *settingStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
-        self.invitePeopleViewController = (OSInviteViewController *)[settingStoryboard instantiateInitialViewController];
-        [self addChildViewController: self.invitePeopleViewController];
-        [self.view addSubview:self.invitePeopleViewController.view];
-        self.invitePeopleViewController.view.autoresizesSubviews = YES;
+        self.inviteViewController = (OSInviteViewController *)[settingStoryboard instantiateInitialViewController];
+        [self addChildViewController: self.inviteViewController];
+        [self.view addSubview:self.inviteViewController.view];
+        self.inviteViewController.view.autoresizesSubviews = YES;
         
     }
 

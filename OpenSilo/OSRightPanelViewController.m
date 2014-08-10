@@ -18,7 +18,7 @@
 #import "OSChannel.h"
 #import "OSWebServiceMacro.h"
 #import "OSInviteViewController.h"
-#import "OSInvitePeopleViewController.h"
+#import "OSInviteVIewController.h"
 #import "OSConstant.h"
 #import <Firebase/Firebase.h>
 

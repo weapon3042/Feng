@@ -1,5 +1,5 @@
 //
-//  OSInvitePeopleViewController.h
+//  OSInviteViewController.h
 //  OpenSilo
 //
 //  Created by Peng Wan & Elmir Kouliev on 7/31/14.

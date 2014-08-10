@@ -1,5 +1,5 @@
 //
-//  OSInvitePeopleViewController.m
+//  OSInviteController.m
 //  OpenSilo
 //
 //  Created by Peng Wan & Elmir Kouliev on 7/31/14.
@@ -16,6 +16,7 @@
 #import "OSConstant.h"
 #import "OSCreateChannelViewController.h"
 
+NSString * const kSegueIdentifierInviteToCreateChannel = @"InviteToCreateChannel";
 
 @implementation OSInviteViewController
 
@@ -188,10 +189,11 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateCenterViewNotification object:kCreateChannelTab];
     
-    [OSCreateChannelViewController getInstance].invitedUsers = (NSDictionary *) _selectedArray;
+    OSCreateChannelViewController *createChannelVC = [[OSCreateChannelViewController alloc]init];
+    createChannelVC.invitedUsers = (NSDictionary *) _selectedArray;
+    [self.navigationController pushViewController:createChannelVC animated:YES];
     
 }
-
 
 - (void)didReceiveMemoryWarning
 {

@@ -15,12 +15,15 @@
 
 @property (nonatomic, strong) Firebase *firebase;
 @property (nonatomic, strong) NSMutableArray *array;
+
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *messageInput;
+
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
-@property (weak, nonatomic) IBOutlet UIView *roomView;
+
 @property (weak, nonatomic) IBOutlet UILabel *roomTitle;
 @property (weak, nonatomic) IBOutlet UILabel *roomDescription;
 @property (weak, nonatomic) IBOutlet UILabel *roomSnippet;
+
 @end

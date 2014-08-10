@@ -33,6 +33,7 @@
 		9AADA59019799B78000F8DED /* OSPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AADA58F19799B78000F8DED /* OSPostRequest.m */; };
 		9AB7AF4F19903B9D0008D9B8 /* OSForgotPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7AF4E19903B9D0008D9B8 /* OSForgotPassword.xib */; };
 		9AB7AF5219903CE70008D9B8 /* OSSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */; };
+		9ACBC1A41996E68D00EFD660 /* OSInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBC1A21996E68D00EFD660 /* OSInboxViewController.m */; };
 		9ADD59D1197E35630090DBC4 /* OSConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD59D0197E35630090DBC4 /* OSConstant.m */; };
 		9AF10D9D19761BBC00474A2A /* OSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10D9C19761BBC00474A2A /* OSSession.m */; };
 		9AF10DA019761BD600474A2A /* OSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF10D9F19761BD600474A2A /* OSUser.m */; };
@@ -137,6 +138,8 @@
 		9AB7AF4E19903B9D0008D9B8 /* OSForgotPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSForgotPassword.xib; sourceTree = "<group>"; };
 		9AB7AF5019903CE70008D9B8 /* OSSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSettingViewController.h; sourceTree = "<group>"; };
 		9AB7AF5119903CE70008D9B8 /* OSSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSettingViewController.m; sourceTree = "<group>"; };
+		9ACBC1A11996E68D00EFD660 /* OSInboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSInboxViewController.h; sourceTree = "<group>"; };
+		9ACBC1A21996E68D00EFD660 /* OSInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSInboxViewController.m; sourceTree = "<group>"; };
 		9ADD59CF197E35630090DBC4 /* OSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSConstant.h; sourceTree = "<group>"; };
 		9ADD59D0197E35630090DBC4 /* OSConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSConstant.m; sourceTree = "<group>"; };
 		9AF10D9B19761BBC00474A2A /* OSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSession.h; sourceTree = "<group>"; };
@@ -364,6 +367,15 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
+		9ACBC1A01996E67100EFD660 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				9ACBC1A11996E68D00EFD660 /* OSInboxViewController.h */,
+				9ACBC1A21996E68D00EFD660 /* OSInboxViewController.m */,
+			);
+			name = Inbox;
+			sourceTree = "<group>";
+		};
 		9AF10DAE1976344B00474A2A /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +471,7 @@
 				B64876E41988376A00B42189 /* Entrance */,
 				E7C0CCCE197F54240026B604 /* Login */,
 				E783036119915C2A001C098F /* Room */,
+				9ACBC1A01996E67100EFD660 /* Inbox */,
 				E783036019915C0E001C098F /* Channel */,
 				E7C0CCCD197F54150026B604 /* Side Views */,
 				E783036319915C83001C098F /* Search & Invite */,
@@ -747,6 +760,7 @@
 				9A28E11D1986FCA60054FE35 /* METransitions.m in Sources */,
 				9A28E11C1986FCA60054FE35 /* MEFoldAnimationController.m in Sources */,
 				9AF10DAD19762A5E00474A2A /* OSTag.m in Sources */,
+				9ACBC1A41996E68D00EFD660 /* OSInboxViewController.m in Sources */,
 				B61592391981A4C200D3AE9C /* OSRequestUtils.m in Sources */,
 				B6354EDF197ED80D00CC720C /* OSTranscriptTableViewCell.m in Sources */,
 				9A6C7E231977859D0053AC76 /* OSLoginViewController.m in Sources */,

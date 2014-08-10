@@ -25,7 +25,7 @@
 @property (nonatomic, strong) OSSearchViewController * searchViewController;
 @property (nonatomic, strong) OSAskQuestionViewController * askQuestioinViewController;
 @property (nonatomic, strong) OSCreateChannelViewController * createChannelViewController;
-@property (nonatomic, strong) OSInviteViewController * invitePeopleViewController;
+@property (nonatomic, strong) OSInviteViewController * inviteViewController;
 @property (nonatomic, strong) OSChannelViewController * channelViewController;
 @property (nonatomic, strong) OSRoomViewController * roomViewController;
 @property (nonatomic, strong) OSInboxViewController * inboxViewController;

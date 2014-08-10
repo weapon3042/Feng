@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Invite People View Controller-->
+        <!--Invite View Controller-->
         <scene sceneID="LYM-6z-Zvf">
             <objects>
-                <viewController id="cVL-KS-J9g" customClass="OSInvitePeopleViewController" sceneMemberID="viewController">
+                <viewController id="cVL-KS-J9g" customClass="OSInviteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Spx-pj-kuW"/>
                         <viewControllerLayoutGuide type="bottom" id="h3c-p0-Hty"/>
@@ -25,6 +25,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendInvites:" destination="cVL-KS-J9g" eventType="touchUpInside" id="4wq-3Y-0KN"/>
+                                </connections>
                             </button>
                             <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Invite People" translatesAutoresizingMaskIntoConstraints="NO" id="UsX-yI-aeI">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
