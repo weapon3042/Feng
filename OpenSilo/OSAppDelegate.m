@@ -9,12 +9,20 @@
 #import "OSAppDelegate.h"
 #import "OSLoginViewController.h"
 #import "OSUserUtils.h"
+#import "BoxSDK.h"
+#import "OSWebServiceMacro.h"
 
 @implementation OSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
     return YES;
+}
+
+-(void) registerBox
+{
+    [BoxSDK sharedSDK].OAuth2Session.clientID = BOX_CLIENT_ID;
+    [BoxSDK sharedSDK].OAuth2Session.clientSecret = BOX_CLIENT_SECRET;
 }
 
 

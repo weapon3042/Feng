@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-box-ios-sdk-v2.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>052FDC8A37FD4BC7A6C2A963</key>
+		<key>10276246D6874D0AAC504816</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>169CDCB0C3EA4538A853B286</key>
+		<key>15CA2A28766F40A7A518B14C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>45879846CD694B40ACF72DD3</key>
+		<key>439C4BC983024EEB972139A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>738F8A28DE30420DBFFA2F9C</key>
+		<key>5B77F7B9379E4749864683BF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>91FD010DD29D4762AF035ED0</key>
+		<key>6F03472BF50E49E3A81A5561</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9EC12FF5D89B424C955345E3</key>
+		<key>ABE832968539474FA2079D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C396879511864583A9E531FE</key>
+		<key>C8A66AD7F1154AE4B107D0B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1241B855C4749EF8C026D72</key>
+		<key>E929180354964500A0995106</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F75ADE8E01AA48218E13BAF5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -90,3 +90,15 @@
 #define COCOAPODS_VERSION_MINOR_Mantle_extobjc 5
 #define COCOAPODS_VERSION_PATCH_Mantle_extobjc 0
 
+// box-ios-sdk-v2
+#define COCOAPODS_POD_AVAILABLE_box_ios_sdk_v2
+#define COCOAPODS_VERSION_MAJOR_box_ios_sdk_v2 1
+#define COCOAPODS_VERSION_MINOR_box_ios_sdk_v2 2
+#define COCOAPODS_VERSION_PATCH_box_ios_sdk_v2 2
+
+// box-ios-sdk-v2/no-arc
+#define COCOAPODS_POD_AVAILABLE_box_ios_sdk_v2_no_arc
+#define COCOAPODS_VERSION_MAJOR_box_ios_sdk_v2_no_arc 1
+#define COCOAPODS_VERSION_MINOR_box_ios_sdk_v2_no_arc 2
+#define COCOAPODS_VERSION_PATCH_box_ios_sdk_v2_no_arc 2
+
