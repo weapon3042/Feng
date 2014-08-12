@@ -49,6 +49,7 @@
 		B6354EE0197ED80D00CC720C /* OSTranscriptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6354EDE197ED80D00CC720C /* OSTranscriptTableViewCell.xib */; };
 		B6354EE4197EFAF500CC720C /* OSPeopleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6354EE2197EFAF500CC720C /* OSPeopleTableViewCell.m */; };
 		B6354EE5197EFAF500CC720C /* OSPeopleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6354EE3197EFAF500CC720C /* OSPeopleTableViewCell.xib */; };
+		B63DC95D19998B3100420EC2 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B63DC95C19998B3100420EC2 /* KeychainItemWrapper.m */; };
 		B64876EC19883BB000B42189 /* OSEntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64876EB19883BB000B42189 /* OSEntranceViewController.m */; };
 		B64876EE19883BE800B42189 /* Entrance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B64876ED19883BE800B42189 /* Entrance.storyboard */; };
 		B64876F119883F2400B42189 /* OSSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64876F019883F2400B42189 /* OSSignUpViewController.m */; };
@@ -168,6 +169,8 @@
 		B6354EE1197EFAF500CC720C /* OSPeopleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSPeopleTableViewCell.h; sourceTree = "<group>"; };
 		B6354EE2197EFAF500CC720C /* OSPeopleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSPeopleTableViewCell.m; sourceTree = "<group>"; };
 		B6354EE3197EFAF500CC720C /* OSPeopleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OSPeopleTableViewCell.xib; sourceTree = "<group>"; };
+		B63DC95B19998B3100420EC2 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		B63DC95C19998B3100420EC2 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		B64876EA19883BB000B42189 /* OSEntranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEntranceViewController.h; sourceTree = "<group>"; };
 		B64876EB19883BB000B42189 /* OSEntranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEntranceViewController.m; sourceTree = "<group>"; };
 		B64876ED19883BE800B42189 /* Entrance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Entrance.storyboard; sourceTree = "<group>"; };
@@ -483,6 +486,8 @@
 		B64B692E1975D385009F7B05 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B63DC95B19998B3100420EC2 /* KeychainItemWrapper.h */,
+				B63DC95C19998B3100420EC2 /* KeychainItemWrapper.m */,
 				B61592341981A3DF00D3AE9C /* OSToastUtils.h */,
 				B61592351981A3DF00D3AE9C /* OSToastUtils.m */,
 				9AAB08371978D9CE00FBE96D /* OSDateTimeUtils.h */,
@@ -764,6 +769,7 @@
 				B61592391981A4C200D3AE9C /* OSRequestUtils.m in Sources */,
 				B6354EDF197ED80D00CC720C /* OSTranscriptTableViewCell.m in Sources */,
 				9A6C7E231977859D0053AC76 /* OSLoginViewController.m in Sources */,
+				B63DC95D19998B3100420EC2 /* KeychainItemWrapper.m in Sources */,
 				9AF10D9D19761BBC00474A2A /* OSSession.m in Sources */,
 				9ADD59D1197E35630090DBC4 /* OSConstant.m in Sources */,
 				B6A5E118198AE65300772EC8 /* OSLeftPanelViewController.m in Sources */,

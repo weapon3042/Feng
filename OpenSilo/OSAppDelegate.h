@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <BoxSDK/BoxSDK.h>
 
 @interface OSAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+- (void)setRefreshTokenInKeychain:(NSString *)refreshToken;
 
 @end

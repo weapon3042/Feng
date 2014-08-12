@@ -20,7 +20,7 @@
 #import "OSSettingViewController.h"
 #import "OSInboxViewController.h"
 
-@interface OSViewController : UIViewController <ECSlidingViewControllerDelegate>
+@interface OSViewController : UIViewController <ECSlidingViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) OSSearchViewController * searchViewController;
 @property (nonatomic, strong) OSAskQuestionViewController * askQuestioinViewController;

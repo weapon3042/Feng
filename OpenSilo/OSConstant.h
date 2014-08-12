@@ -18,3 +18,4 @@ extern NSString * const kCreateChannelTab;
 extern NSString * const kSettingsTab;
 extern NSString * const kInviteTab;
 extern NSString * const kInvitePeople;
+extern NSString * const kUploadFile;

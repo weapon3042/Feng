@@ -291,10 +291,11 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 }
 
 -(void)uploadFile{
-    
-#warning cannt find API call on http://ec2-54-209-2-61.compute-1.amazonaws.com:6543/
-    
+    [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:kUploadFile];
+    [self.slidingViewController resetTopViewAnimated:YES];
 }
+
+
 
 //---------------------------------- Pinned Question List Section ----------------------------------//
 #pragma mark -
@@ -321,6 +322,25 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
     [self.tableView reloadData];
 }
 
+- (IBAction)onClickUploadFile:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Upload from" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Photo",@"Box", nil];
+    [actionSheet showFromRect:_uploadFileButton.frame inView:self.view animated:YES];
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"%i",buttonIndex);
+    switch (buttonIndex) {
+        case 0:
+            [self uploadFile];
+            break;
+        case 1:
+            
+            break;
+        default:
+            break;
+    }
+}
 
 @end
 

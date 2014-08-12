@@ -23,6 +23,12 @@
 #import "OSSession.h"
 #import "OSRoomSettingViewController.h"
 #import "OSChannelSettingViewController.h"
+#import "BoxAPIOperation.h"
+#import "BoxFilesResourceManager.h"
+#import "BoxFilesRequestBuilder.h"
+#import "BoxSDK.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
@@ -208,10 +214,57 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
         [self.view addSubview:self.inviteViewController.view];
         self.inviteViewController.view.autoresizesSubviews = YES;
         
+    } else if ([storyboardName isEqualToString:kUploadFile]){
+        UIImagePickerController *imgPicker = [[UIImagePickerController alloc]init];
+        imgPicker.delegate = self;
+        imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self.navigationController presentViewController:imgPicker animated:YES completion:nil];
     }
+}
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    [self saveImage:image withName:@"currentImage.png"];
+	
+}
+
+- (void) saveImage:(UIImage *)currentImage withName:(NSString *)imageName
+{
+    NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.5);
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
+    [imageData writeToFile:fullPath atomically:NO];
+//    [self uploadToBox];
+}
+
+-(void) uploadToBox
+{
+    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
+    BoxFileBlock fileBlock = ^(BoxFile *file)
+    {
+        // manipulate resulting BoxFile
+    };
     
+    BoxAPIJSONFailureBlock failureBlock = ^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSDictionary *JSONDictionary)
+    {
+        // handle failed upload
+    };
+    
+    BoxAPIMultipartProgressBlock progressBlock = ^(unsigned long long totalBytes, unsigned long long bytesSent)
+    {
+        // indicate progress of upload
+    };
+    
+    BoxFilesRequestBuilder *builder = [[BoxFilesRequestBuilder alloc] init];
+    builder.name = @"icon.png";
+    builder.parentID = @"2309297463";
+
+    NSInputStream *inputStream = [NSInputStream inputStreamWithFileAtPath:path];
+    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
+    long long contentLength = [[fileAttributes objectForKey:NSFileSize] longLongValue];
+    
+    [[BoxSDK sharedSDK].filesManager uploadFileWithInputStream:inputStream contentLength:contentLength MIMEType:nil requestBuilder:builder success:fileBlock failure:failureBlock progress:progressBlock];
 }
 
 #pragma mark - Properties

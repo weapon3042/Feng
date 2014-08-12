@@ -11,8 +11,20 @@
 #import "OSUserUtils.h"
 #import "BoxSDK.h"
 #import "OSWebServiceMacro.h"
+#import "KeychainItemWrapper.h"
+
+#define REFRESH_TOKEN_KEY   (@"box_api_refresh_token")
+
+@interface OSAppDelegate ()
+
+@property (nonatomic, readwrite, strong) KeychainItemWrapper *keychain;
+- (void)boxAPITokensDidRefresh:(NSNotification *)notification;
+
+@end
 
 @implementation OSAppDelegate
+
+@synthesize keychain = _keychain;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
@@ -23,8 +35,38 @@
 {
     [BoxSDK sharedSDK].OAuth2Session.clientID = BOX_CLIENT_ID;
     [BoxSDK sharedSDK].OAuth2Session.clientSecret = BOX_CLIENT_SECRET;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(boxAPITokensDidRefresh:)
+                                                 name:BoxOAuth2SessionDidBecomeAuthenticatedNotification
+                                               object:[BoxSDK sharedSDK].OAuth2Session];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(boxAPITokensDidRefresh:)
+                                                 name:BoxOAuth2SessionDidRefreshTokensNotification
+                                               object:[BoxSDK sharedSDK].OAuth2Session];
+    
+    // set up stored OAuth2 refresh token
+    self.keychain = [[KeychainItemWrapper alloc] initWithIdentifier:REFRESH_TOKEN_KEY accessGroup:nil];
+    
+    id storedRefreshToken = [self.keychain objectForKey:(__bridge id)kSecValueData];
+    if (storedRefreshToken)
+    {
+        [BoxSDK sharedSDK].OAuth2Session.refreshToken = storedRefreshToken;
+    }
+
 }
 
+- (void)boxAPITokensDidRefresh:(NSNotification *)notification
+{
+    BoxOAuth2Session *OAuth2Session = (BoxOAuth2Session *) notification.object;
+    [self setRefreshTokenInKeychain:OAuth2Session.refreshToken];
+}
+
+- (void)setRefreshTokenInKeychain:(NSString *)refreshToken
+{
+    [self.keychain setObject:@"BoxSDKSampleApp" forKey: (__bridge id)kSecAttrService];
+    [self.keychain setObject:refreshToken forKey:(__bridge id)kSecValueData];
+}
 
 #pragma mark Register Token on server
 /*

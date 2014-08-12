@@ -3,6 +3,7 @@
 #define LI_SECRET @"SvCPjOJghz85ax9p"
 #define BOX_CLIENT_ID @"zql689ybfjyh01xzvvhwlqemlqvmzu33"
 #define BOX_CLIENT_SECRET @"HgG279NrAmgJ4UWwIANGPMSTFIiARoPC"
+#define BOX_ALLOW_EMAIL @"upload.demo.ygialjuzo3@u.box.com"
 
 #define TestToken @"eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJpYXQiOiAxNDA1NjI5NDUwLCAiZCI6IHsiZW1haWwiOiAicHJhZ3lhLmdveWFsQHN5bmVyemlwLmNvbSJ9LCAiZXhwIjogMTQyMTE4MTQ1MCwgInYiOiAwfQ.nDoTdXq6U7EgYtkMp5n4_ezUj0rdiTU0EJSzW0uSKRI"
 

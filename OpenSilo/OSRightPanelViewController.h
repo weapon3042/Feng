@@ -10,7 +10,7 @@
 #import "ECSlidingViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
 
-@interface OSRightPanelViewController : UIViewController<UITableViewDelegate, UITableViewDataSource,ECSlidingViewControllerDelegate>
+@interface OSRightPanelViewController : UIViewController<UITableViewDelegate, UITableViewDataSource,ECSlidingViewControllerDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 
