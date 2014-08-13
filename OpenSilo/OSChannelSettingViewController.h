@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface OSChannelSettingViewController : UIViewController
+- (IBAction)emailNotificationsSwitch:(id)sender;
+- (IBAction)muteSwitch:(id)sender;
+
+- (IBAction)channelPrivacySwitch:(id)sender;
+
+- (IBAction)leaveChannel:(id)sender;
 
 @end

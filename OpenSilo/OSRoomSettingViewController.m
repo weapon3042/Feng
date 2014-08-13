@@ -10,16 +10,7 @@
 #import "OSRoom.h"
 #import "OSSession.h"
 #import "OSUIMacro.h"
-
-@interface OSRoomSettingViewController ()
-
-@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, weak) IBOutlet UITextView *titleTextView;
-@property (nonatomic, weak) IBOutlet UITextView *descriptionTextView;
-@property (nonatomic, weak) IBOutlet UITextView *snippetTextView;
-@property (nonatomic, weak) IBOutlet UIView *tagsView;
-
-@end
+#import "OSPostRequest.h"
 
 @implementation OSRoomSettingViewController
 
@@ -32,6 +23,15 @@
     return self;
 }
 
+-(void)viewWillLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.scrollView.userInteractionEnabled = YES;
+    [self.scrollView setContentSize:CGSizeMake(320.0, 776)];
+    self.scrollView.scrollEnabled = YES;
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] init]]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,23 +42,21 @@
 - (void) drawView
 {
     OSRoom *room = [OSSession getInstance].currentRoom;
-    _titleTextView.text = room.title;
-    _descriptionTextView.text = room.description;
-    _snippetTextView.text = room.snippet;
-    NSUInteger index = 0;
-    for (NSString *tag in room.tags) {
-        UIButton *tagButton = [[UIButton alloc]init];
-        [tagButton setFrame:CGRectMake(60 * index + 10, 0, 60, 34)];
-        tagButton.backgroundColor = OS_BLUE_BUTTON;
-        [tagButton setTitle:tag forState:UIControlStateNormal];
-        [tagButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_tagsView addSubview:tagButton];
-        index ++;
-    }
     
+    _roomTitle.text = room.title;
+    _roomDescription.text = room.description;
+    _roomSnippet.text = room.snippet;
     
-    [_scrollView setContentSize:CGSizeMake(320,800)];
-    
+//    NSUInteger index = 0;
+//    for (NSString *tag in room.tags) {
+//        UIButton *tagButton = [[UIButton alloc]init];
+//        [tagButton setFrame:CGRectMake(60 * index + 10, 0, 60, 34)];
+//        tagButton.backgroundColor = OS_BLUE_BUTTON;
+//        [tagButton setTitle:tag forState:UIControlStateNormal];
+//        [tagButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [_tagsView addSubview:tagButton];
+//        index ++;
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,15 +65,72 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)emailNotificationsSwitch:(id)sender {
+    
+    OSPostRequest *patchRoom = [[OSPostRequest alloc] init];
+    
+    NSString *url = [NSString stringWithFormat:@"api/resolutionrooms/%@",[OSSession getInstance].currentRoom.roomId];
+    
+    //Perform Room Request
+    [patchRoom postApiRequest:url params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            
+            
+            
+            
+        }
+    }];
+    
 }
-*/
+
+- (IBAction)muteSwitch:(id)sender {
+    
+    OSPostRequest *patchRoom = [[OSPostRequest alloc] init];
+    
+    NSString *url = [NSString stringWithFormat:@"api/resolutionrooms/%@",[OSSession getInstance].currentRoom.roomId];
+    
+    //Perform Room Request
+    [patchRoom postApiRequest:url params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            
+        
+            
+            
+        }
+    }];
+}
+
+- (IBAction)privacySwitch:(id)sender {
+    
+    OSPostRequest *patchRoom = [[OSPostRequest alloc] init];
+    
+    NSString *url = [NSString stringWithFormat:@"api/resolutionrooms/%@",[OSSession getInstance].currentRoom.roomId];
+    
+    //Perform Room Request
+    [patchRoom postApiRequest:url params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            
+        
+        }
+    }];
+}
+
+- (IBAction)solveButton:(id)sender {
+    OSPostRequest *patchRoom = [[OSPostRequest alloc] init];
+    
+    NSString *url = [NSString stringWithFormat:@"api/resolutionrooms/%@",[OSSession getInstance].currentRoom.roomId];
+    
+    //Perform Room Request
+    [patchRoom postApiRequest:url params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            
+            
+            
+        }
+    }];
+    
+}
+
+
 
 @end

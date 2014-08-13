@@ -18,6 +18,7 @@
 #import "OSChannelViewController.h"
 #import "OSRoomViewController.h"
 #import "OSSettingViewController.h"
+#import "METransitions.h"
 #import "OSInboxViewController.h"
 
 @interface OSViewController : UIViewController <ECSlidingViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -30,5 +31,9 @@
 @property (nonatomic, strong) OSRoomViewController * roomViewController;
 @property (nonatomic, strong) OSInboxViewController * inboxViewController;
 @property (nonatomic, strong) OSSettingViewController *settingViewController;
+@property (nonatomic, strong) METransitions *transitions;
+@property (nonatomic, weak) UIButton *titleBtn;
+
+@property (nonatomic) BOOL isRoom;
 
 @end

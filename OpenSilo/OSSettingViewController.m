@@ -24,12 +24,17 @@
     return self;
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [self.scrollView setContentSize:CGSizeMake(320.0, 1000)];
+    self.scrollView.scrollEnabled = YES;
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.scrollView setContentSize:CGSizeMake(320.0, 800)];
-    self.scrollView.scrollEnabled = YES;
 }
 
 - (void)didReceiveMemoryWarning

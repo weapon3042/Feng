@@ -7,6 +7,8 @@
 //
 
 #import "OSChannelSettingViewController.h"
+#import "OSPostRequest.h"
+#import "OSSession.h"
 
 @interface OSChannelSettingViewController ()
 
@@ -27,6 +29,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] init]]];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,5 +49,68 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)emailNotificationsSwitch:(id)sender {
+}
+
+- (IBAction)muteSwitch:(id)sender {
+    
+    OSPostRequest *patchRoom = [[OSPostRequest alloc] init];
+    
+    NSString *url = [NSString stringWithFormat:@"api/channels/%@", [OSSession getInstance].currentRoom.roomId];
+    
+    //Perform Room Request
+    [patchRoom postApiRequest:url params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            
+            
+        }
+    }];
+}
+
+- (IBAction)channelPrivacySwitch:(id)sender {
+    
+  
+    NSString *privacy;
+    
+    if(((UISwitch *) sender).isOn) privacy = @"private";
+    
+    else privacy = @"public";
+    
+    NSDictionary *params = @{
+         @"channel_name": [OSSession getInstance].currentChannel.channelName,
+         @"privacy_setting":privacy,
+         @"status":@"active"
+     };
+    
+    OSPostRequest *patchRoom = [[OSPostRequest alloc] init];
+    
+    NSString *url = [NSString stringWithFormat:@"api/channels/%@", [OSSession getInstance].currentRoom.roomId];
+    
+    //Perform Room Request
+    [patchRoom postApiRequest:url params:params setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            
+            
+        }
+    }];
+}
+
+- (IBAction)leaveChannel:(id)sender {
+    
+    OSPostRequest *patchRoom = [[OSPostRequest alloc] init];
+    
+    NSString *url = [NSString stringWithFormat:@"api/channels/%@/users/%@",
+                     [OSSession getInstance].currentRoom.roomId,[OSSession getInstance].user.userId];
+    
+    //Perform Room Request
+    [patchRoom postApiRequest:url params:nil setAuthHeader:YES responseBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            
+            
+        }
+    }];
+    
+}
 
 @end

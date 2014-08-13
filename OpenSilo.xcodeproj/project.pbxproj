@@ -83,6 +83,8 @@
 		E7EBC91D197B759500CF5C48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EBC91C197B759500CF5C48 /* Security.framework */; };
 		E7EBC91F197B759E00CF5C48 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EBC91E197B759E00CF5C48 /* libc++.dylib */; };
 		E7EBC921197B75A400CF5C48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EBC920197B75A400CF5C48 /* SystemConfiguration.framework */; };
+		E7EC85DE1999AC6E0079F3BF /* RoomSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7EC85DD1999AC6E0079F3BF /* RoomSettings.storyboard */; };
+		E7EC85E0199AE3380079F3BF /* ChannelSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7EC85DF199AE3380079F3BF /* ChannelSettings.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +222,8 @@
 		E7EBC91C197B759500CF5C48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E7EBC91E197B759E00CF5C48 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		E7EBC920197B75A400CF5C48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E7EC85DD1999AC6E0079F3BF /* RoomSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoomSettings.storyboard; sourceTree = "<group>"; };
+		E7EC85DF199AE3380079F3BF /* ChannelSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChannelSettings.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,8 +478,8 @@
 				B64876E41988376A00B42189 /* Entrance */,
 				E7C0CCCE197F54240026B604 /* Login */,
 				E783036119915C2A001C098F /* Room */,
-				9ACBC1A01996E67100EFD660 /* Inbox */,
 				E783036019915C0E001C098F /* Channel */,
+				9ACBC1A01996E67100EFD660 /* Inbox */,
 				E7C0CCCD197F54150026B604 /* Side Views */,
 				E783036319915C83001C098F /* Search & Invite */,
 				E783036219915C6C001C098F /* Settings */,
@@ -508,6 +512,8 @@
 				B6A5E122198AEC6E00772EC8 /* CreateChannel.storyboard */,
 				B6E16F2A198D9B5E00346242 /* Channel.storyboard */,
 				B6E16F2C198D9B6900346242 /* Room.storyboard */,
+				E7EC85DD1999AC6E0079F3BF /* RoomSettings.storyboard */,
+				E7EC85DF199AE3380079F3BF /* ChannelSettings.storyboard */,
 				E7D5434B19912CBA002F0660 /* Settings.storyboard */,
 				B6A5E119198AE71700772EC8 /* InvitePeople.storyboard */,
 			);
@@ -517,10 +523,10 @@
 		E783036019915C0E001C098F /* Channel */ = {
 			isa = PBXGroup;
 			children = (
-				B6A5E124198AEC8000772EC8 /* OSCreateChannelViewController.h */,
-				B6A5E125198AEC8000772EC8 /* OSCreateChannelViewController.m */,
 				B6E16F2E198D9BA000346242 /* OSChannelViewController.h */,
 				B6E16F2F198D9BA000346242 /* OSChannelViewController.m */,
+				B6A5E124198AEC8000772EC8 /* OSCreateChannelViewController.h */,
+				B6A5E125198AEC8000772EC8 /* OSCreateChannelViewController.m */,
 				B6DFEEE6199034C600DE8BC8 /* OSChannelSettingViewController.h */,
 				B6DFEEE7199034C600DE8BC8 /* OSChannelSettingViewController.m */,
 			);
@@ -695,8 +701,10 @@
 				9A6B60DF196D19710016D83B /* Main.storyboard in Resources */,
 				9A6C7E25197785A70053AC76 /* Login.storyboard in Resources */,
 				B6E16F2B198D9B5E00346242 /* Channel.storyboard in Resources */,
+				E7EC85E0199AE3380079F3BF /* ChannelSettings.storyboard in Resources */,
 				B6A5E112198AD16A00772EC8 /* Search.storyboard in Resources */,
 				B6E16F26198C44FE00346242 /* Signup.storyboard in Resources */,
+				E7EC85DE1999AC6E0079F3BF /* RoomSettings.storyboard in Resources */,
 				9A6B6110196D2D3F0016D83B /* Configure.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
