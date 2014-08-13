@@ -23,17 +23,15 @@
 #import "OSSession.h"
 #import "OSRoomSettingViewController.h"
 #import "OSChannelSettingViewController.h"
-#import "BoxAPIOperation.h"
-#import "BoxFilesResourceManager.h"
-#import "BoxFilesRequestBuilder.h"
-#import "BoxSDK.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import "BoxNavigationController.h"
 
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 @interface OSViewController()
+
 @property (nonatomic, strong) METransitions *transitions;
+
 
 @end
 
@@ -105,7 +103,6 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     [self registerCustomCellsFromNibs];
     
      */
-    
     
     UIStoryboard *channelStoryboard = [UIStoryboard storyboardWithName:kChannelTab bundle:[NSBundle mainBundle]];
     self.channelViewController = (OSChannelViewController *)[channelStoryboard instantiateInitialViewController];
@@ -214,20 +211,28 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
         [self.view addSubview:self.inviteViewController.view];
         self.inviteViewController.view.autoresizesSubviews = YES;
         
-    } else if ([storyboardName isEqualToString:kUploadFile]){
+    } else if ([storyboardName isEqualToString:kUploadPhoto]){
         UIImagePickerController *imgPicker = [[UIImagePickerController alloc]init];
         imgPicker.delegate = self;
         imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self.navigationController presentViewController:imgPicker animated:YES completion:nil];
+        
+    } else if ([storyboardName isEqualToString:kShareViaBox]){
+        UIStoryboard *shareBox = [UIStoryboard storyboardWithName:kShareViaBox bundle:[NSBundle mainBundle]];
+        self.boxNavigationController = (BoxNavigationController *)[shareBox instantiateInitialViewController];
+        [self addChildViewController: self.boxNavigationController];
+        [self.view addSubview:self.boxNavigationController.view];
+        self.boxNavigationController.view.autoresizesSubviews = YES;
     }
 }
 
+/*Photo selection*/
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     [self saveImage:image withName:@"currentImage.png"];
-	
+#warning should call box api to upload photo to opensilo box account without login
 }
 
 - (void) saveImage:(UIImage *)currentImage withName:(NSString *)imageName
@@ -235,7 +240,6 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.5);
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
     [imageData writeToFile:fullPath atomically:NO];
-//    [self uploadToBox];
 }
 
 -(void) uploadToBox

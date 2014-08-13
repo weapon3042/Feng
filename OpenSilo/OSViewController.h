@@ -19,6 +19,8 @@
 #import "OSRoomViewController.h"
 #import "OSSettingViewController.h"
 #import "OSInboxViewController.h"
+#import "BoxNavigationController.h"
+#import <BoxSDK/BoxSDK.h>
 
 @interface OSViewController : UIViewController <ECSlidingViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -30,5 +32,6 @@
 @property (nonatomic, strong) OSRoomViewController * roomViewController;
 @property (nonatomic, strong) OSInboxViewController * inboxViewController;
 @property (nonatomic, strong) OSSettingViewController *settingViewController;
+@property (nonatomic, strong) BoxNavigationController *boxNavigationController;
 
 @end

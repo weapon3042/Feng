@@ -290,13 +290,6 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
     [self.tableView reloadData];
 }
 
--(void)uploadFile{
-    [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:kUploadFile];
-    [self.slidingViewController resetTopViewAnimated:YES];
-}
-
-
-
 //---------------------------------- Pinned Question List Section ----------------------------------//
 #pragma mark -
 #pragma mark Fetch Pinned Questions from server
@@ -332,14 +325,25 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
     NSLog(@"%i",buttonIndex);
     switch (buttonIndex) {
         case 0:
-            [self uploadFile];
+            [self uploadPhoto];
             break;
         case 1:
-            
+            [self shareViaBox];
             break;
         default:
             break;
     }
+}
+
+-(void)uploadPhoto{
+    [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:kUploadPhoto];
+    [self.slidingViewController resetTopViewAnimated:YES];
+}
+
+-(void)shareViaBox
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:kUpdateCenterViewNotification object:kShareViaBox];
+    [self.slidingViewController resetTopViewAnimated:YES];
 }
 
 @end

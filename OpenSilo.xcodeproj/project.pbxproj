@@ -55,6 +55,10 @@
 		B64876F119883F2400B42189 /* OSSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64876F019883F2400B42189 /* OSSignUpViewController.m */; };
 		B64B69281975AC17009F7B05 /* OSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B64B69271975AC17009F7B05 /* OSChannel.m */; };
 		B64B692B1975AE89009F7B05 /* OSRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = B64B692A1975AE89009F7B05 /* OSRoom.m */; };
+		B667013F199B351F00B79A1E /* BoxAuthorizationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B667013A199B351F00B79A1E /* BoxAuthorizationNavigationController.m */; };
+		B6670140199B351F00B79A1E /* BoxFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B667013C199B351F00B79A1E /* BoxFolderViewController.m */; };
+		B6670141199B351F00B79A1E /* BoxNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B667013E199B351F00B79A1E /* BoxNavigationController.m */; };
+		B6670143199B3A5E00B79A1E /* BoxFolder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6670142199B3A5E00B79A1E /* BoxFolder.storyboard */; };
 		B6A5E10D198AC59C00772EC8 /* OSInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5E10C198AC59C00772EC8 /* OSInviteViewController.m */; };
 		B6A5E110198AD14900772EC8 /* OSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5E10F198AD14900772EC8 /* OSSearchViewController.m */; };
 		B6A5E112198AD16A00772EC8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A5E111198AD16A00772EC8 /* Search.storyboard */; };
@@ -180,6 +184,13 @@
 		B64B69271975AC17009F7B05 /* OSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSChannel.m; path = model/OSChannel.m; sourceTree = "<group>"; };
 		B64B69291975AE89009F7B05 /* OSRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSRoom.h; path = model/OSRoom.h; sourceTree = "<group>"; };
 		B64B692A1975AE89009F7B05 /* OSRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSRoom.m; path = model/OSRoom.m; sourceTree = "<group>"; };
+		B6670139199B351F00B79A1E /* BoxAuthorizationNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxAuthorizationNavigationController.h; sourceTree = "<group>"; };
+		B667013A199B351F00B79A1E /* BoxAuthorizationNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxAuthorizationNavigationController.m; sourceTree = "<group>"; };
+		B667013B199B351F00B79A1E /* BoxFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxFolderViewController.h; sourceTree = "<group>"; };
+		B667013C199B351F00B79A1E /* BoxFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxFolderViewController.m; sourceTree = "<group>"; };
+		B667013D199B351F00B79A1E /* BoxNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxNavigationController.h; sourceTree = "<group>"; };
+		B667013E199B351F00B79A1E /* BoxNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxNavigationController.m; sourceTree = "<group>"; };
+		B6670142199B3A5E00B79A1E /* BoxFolder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BoxFolder.storyboard; sourceTree = "<group>"; };
 		B6A5E10B198AC59C00772EC8 /* OSInviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSInviteViewController.h; sourceTree = "<group>"; };
 		B6A5E10C198AC59C00772EC8 /* OSInviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSInviteViewController.m; sourceTree = "<group>"; };
 		B6A5E10E198AD14900772EC8 /* OSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSearchViewController.h; sourceTree = "<group>"; };
@@ -470,6 +481,7 @@
 		B64B692D1975D37B009F7B05 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B6670138199B342600B79A1E /* Box */,
 				E7C0CCCC197F54070026B604 /* Main View Controller */,
 				B64876E41988376A00B42189 /* Entrance */,
 				E7C0CCCE197F54240026B604 /* Login */,
@@ -486,8 +498,6 @@
 		B64B692E1975D385009F7B05 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				B63DC95B19998B3100420EC2 /* KeychainItemWrapper.h */,
-				B63DC95C19998B3100420EC2 /* KeychainItemWrapper.m */,
 				B61592341981A3DF00D3AE9C /* OSToastUtils.h */,
 				B61592351981A3DF00D3AE9C /* OSToastUtils.m */,
 				9AAB08371978D9CE00FBE96D /* OSDateTimeUtils.h */,
@@ -500,6 +510,21 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		B6670138199B342600B79A1E /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				B6670139199B351F00B79A1E /* BoxAuthorizationNavigationController.h */,
+				B667013A199B351F00B79A1E /* BoxAuthorizationNavigationController.m */,
+				B667013B199B351F00B79A1E /* BoxFolderViewController.h */,
+				B667013C199B351F00B79A1E /* BoxFolderViewController.m */,
+				B667013D199B351F00B79A1E /* BoxNavigationController.h */,
+				B667013E199B351F00B79A1E /* BoxNavigationController.m */,
+				B63DC95B19998B3100420EC2 /* KeychainItemWrapper.h */,
+				B63DC95C19998B3100420EC2 /* KeychainItemWrapper.m */,
+			);
+			name = Box;
+			sourceTree = "<group>";
+		};
 		B6A5E129198AECDC00772EC8 /* Sides */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +535,7 @@
 				B6E16F2C198D9B6900346242 /* Room.storyboard */,
 				E7D5434B19912CBA002F0660 /* Settings.storyboard */,
 				B6A5E119198AE71700772EC8 /* InvitePeople.storyboard */,
+				B6670142199B3A5E00B79A1E /* BoxFolder.storyboard */,
 			);
 			name = Sides;
 			sourceTree = "<group>";
@@ -693,6 +719,7 @@
 				B6A5E11C198AEA9900772EC8 /* leftPanel.storyboard in Resources */,
 				E7DE37B3197AFA6D00BA623E /* Avenir.ttf in Resources */,
 				9A6B60DF196D19710016D83B /* Main.storyboard in Resources */,
+				B6670143199B3A5E00B79A1E /* BoxFolder.storyboard in Resources */,
 				9A6C7E25197785A70053AC76 /* Login.storyboard in Resources */,
 				B6E16F2B198D9B5E00346242 /* Channel.storyboard in Resources */,
 				B6A5E112198AD16A00772EC8 /* Search.storyboard in Resources */,
@@ -759,6 +786,7 @@
 				9AB7AF5219903CE70008D9B8 /* OSSettingViewController.m in Sources */,
 				9A28E11E1986FCA60054FE35 /* MEZoomAnimationController.m in Sources */,
 				B64876EC19883BB000B42189 /* OSEntranceViewController.m in Sources */,
+				B6670141199B351F00B79A1E /* BoxNavigationController.m in Sources */,
 				B6A5E10D198AC59C00772EC8 /* OSInviteViewController.m in Sources */,
 				B6E16F30198D9BA000346242 /* OSChannelViewController.m in Sources */,
 				9AF10DA019761BD600474A2A /* OSUser.m in Sources */,
@@ -775,11 +803,13 @@
 				B6A5E118198AE65300772EC8 /* OSLeftPanelViewController.m in Sources */,
 				B62F33FA197AE69700BD8CEA /* UITableViewCell+NIB.m in Sources */,
 				B6354EE4197EFAF500CC720C /* OSPeopleTableViewCell.m in Sources */,
+				B667013F199B351F00B79A1E /* BoxAuthorizationNavigationController.m in Sources */,
 				9AADA59019799B78000F8DED /* OSPostRequest.m in Sources */,
 				9A6B60E2196D19720016D83B /* OSViewController.m in Sources */,
 				9AF10DA81976230A00474A2A /* OSMessage.m in Sources */,
 				B6DFEEE8199034C600DE8BC8 /* OSChannelSettingViewController.m in Sources */,
 				9A28E11B1986FCA60054FE35 /* MEDynamicTransition.m in Sources */,
+				B6670140199B351F00B79A1E /* BoxFolderViewController.m in Sources */,
 				9AAB08391978D9CE00FBE96D /* OSDateTimeUtils.m in Sources */,
 				B64B692B1975AE89009F7B05 /* OSRoom.m in Sources */,
 				B6A5E117198AE65300772EC8 /* DTCustomColoredAccessory.m in Sources */,

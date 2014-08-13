@@ -27,7 +27,8 @@
 @synthesize keychain = _keychain;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{    
+{
+    [self registerBox];
     return YES;
 }
 
