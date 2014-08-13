@@ -35,6 +35,8 @@ NSString * const kSegueIdentifierInviteToCreateChannel = @"InviteToCreateChannel
     self.selectedArray = [[NSMutableArray alloc] init];
     [self registerCustomCellsFromNibs];
     self.tableView.separatorColor = [UIColor clearColor];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] init]]];
+
     // Do any additional setup after loading the view.
 
 }

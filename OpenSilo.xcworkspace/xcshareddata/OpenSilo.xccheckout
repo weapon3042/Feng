@@ -5,19 +5,32 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
+<<<<<<< HEAD
 	<string>B143D684-0C01-427F-8C21-CE24F3D28A4F</string>
+=======
+	<string>13766B0E-58AB-44DD-9906-6246D2D67D74</string>
+>>>>>>> 224fcec4218ad9f0592fb27dee747f2d01d253bb
 	<key>IDESourceControlProjectName</key>
 	<string>OpenSilo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+<<<<<<< HEAD
 		<key>86358FA0-1FA3-4AEC-9748-C906CA3E0122</key>
 		<string>https://github.com/weapon3042/Feng</string>
+=======
+		<key>6C18FF2C-1109-4D88-83B7-6D612E95CB90</key>
+		<string>https://github.com/weapon3042/Feng.git</string>
+>>>>>>> 224fcec4218ad9f0592fb27dee747f2d01d253bb
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>OpenSilo.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+<<<<<<< HEAD
 		<key>86358FA0-1FA3-4AEC-9748-C906CA3E0122</key>
+=======
+		<key>6C18FF2C-1109-4D88-83B7-6D612E95CB90</key>
+>>>>>>> 224fcec4218ad9f0592fb27dee747f2d01d253bb
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,16 +38,24 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
+<<<<<<< HEAD
 	<string>86358FA0-1FA3-4AEC-9748-C906CA3E0122</string>
+=======
+	<string>6C18FF2C-1109-4D88-83B7-6D612E95CB90</string>
+>>>>>>> 224fcec4218ad9f0592fb27dee747f2d01d253bb
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
+<<<<<<< HEAD
 			<string>86358FA0-1FA3-4AEC-9748-C906CA3E0122</string>
+=======
+			<string>6C18FF2C-1109-4D88-83B7-6D612E95CB90</string>
+>>>>>>> 224fcec4218ad9f0592fb27dee747f2d01d253bb
 			<key>IDESourceControlWCCName</key>
-			<string>OpenSiloProject</string>
+			<string>Feng</string>
 		</dict>
 	</array>
 </dict>

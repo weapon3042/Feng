@@ -36,8 +36,7 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC));
@@ -45,9 +44,11 @@
         [[OSUserUtils getInstance] reloadAllUsers];
     });
     
-    
     [super viewWillAppear:animated];
     
+    if(![OSSession getInstance].currentChannel)
+        [[OSSession getInstance] setCurrentChannel:[[OSChannel alloc] init]];
+   
     self.array = [[NSMutableArray alloc] init];
     
     // Initialize the root of our Firebase namespace.

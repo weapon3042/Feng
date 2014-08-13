@@ -14,8 +14,11 @@
 @interface OSChannelViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,ECSlidingViewControllerDelegate>
 
 @property (nonatomic, strong) Firebase *firebase;
+
 @property (nonatomic, strong) NSMutableArray *array;
+
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+
 @property (weak, nonatomic) IBOutlet UITextField *messageInput;
 
 @end

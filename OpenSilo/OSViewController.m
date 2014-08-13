@@ -16,21 +16,21 @@
 #import "OSDateTimeUtils.h"
 #import "OSWebServiceMacro.h"
 #import "OSGetRequest.h"
-#import "OSSession.h"
 #import "OSUIMacro.h"
-#import "METransitions.h"
 #import "OSUserUtils.h"
-#import "OSSession.h"
 #import "OSRoomSettingViewController.h"
 #import "OSChannelSettingViewController.h"
 #import "BoxNavigationController.h"
 
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
-
 @interface OSViewController()
 
+<<<<<<< HEAD
 @property (nonatomic, strong) METransitions *transitions;
+=======
+@property BOOL inSettingView;
+>>>>>>> 224fcec4218ad9f0592fb27dee747f2d01d253bb
 
 
 @end
@@ -48,28 +48,33 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     [super viewDidLoad];
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCenterViewController:) name:kUpdateCenterViewNotification object:nil];
-     
-  
+    
     [self configureSlidingMenu];
-
+    
+    UIStoryboard *channelStoryboard = [UIStoryboard storyboardWithName:kChannelTab bundle:[NSBundle mainBundle]];
+    self.channelViewController = (OSChannelViewController *)[channelStoryboard instantiateInitialViewController];
+    
+    [self addChildViewController: self.channelViewController];
+    [self.view addSubview:self.channelViewController.view];
+    
+    self.channelViewController.view.autoresizesSubviews = YES;
+    
+    _isRoom = false;
+    _inSettingView = false;
+    
     //customize the navigation bar
-    UIView *navView=[[UIView alloc] initWithFrame:CGRectMake(0, 0,320, 44)];
+    UIView *navView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:[UIImage imageNamed:@"nav-left"] forState:UIControlStateNormal];
     [leftBtn setFrame:CGRectMake(10,7,30,30)];
     [leftBtn addTarget:self action:@selector(anchorRight) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [titleBtn setFrame:CGRectMake(50,7,80,30)];
-#warning title should be dynamic
-    [titleBtn setTitle:@"Welcome" forState:UIControlStateNormal];
-    [titleBtn addTarget:self action:@selector(onClickDropDown) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *dropBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [dropBtn setImage:[UIImage imageNamed:@"nav-drop"] forState:UIControlStateNormal];
-    [dropBtn setFrame:CGRectMake(140,10,20,30)];
-    [dropBtn addTarget:self action:@selector(anchorRight) forControlEvents:UIControlEventTouchUpInside];
+    _titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _titleBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [_titleBtn setFrame:CGRectMake(42,8,180,30)];
+    [_titleBtn setTitle:@"Welcome to OpenSilo" forState:UIControlStateNormal];
+    [_titleBtn addTarget:self action:@selector(onClickDropDown) forControlEvents:UIControlEventTouchUpInside];
 
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [searchBtn setImage:[UIImage imageNamed:@"nav-search"] forState:UIControlStateNormal];
@@ -82,8 +87,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     [rightBtn addTarget:self action:@selector(anchorLeft) forControlEvents:UIControlEventTouchUpInside];
     
     [navView addSubview:leftBtn];
-    [navView addSubview:titleBtn];
-    [navView addSubview:dropBtn];
+    [navView addSubview:_titleBtn];
     [navView addSubview:searchBtn];
     [navView addSubview:rightBtn];
     
@@ -95,13 +99,10 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
-
-    /*
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    [self registerCustomCellsFromNibs];
+    self.navigationItem.backBarButtonItem = nil;
     
+<<<<<<< HEAD
      */
     
     UIStoryboard *channelStoryboard = [UIStoryboard storyboardWithName:kChannelTab bundle:[NSBundle mainBundle]];
@@ -109,6 +110,8 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     [self addChildViewController: self.channelViewController];
     [self.view addSubview:self.channelViewController.view];
     self.channelViewController.view.autoresizesSubviews = YES;
+=======
+>>>>>>> 224fcec4218ad9f0592fb27dee747f2d01d253bb
 }
 
 #pragma mark - ECSlidingViewController Delegate
@@ -148,6 +151,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 -(void)updateCenterViewController: (NSNotification *)notif
 {
+    [self.navigationController popToRootViewControllerAnimated:YES];
     NSString *storyboardName = (NSString *)notif.object;
     if ( [storyboardName isEqualToString:kSearchTab]) {//display search view
         UIStoryboard *searchStoryboary = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
@@ -181,7 +185,9 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
         self.channelViewController = (OSChannelViewController *)[channelStoryboard instantiateInitialViewController];
         [self addChildViewController: self.channelViewController];
         [self.view addSubview:self.channelViewController.view];
+        [_titleBtn setTitle:[OSSession getInstance].currentChannel.channelName forState:UIControlStateNormal];
         self.channelViewController.view.autoresizesSubviews = YES;
+        _isRoom = false;
         
     }else if ([storyboardName isEqualToString:kRoomTab]){//display room view
         UIStoryboard *roomStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
@@ -189,6 +195,8 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
         [self addChildViewController: self.roomViewController];
         [self.view addSubview:self.roomViewController.view];
         self.roomViewController.view.autoresizesSubviews = YES;
+         [_titleBtn setTitle:[OSSession getInstance].currentRoom.title forState:UIControlStateNormal];
+        _isRoom = true;
         
     }else if ([storyboardName isEqualToString:kInboxTab]){//display inbox view
         UIStoryboard *inboxStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
@@ -290,15 +298,31 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 
 -(void) onClickDropDown
 {
-    /*
-    UIStoryboard *channelSetting = [UIStoryboard storyboardWithName:kChannelTab bundle:[NSBundle mainBundle]];
-    OSChannelSettingViewController *viewController = [channelSetting instantiateViewControllerWithIdentifier:@"OSChannelSettingViewController"];
-    [self.navigationController pushViewController:viewController animated:YES];
-    */
     
-    UIStoryboard *roomSetting = [UIStoryboard storyboardWithName:kRoomTab bundle:[NSBundle mainBundle]];
-    OSRoomSettingViewController *viewController = [roomSetting instantiateViewControllerWithIdentifier:@"OSRoomSettingViewController"];
-    [self.navigationController pushViewController:viewController animated:YES];
+    OSViewController *viewController;
+    
+    if (_inSettingView==NO) {
+
+        if(_isRoom){
+  
+        UIStoryboard *roomSetting = [UIStoryboard storyboardWithName:@"RoomSettings" bundle:[NSBundle mainBundle]];
+        viewController = [roomSetting instantiateViewControllerWithIdentifier:@"OSRoomSettingViewController"];
+        _inSettingView = YES;
+        
+    } else{
+        
+        UIStoryboard *roomSetting = [UIStoryboard storyboardWithName:@"ChannelSettings" bundle:[NSBundle mainBundle]];
+        viewController = [roomSetting instantiateViewControllerWithIdentifier:@"OSChannelSettingViewController"];
+        _inSettingView = YES;
+    }
+        [self.navigationController pushViewController:viewController animated:NO];
+
+    }else {
+        
+        [self.navigationController popViewControllerAnimated:NO];
+        _inSettingView = NO;
+    }
+    
 }
 
 @end
