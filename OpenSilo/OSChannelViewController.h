@@ -11,7 +11,7 @@
 #import "ECSlidingViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
 
-@interface OSChannelViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,ECSlidingViewControllerDelegate>
+@interface OSChannelViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,ECSlidingViewControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) Firebase *firebase;
 

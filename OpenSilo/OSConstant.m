@@ -19,6 +19,7 @@ NSString * const kCreateChannelTab = @"CreateChannel";
 NSString * const kSettingsTab = @"Setting";
 NSString * const kInvitetab = @"Invite";
 NSString * const kInvitePeople = @"InvitePeople";
-NSString * const kUploadFile = @"UploadFile";
+NSString * const kUploadPhoto = @"UploadPhoto";
+NSString * const kShareViaBox = @"BoxFolder";
 
 

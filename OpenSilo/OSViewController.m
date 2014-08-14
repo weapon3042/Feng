@@ -208,11 +208,18 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
         [self.view addSubview:self.inviteViewController.view];
         self.inviteViewController.view.autoresizesSubviews = YES;
         
-    } else if ([storyboardName isEqualToString:kUploadFile]){
+    } else if ([storyboardName isEqualToString:kUploadPhoto]){
         UIImagePickerController *imgPicker = [[UIImagePickerController alloc]init];
         imgPicker.delegate = self;
         imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self.navigationController presentViewController:imgPicker animated:YES completion:nil];
+        
+    } else if ([storyboardName isEqualToString:kShareViaBox]){
+        UIStoryboard *shareBox = [UIStoryboard storyboardWithName:kShareViaBox bundle:[NSBundle mainBundle]];
+        self.boxNavigationController = (BoxNavigationController *)[shareBox instantiateInitialViewController];
+        [self addChildViewController: self.boxNavigationController];
+        [self.view addSubview:self.boxNavigationController.view];
+        self.boxNavigationController.view.autoresizesSubviews = YES;
     }
 }
 

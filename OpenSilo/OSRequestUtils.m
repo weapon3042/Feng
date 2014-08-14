@@ -22,10 +22,9 @@
     NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:apiURL];
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
     [urlRequest setHTTPMethod:methodType];
-    if ([methodType isEqualToString:@"GET"]) {
-        if (authHeader) {
-            [urlRequest addValue:[OSSession getInstance].token forHTTPHeaderField:@"Authorization"];
-        }
+    if (authHeader) {
+        NSString *token = [OSSession getInstance].token;
+        [urlRequest addValue:token forHTTPHeaderField:@"Authorization"];
     }
     if (params) {
         NSMutableString *requestJson=[[NSMutableString alloc]initWithFormat:@"{"];

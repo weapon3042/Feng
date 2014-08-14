@@ -16,5 +16,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *messageTime;
 @property (nonatomic, weak) IBOutlet UILabel *message;
 @property (nonatomic, weak) IBOutlet UILabel *fullName;
+@property (nonatomic, weak) IBOutlet UIButton *popBtn;
 
 @end
