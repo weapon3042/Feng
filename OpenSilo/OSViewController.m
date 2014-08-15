@@ -20,17 +20,18 @@
 #import "OSUserUtils.h"
 #import "OSRoomSettingViewController.h"
 #import "OSChannelSettingViewController.h"
-#import "BoxAPIOperation.h"
-#import "BoxFilesResourceManager.h"
-#import "BoxFilesRequestBuilder.h"
-#import "BoxSDK.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import "BoxNavigationController.h"
 
 
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 @interface OSViewController()
 
+
+@property (nonatomic, strong) METransitions *transitions;
+
 @property BOOL inSettingView;
+
+
 
 @end
 
@@ -100,7 +101,14 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     self.navigationController.navigationBar.translucent = YES;
     
     self.navigationItem.backBarButtonItem = nil;
+
     
+    UIStoryboard *channelStoryboard = [UIStoryboard storyboardWithName:kChannelTab bundle:[NSBundle mainBundle]];
+    self.channelViewController = (OSChannelViewController *)[channelStoryboard instantiateInitialViewController];
+    [self addChildViewController: self.channelViewController];
+    [self.view addSubview:self.channelViewController.view];
+    self.channelViewController.view.autoresizesSubviews = YES;
+
 }
 
 #pragma mark - ECSlidingViewController Delegate
@@ -223,12 +231,13 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     }
 }
 
+/*Photo selection*/
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     [self saveImage:image withName:@"currentImage.png"];
-	
+#warning should call box api to upload photo to opensilo box account without login
 }
 
 - (void) saveImage:(UIImage *)currentImage withName:(NSString *)imageName
@@ -236,7 +245,6 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.5);
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
     [imageData writeToFile:fullPath atomically:NO];
-//    [self uploadToBox];
 }
 
 -(void) uploadToBox

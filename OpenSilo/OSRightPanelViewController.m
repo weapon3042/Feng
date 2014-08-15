@@ -318,7 +318,6 @@ static NSString * const pinCellIdentifier = @"OSPinQuestionTableViewCell";
     [self.tableView reloadData];
 }
 
-
 //---------------------------------- Pinned Question List Section ----------------------------------//
 #pragma mark -
 #pragma mark Fetch Pinned Questions from server

@@ -1,14 +1,12 @@
 //
-//  BoxRootViewController.m
-//  OpenSilo
-//
 //  Created by Peng Wan & Elmir Kouliev on 7/16/14.
 //  Copyright (c) 2014 OpenSilo. All rights reserved.
-//
+
 
 #import <BoxSDK/BoxSDK.h>
 
 #import "BoxFolderViewController.h"
+
 #import "OSUIMacro.h"
 #import "OSAppDelegate.h"
 #import "BoxNavigationController.h"
@@ -19,6 +17,7 @@
 
 #define TABLE_CELL_REUSE_IDENTIFIER  @"Cell"
 #define isNSNull(value) [value isKindOfClass:[NSNull class]]
+
 
 @interface BoxFolderViewController ()
 
@@ -225,9 +224,8 @@
                 [alert show];
             }else{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Share link for this file is not available. Plese check the file share setting in your box account." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
-                [alert show];
+                
             }
-            
         };
         
         BoxAPIJSONFailureBlock failure = ^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSDictionary *JSONDictionary)
