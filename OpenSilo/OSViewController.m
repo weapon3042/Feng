@@ -26,11 +26,15 @@
 static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
 @interface OSViewController()
 
+<<<<<<< HEAD
 
 @property (nonatomic, strong) METransitions *transitions;
 
 @property BOOL inSettingView;
 
+=======
+@property BOOL inSettingView;
+>>>>>>> 44457b6a0d7a9eb888cb8a548537db849ddd11cf
 
 
 @end
@@ -101,6 +105,7 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     self.navigationController.navigationBar.translucent = YES;
     
     self.navigationItem.backBarButtonItem = nil;
+<<<<<<< HEAD
 
     
     UIStoryboard *channelStoryboard = [UIStoryboard storyboardWithName:kChannelTab bundle:[NSBundle mainBundle]];
@@ -109,6 +114,9 @@ static NSString * const transcriptCellIdentifier = @"OSTranscriptTableViewCell";
     [self.view addSubview:self.channelViewController.view];
     self.channelViewController.view.autoresizesSubviews = YES;
 
+=======
+    
+>>>>>>> 44457b6a0d7a9eb888cb8a548537db849ddd11cf
 }
 
 #pragma mark - ECSlidingViewController Delegate

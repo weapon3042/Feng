@@ -1,11 +1,30 @@
 //
+<<<<<<< HEAD
 //  Created by Peng Wan & Elmir Kouliev on 7/16/14.
 //  Copyright (c) 2014 OpenSilo. All rights reserved.
 
+=======
+//  BoxRootViewController.m
+//  OpenSilo
+//
+//  Created by Peng Wan & Elmir Kouliev on 7/16/14.
+//  Copyright (c) 2014 OpenSilo. All rights reserved.
+//
+>>>>>>> 44457b6a0d7a9eb888cb8a548537db849ddd11cf
 
 #import <BoxSDK/BoxSDK.h>
 
 #import "BoxFolderViewController.h"
+#import "OSUIMacro.h"
+#import "OSAppDelegate.h"
+#import "BoxNavigationController.h"
+#import "OSConstant.h"
+#import "OSToastUtils.h"
+#import <APToast/UIView+APToast.h>
+
+
+#define TABLE_CELL_REUSE_IDENTIFIER  @"Cell"
+#define isNSNull(value) [value isKindOfClass:[NSNull class]]
 
 #import "OSUIMacro.h"
 #import "OSAppDelegate.h"
@@ -221,6 +240,16 @@
         {
             if(!isNSNull(file.sharedLink)){
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Share" message:file.sharedLink[@"url"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+<<<<<<< HEAD
+=======
+                [alert show];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Share link for this file is not available. Plese check the file share setting in your box account." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+            if(file.sharedLink){
+                
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"This file is no" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+>>>>>>> 44457b6a0d7a9eb888cb8a548537db849ddd11cf
                 [alert show];
             }else{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Share link for this file is not available. Plese check the file share setting in your box account." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
@@ -234,6 +263,7 @@
         };
         
         [[BoxSDK sharedSDK].filesManager fileInfoWithID:item.modelID requestBuilder:nil success:success failure:failure];
+        };
     }
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

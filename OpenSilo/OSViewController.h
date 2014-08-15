@@ -38,6 +38,9 @@
 @property (nonatomic, weak) UIButton *titleBtn;
 
 @property (nonatomic) BOOL isRoom;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 44457b6a0d7a9eb888cb8a548537db849ddd11cf
 
 @end
