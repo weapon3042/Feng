@@ -1,9 +1,9 @@
 //
 //  BoxLoginViewController.m
-//  BoxSDKSampleApp
+//  OpenSilo
 //
-//  Created on 3/2/13.
-//  Copyright (c) 2013 Box. All rights reserved.
+//  Created by Peng Wan & Elmir Kouliev on 7/16/14.
+//  Copyright (c) 2014 OpenSilo. All rights reserved.
 //
 
 #import "BoxNavigationController.h"

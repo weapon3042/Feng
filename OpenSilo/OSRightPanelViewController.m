@@ -12,6 +12,8 @@
 #import "OSPostRequest.h"
 #import "OSGetRequest.h"
 #import "OSPeopleTableViewCell.h"
+#import "OSFileTableViewCell.h"
+#import "OSPinQuestionTableViewCell.h"
 #import "UITableViewCell+NIB.h"
 #import "OSUIMacro.h"
 #import "OSSession.h"
@@ -24,9 +26,11 @@
 
 static NSString * const peopleCellIdentifier = @"OSPeopleTableViewCell";
 static NSString * const fileCellIdentifier = @"OSFileTableViewCell";
-static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
+static NSString * const pinCellIdentifier = @"OSPinQuestionTableViewCell";
 
 @interface OSRightPanelViewController()
+
+@property (nonatomic, strong) NSMutableDictionary *dict;
 
 @end
 
@@ -110,7 +114,18 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    switch (self.segment.selectedSegmentIndex) {
+            
+        case 0:
+        {
+            return 60;
+            break;
+        }
+        default:
+            break;
+           
+    }
+     return  44;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -169,20 +184,20 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
             
         case 1:
         {
-            UITableViewCell *fileCell = [self.tableView dequeueReusableCellWithIdentifier:fileCellIdentifier forIndexPath:indexPath];
+            OSFileTableViewCell *fileCell = [self.tableView dequeueReusableCellWithIdentifier:fileCellIdentifier forIndexPath:indexPath];
             NSDictionary *dict = [self.selectedArray objectAtIndex:indexPath.row];
 #warning don't know what's the field name.
-            fileCell.textLabel.text = dict[@"title"];
+            fileCell.fileName.text = dict[@"title"];
 
             return fileCell;
         }
             break;
         case 2:
         {
-            UITableViewCell *pinCell = [self.tableView dequeueReusableCellWithIdentifier:pinCellIdentifier forIndexPath:indexPath];
-            NSDictionary *dict = [self.selectedArray objectAtIndex:indexPath.row];
-#warning don't know what's the field name.
-            pinCell.textLabel.text = dict[@"title"];
+            OSPinQuestionTableViewCell *pinCell = [self.tableView dequeueReusableCellWithIdentifier:pinCellIdentifier forIndexPath:indexPath];
+            NSString *key = [self.pinArray objectAtIndex:indexPath.row];
+            NSDictionary *values = [self.dict objectForKey:key];
+            pinCell.question.text = values[@"question"];
             return pinCell;
         }
             break;
@@ -196,7 +211,10 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
             
         case 0:
         {
-            [self fetchPeople];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self fetchPeople];
+            });
             self.invitePeopleButton.hidden = NO;
             self.uploadFileButton.hidden = YES;
             self.pinQuestionsText.hidden = YES;
@@ -205,7 +223,10 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
             
         case 1:
         {
-            [self fetchFiles];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self fetchFiles];
+            });
             self.invitePeopleButton.hidden = YES;
             self.uploadFileButton.hidden = NO;
             self.pinQuestionsText.hidden = YES;
@@ -214,7 +235,10 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
             
         case 2:
         {
-            [self fetchPinnedQuestions];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self fetchPinnedQuestions];
+            });
             self.invitePeopleButton.hidden = YES;
             self.uploadFileButton.hidden = YES;
             self.pinQuestionsText.hidden = NO;
@@ -267,7 +291,11 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 
 -(void)registerCustomCellsFromNibs
 {
-    [self.tableView registerNib:[UINib nibWithNibName:@"OSPeopleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"OSPeopleTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:peopleCellIdentifier bundle:[NSBundle mainBundle]] forCellReuseIdentifier:peopleCellIdentifier];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:fileCellIdentifier bundle:[NSBundle mainBundle]] forCellReuseIdentifier:fileCellIdentifier];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:pinCellIdentifier bundle:[NSBundle mainBundle]] forCellReuseIdentifier:pinCellIdentifier];
 }
 
 //---------------------------------- File List Section ----------------------------------//
@@ -305,14 +333,16 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
                 if (!error) {
                     NSDictionary *response =  [NSDictionary dictionaryWithDictionary:responseObject];
                     //NSLog(@"json:%@",json);
-                    self.pinArray = [response objectForKey:@"result"];
+                    self.dict = [response objectForKey:@"result"][0];
+                    self.pinArray = [NSMutableArray arrayWithArray:[self.dict allKeys]];
                     self.selectedArray = self.pinArray;
+                    [self.tableView reloadData];
+                    //reload data
+                    [self.tableView reloadData];
                 }
             }];
         }
     }
-    //reload data
-    [self.tableView reloadData];
 }
 
 - (IBAction)onClickUploadFile:(id)sender {
@@ -322,7 +352,6 @@ static NSString * const pinCellIdentifier = @"OSPinTableViewCell";
 
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"%i",buttonIndex);
     switch (buttonIndex) {
         case 0:
             [self uploadPhoto];

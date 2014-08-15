@@ -18,10 +18,17 @@
 #import "OSDateTimeUtils.h"
 #import "UIImageView+AFNetworking.h"
 #import "OSSearchViewController.h"
+#import "OSRequestUtils.h"
+#import "OSToastUtils.h"
+#import "OSUIMacro.h"
+#import "OSGuidUtils.h"
+#import <APToast/UIView+APToast.h>
 
 @interface OSChannelViewController ()
 
 @property (nonatomic, strong) METransitions *transitions;
+@property (nonatomic, weak) NSString *pinText;
+
 
 @end
 
@@ -52,8 +59,8 @@
     self.array = [[NSMutableArray alloc] init];
     
     // Initialize the root of our Firebase namespace.
-    NSString *channelId = [OSSession getInstance].currentChannel.fireBaseId ? [OSSession getInstance].currentChannel.fireBaseId : DEFAULT_FIREBASE_CHANNEL_ID;
-    NSString *url = [NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,channelId];
+    NSString *channelFirebaseId = [OSSession getInstance].currentChannel.fireBaseId ? [OSSession getInstance].currentChannel.fireBaseId : DEFAULT_FIREBASE_CHANNEL_ID;
+    NSString *url = [NSString stringWithFormat:@"%@channel/%@/messages",fireBaseUrl,channelFirebaseId];
     self.firebase = [[Firebase alloc] initWithUrl:url];
     [self.firebase authWithCredential:fireBaseSecret withCompletionBlock:^(NSError* error, id authData) {
         [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
@@ -119,14 +126,24 @@
     OSTranscriptTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"OSTranscriptTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSDictionary *message = [self.array objectAtIndex:indexPath.row];
+//    NSLog(@"message:%@",message);
     NSString *userId = message[@"user_id"];
     NSDictionary *userInfo = [[OSSession getInstance].allUsers objectForKey:userId];
     if([message isKindOfClass:[NSDictionary class]]){
-        
-        cell.message.text =  @"asbc";
         cell.fullName.text = [NSString stringWithFormat:@"%@ %@", userInfo[@"first_name"], userInfo[@"last_name"]];
+        NSString *text = message[@"text"];
+        if (![message[@"type"] isEqualToString:@"chatNotice"]) {
+            cell.message.hidden = YES;
+            cell.popBtn.hidden = NO;
+            [cell.popBtn setTitle:text forState:UIControlStateNormal];
+            cell.popBtn.tag = indexPath.row;
+            [cell.popBtn addTarget:self action:@selector(popupOption:) forControlEvents:UIControlEventTouchUpInside];
+        }else{
+            cell.message.hidden = NO;
+            cell.popBtn.hidden = YES;
+            cell.message.text = text;
+        }
     }
-    cell.message.text =  message[@"text"];
     NSString *messageTimestamp = message[@"timestamp"];
     NSString *timeDetails = [[OSDateTimeUtils getInstance] convertDateTimeFromUTCtoLocalForDateTime:[messageTimestamp longLongValue]];
     NSArray *foo = [timeDetails componentsSeparatedByString: @"/"];
@@ -170,6 +187,48 @@
     [cell.pic.layer setMasksToBounds:YES];
     [cell.pic.layer setCornerRadius:22.0];
     return cell;
+}
+
+-(void) popupOption:(UIButton*)sender
+{
+    UIButton *pinBtn =  (UIButton *)[self.view viewWithTag:sender.tag];
+    _pinText = pinBtn.titleLabel.text;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pin a question" message:[NSString stringWithFormat:@"Are you sure to pin '%@'",_pinText] delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch(buttonIndex) {
+        case 0:
+            break;
+        case 1:
+            [self pinQuestion];
+            break;
+    }
+}
+
+-(void) pinQuestion
+{
+    NSString *guid = [[OSGuidUtils getInstance] createGuid];
+    NSDictionary *parameters = @{
+                                @"question_id": guid,
+                                @"question":_pinText
+                                };
+    OSRequestUtils *loginRequest = [[OSRequestUtils alloc]init];
+    NSString *channelId = [OSSession getInstance].currentChannel.channelId;
+    [loginRequest httpRequestWithURL:[NSString stringWithFormat:@"api/channels/%@/pinnedquestions",channelId] andType:@"POST" andAuthHeader:YES andParameters:parameters andResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        if (!error) {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            if ([[json objectForKey:@"success"] boolValue]) {
+               [self.view ap_makeToastView:[[OSToastUtils getInstance] getToastMessage:@"Successfully pinned." andType:TOAST_SUC] duration:4.f position:APToastPositionBottom];
+            }else{
+                [self.view ap_makeToastView:[[OSToastUtils getInstance] getToastMessage:@"Fail to pins" andType:TOAST_FAIL] duration:4.f position:APToastPositionBottom];
+            }
+        }
+        
+    }];
 }
 
 -(void)registerCustomCellsFromNibs

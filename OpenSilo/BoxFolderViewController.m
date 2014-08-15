@@ -1,14 +1,24 @@
 //
 //  BoxRootViewController.m
-//  BoxSDKSampleApp
+//  OpenSilo
 //
-//  Created on 2/19/13.
-//  Copyright (c) 2013 Box. All rights reserved.
+//  Created by Peng Wan & Elmir Kouliev on 7/16/14.
+//  Copyright (c) 2014 OpenSilo. All rights reserved.
 //
 
 #import <BoxSDK/BoxSDK.h>
 
 #import "BoxFolderViewController.h"
+#import "OSUIMacro.h"
+#import "OSAppDelegate.h"
+#import "BoxNavigationController.h"
+#import "OSConstant.h"
+#import "OSToastUtils.h"
+#import <APToast/UIView+APToast.h>
+
+
+#define TABLE_CELL_REUSE_IDENTIFIER  @"Cell"
+#define isNSNull(value) [value isKindOfClass:[NSNull class]]
 
 #import "OSAppDelegate.h"
 #import "BoxNavigationController.h"
@@ -217,6 +227,11 @@
         
         BoxFileBlock success = ^(BoxFile *file)
         {
+            if(!isNSNull(file.sharedLink)){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Share" message:file.sharedLink[@"url"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+                [alert show];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Share link for this file is not available. Plese check the file share setting in your box account." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
             if(file.sharedLink){
                 
             }else{
@@ -232,6 +247,7 @@
         };
         
         [[BoxSDK sharedSDK].filesManager fileInfoWithID:item.modelID requestBuilder:nil success:success failure:failure];
+        };
     }
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
